@@ -29,10 +29,12 @@ class _ForumState extends State<Forum> {
             children: [
               // ignore: deprecated_member_use
               Text("Welcome User"),
+              SizedBox(height: 20,),
               FloatingActionButton(
                 onPressed: () {Navigator.pushNamed(context,'/add');},
                 child: const Icon(Icons.add),
               ),
+              SizedBox(height: 20,),
               StreamProvider.value(value: _postService.getPostByUser(FirebaseAuth.instance.currentUser!.uid), initialData: [],
                 child: (PostDisplay()),),
             ],

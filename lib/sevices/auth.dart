@@ -1,25 +1,25 @@
 import 'package:envision/models/userModel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-class AuthService{
-
-
+class AuthService {
   FirebaseAuth auth = FirebaseAuth.instance;
 
-  UserModel? _userFromFirebaseUser(User? user){
-    return user !=null ? UserModel(id: user.uid) : null;
+  UserModel? _userFromFirebaseUser(User? user) {
+    return user != null ? UserModel(id: user.uid) : null;
   }
 
-  Stream<UserModel?> get user{
+  Stream<UserModel?> get user {
     return auth.authStateChanges().map(_userFromFirebaseUser);
   }
 
-   Future signIn(email,pass) async{
+  Future signIn(email, pass) async {
     try {
-      User user = (await auth.signInWithEmailAndPassword(email: email, password: pass,)) as User;
-      
-      _userFromFirebaseUser(user);
-      
+      var user = (await auth.signInWithEmailAndPassword(
+        email: email,
+        password: pass,
+      ));
+
+      _userFromFirebaseUser(user.user);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         print('The password provided is too weak.');
@@ -31,12 +31,14 @@ class AuthService{
     }
   }
 
-  Future signUp(email,pass) async{
+  Future signUp(email, pass) async {
     try {
-      User user = (await auth.createUserWithEmailAndPassword(email: email, password: pass,)) as User;
+      var user = (await auth.createUserWithEmailAndPassword(
+        email: email,
+        password: pass,
+      ));
 
-      _userFromFirebaseUser(user);
-
+      _userFromFirebaseUser(user.user);
     } on FirebaseAuthException catch (e) {
       print(e);
     } catch (e) {
@@ -44,11 +46,11 @@ class AuthService{
     }
   }
 
-  Future signOut() async{
+  Future signOut() async {
     print("${auth.currentUser}");
-    try{
+    try {
       return await auth.signOut();
-    }catch(e){
+    } catch (e) {
       print(e.toString());
       return null;
     }

@@ -17,13 +17,13 @@ class Wrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     final user = Provider.of<UserModel?>(context);
     print(user);
-    if(user == null){
-        return SignUp();
+    if (user == null) {
+      return SignUp();
     }
     return MaterialApp(
       initialRoute: '/',
       routes: {
-        '/': (context) => Home(),
+        '/': (context) => VerifyScreen(),
         '/add': (context) => postAdd(),
       },
     );

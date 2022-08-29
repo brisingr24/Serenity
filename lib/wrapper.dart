@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:envision/models/userModel.dart';
-import 'package:envision/screens/forum.dart';
-import 'package:envision/screens/home.dart';
+import 'package:envision/screens/mains/forum.dart';
+import 'package:envision/screens/mains/home.dart';
 import 'package:envision/screens/postadd.dart';
 import 'package:envision/screens/signup.dart';
 import 'package:envision/screens/verifyscreen.dart';
@@ -20,6 +20,7 @@ class Wrapper extends StatelessWidget {
     if (user == null) {
       return SignUp();
     }
+
     return MaterialApp(
       initialRoute: '/',
       routes: {

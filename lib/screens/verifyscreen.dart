@@ -1,6 +1,7 @@
 import 'dart:async';
-import 'package:envision/screens/home.dart';
+import 'package:envision/screens/mains/home.dart';
 import 'package:envision/screens/signup.dart';
+import 'package:envision/sevices/pageHost.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -66,7 +67,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
     if (user!.emailVerified) {
       timer?.cancel();
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => Home()));
+          context, MaterialPageRoute(builder: (context) => PageHost()));
     }
   }
 }

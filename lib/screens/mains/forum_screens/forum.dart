@@ -1,11 +1,11 @@
-import 'package:envision/screens/postDisplay.dart';
-import 'package:envision/screens/postadd.dart';
+import 'package:envision/screens/mains/forum_screens/postDisplay.dart';
+import 'package:envision/screens/mains/forum_screens/postadd.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../../sevices/post.dart';
+import '../../../sevices/post.dart';
 
 class Forum extends StatefulWidget {
   const Forum({Key? key}) : super(key: key);

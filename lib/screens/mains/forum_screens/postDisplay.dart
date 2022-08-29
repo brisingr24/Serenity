@@ -1,4 +1,4 @@
-import 'package:envision/screens/postadd.dart';
+import 'package:envision/screens/mains/forum_screens/postadd.dart';
 import 'package:envision/sevices/post.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

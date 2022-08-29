@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'package:envision/screens/mains/forum.dart';
-import 'package:envision/screens/postDisplay.dart';
+import 'package:envision/screens/mains/forum_screens/forum.dart';
+import 'package:envision/screens/mains/forum_screens/postDisplay.dart';
 import 'package:envision/sevices/auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

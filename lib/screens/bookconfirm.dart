@@ -76,7 +76,9 @@ class BookingConfirm extends StatelessWidget {
                         color: Colors.white54,
                         highlightColor: Colors.blueAccent,
                         child: Text("Home"),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/home');
+                        },
                         shape: RoundedRectangleBorder(
                           side: BorderSide(
                             color: Colors.purpleAccent,

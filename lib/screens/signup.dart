@@ -20,7 +20,8 @@ class _SignUpState extends State<SignUp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Signup"),
+        automaticallyImplyLeading: false,
+        title: Center(child: Text("Signup")),
       ),
       body: Container(
         child: Form(
@@ -37,12 +38,13 @@ class _SignUpState extends State<SignUp> {
                 }),
               ),
               RaisedButton(
-                  child: Text("Sign Up"),
+                  child: Text("SIGN UP"),
                   onPressed: () async => {
                     _auth.signUp(email, pass),
                   }),
+              SizedBox(height: 50,),
               RaisedButton(
-                  child: Text("Sign In"),
+                  child: Text("LOG IN"),
                   onPressed: () async => {
                     _auth.signIn(email, pass),
                   }),

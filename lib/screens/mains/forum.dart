@@ -1,11 +1,9 @@
-import 'package:envision/screens/mains/forum_screens/postDisplay.dart';
-import 'package:envision/screens/mains/forum_screens/postadd.dart';
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: prefer_const_constructors
+
+import 'package:envision/widgets/postDisplay.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../../../sevices/post.dart';
 
 class Forum extends StatefulWidget {
   const Forum({Key? key}) : super(key: key);
@@ -15,11 +13,11 @@ class Forum extends StatefulWidget {
 }
 
 class _ForumState extends State<Forum> {
-  PostService _postService = PostService();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Center(child: Text("FORUM")),
       ),
       body: SingleChildScrollView(

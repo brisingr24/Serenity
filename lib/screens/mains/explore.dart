@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../gameCard.dart';
+import '../../widgets/gameCard.dart';
 
 class Explore extends StatefulWidget {
   const Explore({Key? key}) : super(key: key);

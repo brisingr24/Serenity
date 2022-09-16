@@ -24,7 +24,7 @@ class _SplashState extends State<Splash> {
 
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) =>  Explore()),
+      MaterialPageRoute(builder: (context) =>  LandingPage()),
     );
   }
 

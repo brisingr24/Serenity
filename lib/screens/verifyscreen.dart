@@ -51,9 +51,11 @@ class _VerifyScreenState extends State<VerifyScreen> {
     return SafeArea(
       child: Scaffold(
         body: Container(
-          child: Text(
-            "An Email verification link has been sent to you, Please verify..",
-            style: TextStyle(fontSize: 20, color: Colors.black),
+          child: Center(
+            child: Text(
+              "An Email verification link has been sent to you, Please verify..",
+              style: TextStyle(fontSize: 20, color: Colors.black),
+            ),
           ),
         ),
       ),

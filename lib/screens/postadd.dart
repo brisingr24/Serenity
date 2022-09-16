@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../sevices/post.dart';
+import '../sevices/post.dart';
 
 class postAdd extends StatefulWidget {
   const postAdd({Key? key}) : super(key: key);

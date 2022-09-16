@@ -25,7 +25,6 @@ class PostService{
   Stream<List<PostModel>> getPostByUser(uid){
     return FirebaseFirestore.instance
         .collection('posts')
-        .where('creator',isEqualTo: uid)
         .snapshots()
         .map(_postListFromSnapshot);
   }

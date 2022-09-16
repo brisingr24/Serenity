@@ -3,9 +3,10 @@ import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.da
 import 'package:circular_menu/circular_menu.dart';
 import 'package:flutter/material.dart';
 import '../screens/mains/explore.dart';
-import '../screens/mains/forum_screens/forum.dart';
+import '../screens/mains/forum.dart';
 import '../screens/mains/home.dart';
 import '../screens/mains/profile.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 
 class PageHost extends StatefulWidget {
@@ -44,7 +45,7 @@ class _PageHostState extends State<PageHost> {
   }
 
   List<Widget> _buildScreens() {
-    return [Home(), Forum(), Explore(),Profile()];
+    return [Home(), Forum(), Explore(),Profile(uid: FirebaseAuth.instance.currentUser!.uid)];
   }
 
   @override

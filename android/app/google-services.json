@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "858379656031",
+    "project_id": "mentalhealth-809fa",
+    "storage_bucket": "mentalhealth-809fa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:858379656031:android:dde7fdc9795810cbd334ea",
+        "android_client_info": {
+          "package_name": "com.example.envision"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "858379656031-37gn07iiunm1vkb3c72ptnkuhu8u2sif.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRJaRe4J3b0i9SmMxsf2Ers4T0nk9els8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "858379656031-37gn07iiunm1vkb3c72ptnkuhu8u2sif.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

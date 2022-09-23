@@ -21,14 +21,11 @@ class Wrapper extends StatelessWidget {
     if (user == null) {
       return SignUp();
     }
-    else if(user != null ){
+    else {
       return PageHost();
 
     }
 
-    return MaterialApp(
-      initialRoute: '/',
-      
-    );
+    
   }
 }

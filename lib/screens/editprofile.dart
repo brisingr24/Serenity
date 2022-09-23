@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:envision/sevices/user.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -41,28 +43,27 @@ class _EditProfileState extends State<EditProfile> {
               child: Text("SAVE"))
         ],
       ),
-      body: Container(
-        child: Form(
-          child: Column(
-            children: [
-              SizedBox(
-                height: 40,
-              ),
-              FlatButton(
-                  onPressed: () => getImage(0),
-                  child: _profileImg == null
-                      ? Icon(Icons.person_add_alt_1_rounded)
-                      : Image.file(
-                          _profileImg!,
-                          height: 100,
-                        )),
-              TextFormField(
-                onChanged: (val) => setState(() {
-                  name = val;
-                }),
-              )
-            ],
-          ),
+      body: Form(
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 40,
+            ),
+            FlatButton(
+                onPressed: () => getImage(0),
+                child: _profileImg == null
+                    ? const Icon(Icons.person_add_alt_1_rounded)
+                    : Image.file(
+                        _profileImg!,
+                        height: 100,
+                      )),
+            SizedBox(height: 20,),
+            TextFormField(
+              onChanged: (val) => setState(() {
+                name = val;
+              }),
+            ),
+          ],
         ),
       ),
     );

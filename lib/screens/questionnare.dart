@@ -13,6 +13,7 @@ class _QuestionnaireState extends State<Questionnaire> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.red,
 
     );
   }

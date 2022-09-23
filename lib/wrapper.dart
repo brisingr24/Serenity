@@ -20,10 +20,8 @@ class Wrapper extends StatelessWidget {
     print(user);
     if (user == null) {
       return SignUp();
-    }
-    else {
+    }else{
       return PageHost();
-
     }
 
     

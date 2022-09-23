@@ -22,16 +22,13 @@ class Wrapper extends StatelessWidget {
       return SignUp();
     }
     else if(user != null ){
+      return PageHost();
 
     }
 
     return MaterialApp(
       initialRoute: '/',
-      routes: {
-        '/': (context) => VerifyScreen(),
-        '/add': (context) => postAdd(),
-        '/home':(context) => PageHost(),
-      },
+      
     );
   }
 }

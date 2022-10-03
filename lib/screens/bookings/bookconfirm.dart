@@ -59,7 +59,6 @@ class BookingConfirm extends StatelessWidget {
                             ),
                           ),
                       ),
-
                     ],
                   ),
                 ),

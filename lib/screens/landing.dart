@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, deprecated_member_use
 
+import 'package:envision/models/sharedPrefModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
@@ -9,7 +10,7 @@ import '../wrapper.dart';
 class LandingPage extends StatelessWidget {
   final controller = PageController();
 
-   LandingPage({Key? key}) : super(key: key);
+  LandingPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -314,14 +315,16 @@ class LandingPage extends StatelessWidget {
                         Container(
                           padding: EdgeInsets.fromLTRB(0, 20, 20, 0),
                           child: RaisedButton(
-                            child: Text("Start"),
-                              onPressed: () {
+                              child: Text("Start"),
+                              onPressed: () async {
+                                SharedPref sharedPref = SharedPref();
+                                sharedPref.setFirstLogin(false);
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(builder: (context) => Wrapper()),
+                                  MaterialPageRoute(
+                                      builder: (context) => Wrapper()),
                                 );
-                              }
-                          ),
+                              }),
                         ),
                       ],
                     ),

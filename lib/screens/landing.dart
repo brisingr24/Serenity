@@ -318,7 +318,9 @@ class LandingPage extends StatelessWidget {
                               child: Text("Start"),
                               onPressed: () async {
                                 SharedPref sharedPref = SharedPref();
-                                sharedPref.setFirstLogin(false);
+                                await sharedPref.setFirstLogin(false);
+                                final bool? firstLogin = await sharedPref.getFirstLogin();
+                                print("HELLOOO"+firstLogin.toString());
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(

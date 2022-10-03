@@ -10,7 +10,6 @@ class SharedPref {
 
   getFirstLogin() async {
     SharedPreferences sharedPref = await SharedPreferences.getInstance();
-
-    sharedPref.getBool(firstLogin);
+    return sharedPref.getBool(firstLogin);
   }
 }

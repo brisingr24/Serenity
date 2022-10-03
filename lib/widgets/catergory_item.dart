@@ -8,7 +8,7 @@ class CategoryItem extends StatelessWidget {
     return Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(32),
-                        color: Colors.pink,
+                        color: Colors.blue,
                       ),
                       padding: const EdgeInsets.all(16),
                       margin: const EdgeInsets.all(8),

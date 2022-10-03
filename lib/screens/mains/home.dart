@@ -5,6 +5,7 @@ import 'dart:developer';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:envision/screens/mains/forum.dart';
 import 'package:envision/widgets/catergory_item.dart';
+import 'package:envision/widgets/mooditem.dart';
 import 'package:envision/widgets/postDisplay.dart';
 import 'package:envision/sevices/auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -18,6 +19,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  bool _ismoodvisible=true;
+  bool _isquotevisible=false;
   List<String> navItem = [
     'Self Care',
     'My Journal ',
@@ -32,7 +35,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.pink,
+        backgroundColor: Colors.blue,
         title: Text("HOME"),
         actions: <Widget>[
           FlatButton.icon(
@@ -46,17 +49,17 @@ class _HomeState extends State<Home> {
       body: Container(
         padding: EdgeInsets.all(16),
         constraints: BoxConstraints.expand(),
-        color: Colors.pink[50],
+        color: Colors.blue[50],
         child: Column(
           children: [
             Container(
               padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
               child: Row(
-                
                 children: [
                   CircleAvatar(
                     radius: 20,
-                    backgroundColor: Colors.pink,
+                    child: Image.asset("images/profile_placeholder.jpg"),
+                    backgroundColor: Colors.blue,
                     //backgroundImage: NetworkImage(),
                   ),
                   SizedBox(
@@ -75,28 +78,30 @@ class _HomeState extends State<Home> {
                       ),
                     ],
                   ),
-                  SizedBox(width: 120,),
+                  SizedBox(
+                    width: 120,
+                  ),
                   Align(
                     alignment: Alignment.centerLeft,
                     child: ElevatedButton(
-                      onPressed: null,
-                      child: const Text(
-                        "Panic",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
+                        onPressed: null,
+                        child: const Text(
+                          "Panic",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                          ),
                         ),
-                      ),
-                      style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(Colors.black),
-                          fixedSize:
-                              MaterialStateProperty.all<Size>(const Size(80, 40)),
-                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18.0),
-                          )))),
+                        style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.black),
+                            fixedSize: MaterialStateProperty.all<Size>(
+                                const Size(80, 40)),
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(18.0),
+                            )))),
                   ),
-                  
                 ],
               ),
             ),
@@ -105,6 +110,21 @@ class _HomeState extends State<Home> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Discover',
+                          style: TextStyle(
+                              fontSize: 30, fontWeight: FontWeight.bold),
+                        ),
+                        Icon(
+                          Icons.search,
+                          size: 30,
+                        ),
+                      ],
+                    ),
                     Container(
                       padding: EdgeInsets.all(8),
                       height: 80,
@@ -120,95 +140,108 @@ class _HomeState extends State<Home> {
                                 child: CategoryItem(item: navItem[index]));
                           }),
                     ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
+                      child: Text(
+                        'GOOD MORNING!!!',
+                        style: TextStyle(
+                            fontSize: 25, fontWeight: FontWeight.bold),
+                      ),
+                    ),
                     Text(
-                      'Games',
+                      'How are you feeling today?',
                       style:
-                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
-                      height: 150,
-                      child: ClipRRect(
-                          borderRadius: BorderRadius.circular(15),
-                          child: Image.asset("images/games.jpg")),
-                    ),
-                     SizedBox(
-                      height: 16,
+                      height: 40,
                     ),
                     Text(
-                      'Music',
+                      'Mood',
                       style:
                           TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                     ),
-                    
-                    CarouselSlider.builder(
-                      itemCount: 5,
-                      itemBuilder: (BuildContext context, int itemIndex,
-                              int pageViewIndex) =>
-                      Container(
-                        
-                        child: Image.asset("images/musicPlaceholder.jpg")
-                      ),
-                      options: CarouselOptions(
-                        height: 180,
-                        autoPlay: true,
-                       
-                        
-                        enableInfiniteScroll: false,
+                    Visibility(
+                      visible: _ismoodvisible,
+                      child: Container(
+                          padding: EdgeInsets.all(8),
+                          height: 120,
+                          child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            children: [
+                              InkWell(onTap: (() {
+                                setState(() {
+                                  _ismoodvisible = false;
+                                  _isquotevisible = true;
+                                });
+                              }), child: MoodItem(image: "images/mood_meh.jpg", moodtext: "MEH",)),
+                              InkWell(onTap: (() {
+                                setState(() {
+                                  _ismoodvisible = false;
+                                  _isquotevisible = true;
+                                });
+                              }), child: MoodItem(image: "images/mood_bad.jpg", moodtext: "BAD",)),
+                              InkWell(onTap: (() {
+                                setState(() {
+                                  _ismoodvisible = false;
+                                  _isquotevisible = true;
+                                });
+                              }), child: MoodItem(image: "images/mood_good.jpg", moodtext: "GOOD",)),
+                              InkWell(onTap: (() {
+                                setState(() {
+                                  _ismoodvisible = false;
+                                  _isquotevisible = true;
+                                });
+                              }), child: MoodItem(image: "images/mood_nice.jpg", moodtext: "NICE",)),
+                            ],
+                          )),
+                    ),
+                    Visibility(
+                      visible: _isquotevisible,
+                      child: Container(
+                        margin: EdgeInsets.all(8),
+                        alignment: Alignment.center,
+                        width: 500,
+                        height: 150,
+                        child: ClipRRect(
+                            borderRadius: BorderRadius.circular(30),
+                            child: Image.asset("images/thought_placeholder.png")),
                       ),
                     ),
                     SizedBox(
-                      height: 16,
+                      height: 25,
+
                     ),
-                    Text(
-                      'Books',
+                        Text(
+                      'My 3 AM Friend',
                       style:
                           TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                     ),
-                    
-                    CarouselSlider.builder(
-                      itemCount: 5,
-                      itemBuilder: (BuildContext context, int itemIndex,
-                              int pageViewIndex) =>
-                      Container(
-                        
-                        child: Image.asset("images/BoolPlaceHolder.jpg")
-                      ),
-                      options: CarouselOptions(
-                        height: 200,
-                        autoPlay: true,
-                       
-                        
-                        enableInfiniteScroll: false,
-                      ),
-                    ),
-                     SizedBox(
-                      height: 16,
-                    ),
-                    Text(
-                      'More',
-                      style:
-                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-                    ),
-                    
-                    CarouselSlider.builder(
-                      itemCount: 5,
-                      itemBuilder: (BuildContext context, int itemIndex,
-                              int pageViewIndex) =>
-                      Container(
-                        
-                        child: Image.asset("images/musicPlaceholder.jpg")
-                      ),
-                      options: CarouselOptions(
-                        height: 180,
-                        autoPlay: true,
-                       
-                        
-                        enableInfiniteScroll: false,
-                      ),
-                    ),
-                    
-                    
-                    
+                    Container(
+              padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                
+                children: [
+                  CircleAvatar(
+                    radius: 20,
+                    backgroundColor: Colors.blue,
+                    child: Image.asset("images/profile_placeholder.jpg"),
+                    //backgroundImage: NetworkImage(),
+                  ),
+                  SizedBox(width: 10,),
+                  Flexible(
+                    child: Text(
+                          'Talk Through Your Anxiety with Dr. Tanvi',
+                          style: TextStyle(fontSize: 20),
+                        ),
+                  ),
+                  SizedBox(width: 10,),
+                  Icon(Icons.phone,
+                  size: 30,)
+                ]
+              ),
+            ),
                   ],
                 ),
               ),

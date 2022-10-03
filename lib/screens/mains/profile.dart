@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 import 'package:envision/screens/editprofile.dart';
-import 'package:envision/screens/bookconfirm.dart';
+import 'package:envision/screens/bookings/bookconfirm.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../models/userModel.dart';

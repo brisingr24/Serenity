@@ -48,6 +48,7 @@ dev_dependencies:
   circular_menu: ^2.0.1
   firebase_storage: ^10.3.7
   image_picker: ^0.8.5+3
+  shared_preferences: ^2.0.15
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -75,6 +76,7 @@ flutter:
    - images/splash.jpg
    - images/saibo.gif
    - images/valo.png
+   - images/yoga.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

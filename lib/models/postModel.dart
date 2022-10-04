@@ -5,6 +5,12 @@ class PostModel {
   String text;
   String creator;
   Timestamp? timestamp;
-
-  PostModel({required this.id, required this.text,required this.creator, this.timestamp});
+  final dynamic likes;
+  PostModel({
+    required this.id,
+    required this.text,
+    required this.creator,
+    this.timestamp,
+    this.likes,
+  });
 }

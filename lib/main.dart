@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 import 'models/userModel.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,6 +32,12 @@ class MyApp extends StatelessWidget {
       routes: {
         '/pagehost':(context) => PageHost(),
       },
+      localizationsDelegates: [
+        GlobalWidgetsLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [Locale('en', 'IN')], 
       
       ),
     );

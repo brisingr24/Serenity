@@ -16,7 +16,7 @@ class UserService{
       profileImgURL: snapshot.data()['profileImgURL'],
       name: snapshot.data()['name'],
       email: snapshot.data()['email'],
-    ) :null;
+    ) :UserModel(name:"User");
   }
 
   Stream<UserModel?> getUserInfo(uid){

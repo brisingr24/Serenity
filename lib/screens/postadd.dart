@@ -19,13 +19,14 @@ class _postAddState extends State<postAdd> {
   Widget build(BuildContext context) {
     UserModel user = Provider.of<UserModel> (context);
     return Scaffold(
+      backgroundColor: Colors.blue.shade50,
       appBar: AppBar(
-        title: Text('Create post'),
+        title: Text('CREATE POST'),
         actions: [
           FlatButton(textColor:Colors.white,onPressed: ()async{
             _postService.savePost(text,user.name);
             Navigator.pop(context);
-          }, child: Text('Post')
+          }, child: Text('POST')
           )
         ],
       ),
@@ -35,6 +36,12 @@ class _postAddState extends State<postAdd> {
           child: Container(
             child: Form(
               child:  TextFormField(
+                decoration: InputDecoration(
+                  hintText: "Start Writing!",
+                  hintMaxLines: 4,
+                ),
+                    keyboardType: TextInputType.multiline,
+                    maxLines: null,
                 onChanged: (val){
                   setState(() {
                     text = val;

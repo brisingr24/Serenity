@@ -10,10 +10,9 @@ import 'package:envision/sevices/auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Explore
- extends StatefulWidget {
-  const Explore
-  ({Key? key}) : super(key: key);
+class Explore extends StatefulWidget {
+  final String uid;
+  const Explore({Key? key, required this.uid }) : super(key: key);
 
   @override
   _HomeState createState() => _HomeState();

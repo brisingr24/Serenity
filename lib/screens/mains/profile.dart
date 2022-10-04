@@ -17,6 +17,7 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   late final Stream<UserModel?> userModelStream;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -52,9 +53,11 @@ class _ProfileState extends State<Profile> {
                       UserModel user = snapshot.data!;
                       return Column(
                       children: [
-                      Text('${user.name}'),
+                        user.profileImgURL == null?
+                           Image.asset("images/userdef.png",height: 140,width: 150,):
+                          Image.network(user.profileImgURL?? ' ',height: 200,width:150,fit: BoxFit.cover,),
+                        Text('${user.name}'),
                       Text('${user.email}'),
-                        Image.network(user.profileImgURL?? ' ',height: 200,width:150,fit: BoxFit.cover,)
                         ],
                       );
                     }

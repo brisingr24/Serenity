@@ -47,7 +47,7 @@ class _PageHostState extends State<PageHost> {
   }
 
   List<Widget> _buildScreens() {
-    return [Home(), Forum(), Explore(),Profile(uid: FirebaseAuth.instance.currentUser!.uid)];
+    return [Home(uid: FirebaseAuth.instance.currentUser!.uid), Forum(uid: FirebaseAuth.instance.currentUser!.uid), Explore(uid: FirebaseAuth.instance.currentUser!.uid),Profile(uid: FirebaseAuth.instance.currentUser!.uid)];
   }
 
   @override

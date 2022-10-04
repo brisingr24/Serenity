@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:envision/models/userModel.dart';
 import 'package:envision/screens/mains/forum.dart';
 import 'package:envision/screens/mains/home.dart';
@@ -20,6 +18,10 @@ class Wrapper extends StatelessWidget {
     print(user);
     if (user == null) {
       return SignUp();
+    }
+    else if(user != null ){
+      return PageHost();
+
     }
 
     return MaterialApp(

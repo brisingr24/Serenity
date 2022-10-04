@@ -1,9 +1,11 @@
 // ignore_for_file: prefer_const_constructors
+import 'dart:ffi';
+
 import 'package:envision/models/sharedPrefModel.dart';
 import 'package:envision/screens/landing.dart';
 import 'package:envision/wrapper.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 
 class Splash extends StatefulWidget {
   const Splash({Key? key}) : super(key: key);
@@ -22,6 +24,7 @@ class _SplashState extends State<Splash> {
   _jumpHome() async {
     SharedPref sharedPref = SharedPref();
     final bool? firstLogin = await sharedPref.getFirstLogin();
+    print("HELLOOO"+firstLogin.toString());
     await Future.delayed(const Duration(seconds: 3), () {});
     if (firstLogin == false) {
       Navigator.push(
@@ -49,7 +52,7 @@ class _SplashState extends State<Splash> {
           Container(
             height: 300,
             width: 300,
-            child: Lottie.asset("images/yoga.json"),
+            child: Image.asset("images/splash.jpg"),
           ),
           const SizedBox(height: 30),
           DefaultTextStyle(

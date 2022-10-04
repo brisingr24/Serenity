@@ -45,7 +45,7 @@ class _PageHostState extends State<PageHost> {
   }
 
   List<Widget> _buildScreens() {
-    return [Home(), Forum(), Explore(),Profile(uid: FirebaseAuth.instance.currentUser!.uid)];
+    return [Home(), Forum(), Explore(),Profile()];
   }
 
   @override
@@ -79,7 +79,7 @@ class _PageHostState extends State<PageHost> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar(
         icons: iconList,
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.blue,
         activeIndex: _currentIndex,
         splashColor: Colors.orange,
         splashSpeedInMilliseconds: 300,

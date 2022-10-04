@@ -1,7 +1,12 @@
+import 'package:envision/screens/bookings/book_date.dart';
+import 'package:envision/screens/bookings/book_time.dart';
 import 'package:envision/screens/landing.dart';
+import 'package:envision/screens/postadd.dart';
 import 'package:envision/screens/signup.dart';
 import 'package:envision/screens/splash.dart';
+import 'package:envision/screens/verifyscreen.dart';
 import 'package:envision/sevices/auth.dart';
+import 'package:envision/sevices/pageHost.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
@@ -22,7 +27,12 @@ class MyApp extends StatelessWidget {
     return StreamProvider<UserModel?>.value(
       value: AuthService().user,
       initialData: UserModel(),
-      child: MaterialApp(home: Splash()),
+      child: MaterialApp(home: Splash(),
+      routes: {
+        '/pagehost':(context) => PageHost(),
+      },
+      
+      ),
     );
   }
 }

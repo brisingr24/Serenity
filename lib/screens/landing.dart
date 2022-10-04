@@ -239,27 +239,7 @@ class LandingPage extends StatelessWidget {
               child: Column(children: [
                 Column(
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Container(
-                            padding: EdgeInsets.fromLTRB(0, 15, 20, 0),
-                            child: RaisedButton(
-                              elevation: 0,
-                              textColor: Colors.grey[600],
-                              color: Colors.white54,
-                              highlightColor: Colors.blueAccent,
-                              child: Text("Skip"),
-                              onPressed: () => controller.jumpToPage(2),
-                              shape: RoundedRectangleBorder(
-                                side: BorderSide(
-                                  color: Colors.purpleAccent,
-                                ),
-                                borderRadius: BorderRadius.circular(30.0),
-                              ),
-                            )),
-                      ],
-                    ),
+                    
                     SizedBox(height: 15),
                     Container(
                       padding: EdgeInsets.fromLTRB(10, 0, 10, 20),
@@ -306,7 +286,7 @@ class LandingPage extends StatelessWidget {
                       ),
                     ),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         SizedBox(
                           width: 15,
@@ -318,7 +298,9 @@ class LandingPage extends StatelessWidget {
                               child: Text("Start"),
                               onPressed: () async {
                                 SharedPref sharedPref = SharedPref();
-                                sharedPref.setFirstLogin(false);
+                                await sharedPref.setFirstLogin(false);
+                                final bool? firstLogin = await sharedPref.getFirstLogin();
+                                print("HELLOOO"+firstLogin.toString());
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(

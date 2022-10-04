@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+import 'package:envision/screens/bookings/bookingscreen.dart';
 import 'package:envision/screens/editprofile.dart';
 import 'package:envision/screens/bookings/bookconfirm.dart';
 import 'package:flutter/cupertino.dart';
@@ -90,7 +91,7 @@ class _ProfileState extends State<Profile> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => BookingConfirm()),
+                    MaterialPageRoute(builder: (context) => BookingScreen()),
                   );
                 },
                 child: Text("BOOK"),

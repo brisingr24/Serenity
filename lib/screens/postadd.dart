@@ -1,5 +1,7 @@
+import 'package:envision/models/userModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../sevices/post.dart';
 
@@ -15,12 +17,13 @@ class _postAddState extends State<postAdd> {
   String text ="";
   @override
   Widget build(BuildContext context) {
+    UserModel user = Provider.of<UserModel> (context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Create post'),
         actions: [
           FlatButton(textColor:Colors.white,onPressed: ()async{
-            _postService.savePost(text);
+            _postService.savePost(text,user.name);
             Navigator.pop(context);
           }, child: Text('Post')
           )

@@ -3,6 +3,10 @@
 import 'package:envision/models/postModel.dart';
 import 'package:envision/sevices/post.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import '../models/userModel.dart';
+import '../sevices/user.dart';
 
 class PostDisplay extends StatefulWidget {
   final String uid;
@@ -15,6 +19,7 @@ class PostDisplay extends StatefulWidget {
 class _PostDisplayState extends State<PostDisplay> {
   late final Stream<List<PostModel>> postModelStream;
   PostService _postService = PostService();
+  late final Stream<UserModel?> userModelStream;
   int giveLike = 0;
   @override
   void initState() {
@@ -60,7 +65,24 @@ class _PostDisplayState extends State<PostDisplay> {
                               title: Row(
                                 children: [
                                   Icon(Icons.person),
-                                  Text(post.creator)
+                                  Text(post.creator),
+                                  StreamBuilder<UserModel?>(
+                                    stream: UserService().getUserInfo(widget.uid),
+                                    builder: (context, snapshot) {
+                                      if (snapshot.hasData) {
+                                        print(snapshot.data);
+                                        if (snapshot.data != null) {
+                                          UserModel user = snapshot.data!;
+                                          return Column(
+                                            children: [
+                                              Text('${user.name}'),
+                                            ],
+                                          );
+                                        }
+                                      }
+                                      return loadingView();
+                                    },
+                                  ),
                                 ],
                               ),
                               subtitle: Column(

@@ -7,6 +7,8 @@ import '../screens/mains/forum.dart';
 import '../screens/mains/home.dart';
 import '../screens/mains/profile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 
 
 class PageHost extends StatefulWidget {
@@ -45,7 +47,7 @@ class _PageHostState extends State<PageHost> {
   }
 
   List<Widget> _buildScreens() {
-    return [Home(), Forum(), Explore(),Profile()];
+    return [Home(), Forum(), Explore(),Profile(uid: FirebaseAuth.instance.currentUser!.uid)];
   }
 
   @override

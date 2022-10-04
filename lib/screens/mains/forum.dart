@@ -4,6 +4,8 @@ import 'package:envision/widgets/postDisplay.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import '../postadd.dart';
+
 
 class Forum extends StatefulWidget {
   const Forum({Key? key}) : super(key: key);
@@ -32,7 +34,10 @@ class _ForumState extends State<Forum> {
               ),
               FloatingActionButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, '/add');
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => postAdd()),
+                  );
                 },
                 child: const Icon(Icons.add),
               ),

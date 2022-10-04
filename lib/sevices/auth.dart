@@ -12,6 +12,7 @@ class AuthService {
     return auth.authStateChanges().map(_userFromFirebaseUser);
   }
 
+
   Future signIn(email, pass) async {
     try {
       var user = (await auth.signInWithEmailAndPassword(

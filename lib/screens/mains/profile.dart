@@ -9,7 +9,7 @@ import '../../sevices/user.dart';
 
 class Profile extends StatefulWidget {
   final String uid;
-  const Profile({Key? key, required this.uid }) : super(key: key);
+  const Profile({Key? key, required this.uid}) : super(key: key);
 
   @override
   _ProfileState createState() => _ProfileState();
@@ -17,6 +17,7 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   late final Stream<UserModel?> userModelStream;
+  String text ="";
 
   @override
   void initState() {
@@ -40,76 +41,207 @@ class _ProfileState extends State<Profile> {
         automaticallyImplyLeading: false,
       ),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
+        child: Align(
+          alignment: Alignment.center,
           child: Column(
             children: [
-            StreamBuilder<UserModel?>(
-                stream: UserService().getUserInfo(widget.uid),
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    print(snapshot.data);
-                    if (snapshot.data != null) {
-                      UserModel user = snapshot.data!;
-                      return Column(
-                      children: [
-                        user.profileImgURL == null?
-                           Image.asset("images/userdef.png",height: 140,width: 150,):
-                          Image.network(user.profileImgURL?? ' ',height: 200,width:150,fit: BoxFit.cover,),
-                        Text('${user.name}'),
-                      Text('${user.email}'),
-                        ],
-                      );
-                    }
-                  }
-                  return loadingView();
-                },
-              ),
+              SizedBox(height: 20),
+              Stack(children: [
+                Align(
+                  alignment: Alignment.center,
+                  child: Container(
+                    color: Colors.blue.shade50,
+                    height: 30,
+                    width: 350,
+                    padding: EdgeInsets.all(10.0),
+                    margin: EdgeInsets.only(top: 220),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.center,
+                  child: Container(
+                    height: 180,
+                    width: 350,
+                    padding: EdgeInsets.all(10.0),
+                    margin: EdgeInsets.only(top: 70),
+                    decoration: BoxDecoration(
+                      color: Colors.blue.shade50,
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.center,
+                  child: StreamBuilder<UserModel?>(
+                    stream: UserService().getUserInfo(widget.uid),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        print(snapshot.data);
+                        if (snapshot.data != null) {
+                          UserModel user = snapshot.data!;
+                          return Column(
+                            children: [
+                              user.profileImgURL == null
+                                  ? Image.asset(
+                                      "images/userdef.png",
+                                      height: 140,
+                                      width: 150,
+                                    )
+                                  : Image.network(
+                                      user.profileImgURL ?? ' ',
+                                      height: 200,
+                                      width: 150,
+                                      fit: BoxFit.cover,
+                                    ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  '${user.name}',
+                                  style: TextStyle(fontSize: 22),
+                                ),
+                              ),
+                              Text(
+                                '${user.email}',
+                                style: TextStyle(fontSize: 18),
+                              ),
+                            ],
+                          );
+                        }
+                      }
+                      return loadingView();
+                    },
+                  ),
+                ),
+              ]),
               Container(
+                height: 500,
+                width: 350,
+                padding: EdgeInsets.all(10.0),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30.0),
-                  color: Colors.red,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey,
-                      offset: Offset(1, 2),
-                      spreadRadius: 2, //(x,y)
-                      blurRadius: 6,
+                  color: Colors.blue.shade50,
+                  borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(0), bottom: Radius.circular(30)),
+                ),
+                child: Column(
+                  children: [
+                    Container(
+                      height: 60,
+                      width: 330,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(color: Colors.black),
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: 55,
+                          ),
+                          Text(
+                            "EDIT DETAILS",
+                            style: TextStyle(fontSize: 20),
+                          ),
+                          SizedBox(
+                            width: 80,
+                          ),
+                          Container(
+                            height: 40,
+                            width: 40,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              border: Border.all(color: Colors.black),
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => EditProfile()),
+                                );
+                              },
+                              child: Icon(
+                                Icons.arrow_forward_ios,
+                                size: 30,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          "My Appointments",
+                          style: TextStyle(fontSize: 20),
+                        )),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    RaisedButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => BookingScreen()));
+                      },
+                      child: Text("BOOK"),
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          "My Journal",
+                          style: TextStyle(fontSize: 20),
+                        )),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Container(
+                      height: 150,
+                      width: 330,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(color: Colors.black),
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text("Whats on your mind today?",style: TextStyle(fontSize: 16),),
+                          ),
+                          Form(
+                            child:  Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: TextFormField(
+                                decoration: InputDecoration(
+                                  hintText: "Start Writing!",
+                                  ),
+                                keyboardType: TextInputType.multiline,
+                                maxLines: null,
+                                onChanged: (val){
+                                  setState(() {
+                                    text = val;
+                                  });
+                                },
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
-                child: Container(
-                  padding: EdgeInsets.all(10.0),
-                  margin: EdgeInsets.only(top: 80),
-                  decoration: BoxDecoration(
-                    color: Colors.blue.shade200,
-                    borderRadius: BorderRadius.circular(30.0),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 40,
-              ),
-              RaisedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => BookingScreen()),
-                  );
-                },
-                child: Text("BOOK"),
-              ),
-              SizedBox(
-                height: 40,
-              ),
-              RaisedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => EditProfile()),
-                  );
-                },
-                child: Text("EDIT"),
               ),
             ],
           ),

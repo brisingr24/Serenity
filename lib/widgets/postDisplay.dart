@@ -1,8 +1,9 @@
 // ignore_for_file: prefer_const_constructors, void_checks
-import 'package:intl/intl.dart';
 import 'package:envision/models/postModel.dart';
 import 'package:envision/sevices/post.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
 import '../models/userModel.dart';
 import '../sevices/user.dart';
 
@@ -45,7 +46,9 @@ class _PostDisplayState extends State<PostDisplay> {
                 children: [
                   ListView.separated(
                     separatorBuilder: (context, index) {
-                      return Divider(height: 25,);
+                      return Divider(
+                        height: 25,
+                      );
                     },
                     scrollDirection: Axis.vertical,
                     shrinkWrap: true,
@@ -67,14 +70,14 @@ class _PostDisplayState extends State<PostDisplay> {
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(20.0),
                               ),
-                              child : Padding(
+                              child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     StreamBuilder<UserModel?>(
-                                      stream:
-                                      UserService().getUserInfo(widget.uid),
+                                      stream: UserService()
+                                          .getUserInfo(post.creator),
                                       builder: (context, snapshot) {
                                         if (snapshot.hasData) {
                                           print(snapshot.data);
@@ -82,12 +85,27 @@ class _PostDisplayState extends State<PostDisplay> {
                                             UserModel user = snapshot.data!;
                                             return Row(
                                               children: [
-                                                user.profileImgURL == null?
-                                                Image.asset("images/userdef.png",height: 40,width: 30,):
-                                                Image.network(user.profileImgURL?? ' ',height: 40,width:30,fit: BoxFit.cover,),
+                                                user.profileImgURL == null
+                                                    ? Image.asset(
+                                                        "images/userdef.png",
+                                                        height: 40,
+                                                        width: 30,
+                                                      )
+                                                    : Image.network(
+                                                        user.profileImgURL ??
+                                                            ' ',
+                                                        height: 40,
+                                                        width: 30,
+                                                        fit: BoxFit.cover,
+                                                      ),
                                                 Padding(
-                                                  padding: const EdgeInsets.all(6.0),
-                                                  child: Text('${user.name}',style: TextStyle(fontSize: 16),),
+                                                  padding:
+                                                      const EdgeInsets.all(6.0),
+                                                  child: Text(
+                                                    '${user.name}',
+                                                    style:
+                                                        TextStyle(fontSize: 16),
+                                                  ),
                                                 ),
                                               ],
                                             );
@@ -111,18 +129,19 @@ class _PostDisplayState extends State<PostDisplay> {
                                           },
                                           icon: snapshotLike.data == false
                                               ? Icon(
-                                            Icons.favorite_border,
-                                            color: Colors.red,
-                                            size: 30,
-                                          )
+                                                  Icons.favorite_border,
+                                                  color: Colors.red,
+                                                  size: 30,
+                                                )
                                               : Icon(
-                                            Icons.favorite,
-                                            color: Colors.red,
-                                            size: 30,
-                                          ),
+                                                  Icons.favorite,
+                                                  color: Colors.red,
+                                                  size: 30,
+                                                ),
                                         ),
-                                        SizedBox(width: 150,),
-                                        Text("${DateFormat('yyyy-MM-dd – kk:mm').format(post.timestamp!.toDate())}"),
+                                        Spacer(),
+                                        Text(
+                                            "${DateFormat('yyyy-MM-dd – kk:mm').format(post.timestamp!.toDate())}"),
                                       ],
                                     ),
                                   ],

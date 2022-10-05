@@ -260,6 +260,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "kommunicate_flutter",
+      "rootUri": "file:///C:/Users/Aditya%20Rawat/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/kommunicate_flutter-1.5.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "lints",
       "rootUri": "file:///C:/Users/Aditya%20Rawat/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/lints-1.0.1",
       "packageUri": "lib/",
@@ -464,7 +470,7 @@
       "languageVersion": "2.16"
     }
   ],
-  "generated": "2022-10-04T10:31:37.888519Z",
+  "generated": "2022-10-05T13:41:18.987800Z",
   "generator": "pub",
   "generatorVersion": "2.16.1"
 }

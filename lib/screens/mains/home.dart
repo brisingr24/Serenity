@@ -36,8 +36,8 @@ class _HomeState extends State<Home> {
         title: Text("HOME"),
         actions: <Widget>[
           TextButton.icon(
-              label: const Text("Sign Out"),
-              icon: Icon(Icons.person),
+              label: const Text("Sign Out",style: TextStyle(color: Colors.black),),
+              icon: Icon(Icons.person,color: Colors.black,),
               onPressed: () async {
                 _auth.signOut();
               })

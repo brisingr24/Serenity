@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 import '../../models/userModel.dart';
 import '../../sevices/user.dart';
+import '../aboutus.dart';
 
 class Profile extends StatefulWidget {
   final String uid;
@@ -29,7 +30,7 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 100,
+        toolbarHeight: 80,
         title: Center(
           child: Text(
             "My Profile",
@@ -51,10 +52,10 @@ class _ProfileState extends State<Profile> {
                   alignment: Alignment.center,
                   child: Container(
                     color: Colors.blue.shade50,
-                    height: 30,
+                    height: 55,
                     width: 350,
                     padding: EdgeInsets.all(10.0),
-                    margin: EdgeInsets.only(top: 220),
+                    margin: EdgeInsets.only(top: 230),
                   ),
                 ),
                 Align(
@@ -117,7 +118,7 @@ class _ProfileState extends State<Profile> {
                 ),
               ]),
               Container(
-                height: 500,
+                height: 600,
                 width: 350,
                 padding: EdgeInsets.all(10.0),
                 decoration: BoxDecoration(
@@ -193,6 +194,7 @@ class _ProfileState extends State<Profile> {
                                 builder: (context) => GridList()));
                       },
                       child: Text("BOOK"),
+                      style: ButtonStyle(elevation: MaterialStateProperty.all(6.0))
                     ),
                     SizedBox(
                       height: 30,
@@ -243,6 +245,32 @@ class _ProfileState extends State<Profile> {
                         ],
                       ),
                     ),
+                    SizedBox(height: 30,),
+                    ElevatedButton(
+                        onPressed: (){
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => AboutUs()));
+                        },
+                        child: const Text(
+                          "ABOUT US",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                          ),
+                        ),
+                        style: ButtonStyle(
+                            elevation: MaterialStateProperty.all(6.0),
+                            backgroundColor:
+                            MaterialStateProperty.all(Colors.blue),
+                            fixedSize: MaterialStateProperty.all<Size>(
+                                const Size(500,20)),
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                )))),
                   ],
                 ),
               ),

@@ -1,6 +1,5 @@
 import 'package:envision/sevices/auth.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -25,12 +24,35 @@ class _SignUpState extends State<SignUp> {
         child: Form(
           child: Column(
             children: [
+              SizedBox(height: 40),
               TextFormField(
+                decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(width: 4, color: Colors.blue.shade100),
+                        borderRadius: BorderRadius.circular(8)),
+                    icon: const Icon(
+                      Icons.email_rounded,
+                      size: 30,
+                    )),
                 onChanged: (val) => setState(() {
                   email = val;
                 }),
               ),
+              const SizedBox(height: 10),
               TextFormField(
+                decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderSide:
+                        BorderSide(width: 4, color: Colors.blue.shade100),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  icon: const Icon(
+                    Icons.key_rounded,
+                    color: Colors.blue,
+                    size: 30,
+                  ),
+                ),
                 onChanged: (val) => setState(() {
                   pass = val;
                 }),
@@ -57,7 +79,7 @@ class _SignUpState extends State<SignUp> {
                         borderRadius: BorderRadius.circular(18.0),
                       )))),
               const SizedBox(
-                height: 50,
+                height: 30,
               ),
               ElevatedButton(
                   onPressed: () async => {

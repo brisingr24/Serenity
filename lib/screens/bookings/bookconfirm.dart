@@ -8,7 +8,7 @@ class BookingConfirm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.grey,
+        backgroundColor: Colors.blue.shade50,
         body: Center(
           child: Container(
             width: 350,

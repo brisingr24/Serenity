@@ -67,7 +67,11 @@ class _HomeState extends State<Home> {
                     children: [
                       Text(
                         'USER',
-                        style: TextStyle(fontSize: 20),
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        height: 5,
                       ),
                       Text(
                         'My Safe Place',
@@ -84,7 +88,7 @@ class _HomeState extends State<Home> {
                           "Panic",
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 18,
+                            fontSize: 15,
                           ),
                         ),
                         style: ButtonStyle(
@@ -112,7 +116,7 @@ class _HomeState extends State<Home> {
                         Text(
                           'Discover',
                           style: TextStyle(
-                              fontSize: 30, fontWeight: FontWeight.bold),
+                              fontSize: 25, fontWeight: FontWeight.bold),
                         ),
                         Icon(
                           Icons.search,
@@ -140,26 +144,21 @@ class _HomeState extends State<Home> {
                       child: Text(
                         'GOOD MORNING!!!',
                         style: TextStyle(
-                            fontSize: 25, fontWeight: FontWeight.bold),
+                            fontSize: 22, fontWeight: FontWeight.bold),
                       ),
                     ),
+                    SizedBox(height: 15),
                     Text(
                       'How are you feeling today?',
-                      style:
-                          TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                      style: TextStyle(fontSize: 20),
                     ),
                     SizedBox(
-                      height: 40,
-                    ),
-                    Text(
-                      'Mood',
-                      style:
-                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                      height: 15,
                     ),
                     Visibility(
                       visible: _ismoodvisible,
                       child: Container(
-                          padding: EdgeInsets.all(8),
+                          padding: EdgeInsets.all(5),
                           height: 120,
                           child: ListView(
                             scrollDirection: Axis.horizontal,
@@ -225,12 +224,12 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                     SizedBox(
-                      height: 25,
+                      height: 30,
                     ),
                     Text(
                       'My 3 AM Friend',
                       style:
-                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
                     Container(
                       padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
@@ -250,7 +249,7 @@ class _HomeState extends State<Home> {
                             Flexible(
                               child: Text(
                                 'Talk Through Your Anxiety with Dr. Tanvi',
-                                style: TextStyle(fontSize: 20),
+                                style: TextStyle(fontSize: 17),
                               ),
                             ),
                             SizedBox(

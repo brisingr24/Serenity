@@ -71,19 +71,9 @@ class _AboutUsState extends State<AboutUs> {
               SizedBox(
                 width: 20,
               ),
-              RaisedButton(
-                elevation: 0,
-                textColor: Colors.white,
-                highlightColor: Colors.blueAccent,
-                color: Colors.blueGrey,
+              ElevatedButton(
                 child: Text("Read More"),
-                onPressed: () {},
-                shape: RoundedRectangleBorder(
-                  side: BorderSide(
-                    color: Colors.purpleAccent,
-                  ),
-                  borderRadius: new BorderRadius.circular(30.0),
-                ),
+                onPressed: null,
               ),
             ],
           ),
@@ -93,8 +83,11 @@ class _AboutUsState extends State<AboutUs> {
           ),
           Container(
             width: size.width,
-            height: size.height/4,
-            child: Image.asset("images/env1.png",fit: BoxFit.contain,),
+            height: size.height / 4,
+            child: Image.asset(
+              "images/env1.png",
+              fit: BoxFit.contain,
+            ),
           ),
           SizedBox(height: 20),
           Row(children: [
@@ -137,19 +130,9 @@ class _AboutUsState extends State<AboutUs> {
               SizedBox(
                 width: 20,
               ),
-              RaisedButton(
-                elevation: 0,
-                textColor: Colors.white,
-                highlightColor: Colors.blueAccent,
-                color: Colors.blueGrey,
+              ElevatedButton(
                 child: Text("Read More"),
-                onPressed: () {},
-                shape: RoundedRectangleBorder(
-                  side: BorderSide(
-                    color: Colors.purpleAccent,
-                  ),
-                  borderRadius: new BorderRadius.circular(30.0),
-                ),
+                onPressed: null,
               ),
             ],
           ),
@@ -158,8 +141,11 @@ class _AboutUsState extends State<AboutUs> {
           ),
           Container(
             width: size.width,
-            height: size.height/4,
-            child: Image.asset("images/env3.jpeg",fit: BoxFit.contain,),
+            height: size.height / 4,
+            child: Image.asset(
+              "images/env3.jpeg",
+              fit: BoxFit.contain,
+            ),
           ),
           SizedBox(height: 20),
           Row(children: [
@@ -202,19 +188,9 @@ class _AboutUsState extends State<AboutUs> {
               SizedBox(
                 width: 20,
               ),
-              RaisedButton(
-                elevation: 0,
-                textColor: Colors.white,
-                highlightColor: Colors.blueAccent,
-                color: Colors.blueGrey,
+              ElevatedButton(
                 child: Text("Read More"),
-                onPressed: () {},
-                shape: RoundedRectangleBorder(
-                  side: BorderSide(
-                    color: Colors.purpleAccent,
-                  ),
-                  borderRadius: new BorderRadius.circular(30.0),
-                ),
+                onPressed: null,
               ),
             ],
           ),
@@ -222,12 +198,14 @@ class _AboutUsState extends State<AboutUs> {
             height: 30,
           ),
           Image.asset("images/env2.png"),
-          Text("Made with love by Team Envision ❤",style: TextStyle(fontSize: 20),),
+          Text(
+            "Made with love by Team Envision ❤",
+            style: TextStyle(fontSize: 20),
+          ),
           SizedBox(
             height: 30,
           ),
-        ]
-        ),
+        ]),
       )),
     );
   }

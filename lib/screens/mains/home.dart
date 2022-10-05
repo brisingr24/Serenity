@@ -2,25 +2,22 @@
 
 import 'dart:developer';
 
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:envision/screens/mains/forum.dart';
+import 'package:envision/sevices/auth.dart';
 import 'package:envision/widgets/catergory_item.dart';
 import 'package:envision/widgets/mooditem.dart';
-import 'package:envision/widgets/postDisplay.dart';
-import 'package:envision/sevices/auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
   final String uid;
-  const Home({Key? key, required this.uid }) : super(key: key);
+  const Home({Key? key, required this.uid}) : super(key: key);
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-  bool _ismoodvisible=true;
-  bool _isquotevisible=false;
+  bool _ismoodvisible = true;
+  bool _isquotevisible = false;
   List<String> navItem = [
     'Self Care',
     'My Journal ',
@@ -38,7 +35,7 @@ class _HomeState extends State<Home> {
         backgroundColor: Colors.blue,
         title: Text("HOME"),
         actions: <Widget>[
-          FlatButton.icon(
+          TextButton.icon(
               label: const Text("Sign Out"),
               icon: Icon(Icons.person),
               onPressed: () async {
@@ -78,9 +75,7 @@ class _HomeState extends State<Home> {
                       ),
                     ],
                   ),
-                  SizedBox(
-                    width: 120,
-                  ),
+                  Spacer(),
                   Align(
                     alignment: Alignment.centerLeft,
                     child: ElevatedButton(
@@ -169,30 +164,50 @@ class _HomeState extends State<Home> {
                           child: ListView(
                             scrollDirection: Axis.horizontal,
                             children: [
-                              InkWell(onTap: (() {
-                                setState(() {
-                                  _ismoodvisible = false;
-                                  _isquotevisible = true;
-                                });
-                              }), child: MoodItem(image: "images/mood_meh.jpg", moodtext: "MEH",)),
-                              InkWell(onTap: (() {
-                                setState(() {
-                                  _ismoodvisible = false;
-                                  _isquotevisible = true;
-                                });
-                              }), child: MoodItem(image: "images/mood_bad.jpg", moodtext: "BAD",)),
-                              InkWell(onTap: (() {
-                                setState(() {
-                                  _ismoodvisible = false;
-                                  _isquotevisible = true;
-                                });
-                              }), child: MoodItem(image: "images/mood_good.jpg", moodtext: "GOOD",)),
-                              InkWell(onTap: (() {
-                                setState(() {
-                                  _ismoodvisible = false;
-                                  _isquotevisible = true;
-                                });
-                              }), child: MoodItem(image: "images/mood_nice.jpg", moodtext: "NICE",)),
+                              InkWell(
+                                  onTap: (() {
+                                    setState(() {
+                                      _ismoodvisible = false;
+                                      _isquotevisible = true;
+                                    });
+                                  }),
+                                  child: MoodItem(
+                                    image: "images/mood_meh.jpg",
+                                    moodtext: "MEH",
+                                  )),
+                              InkWell(
+                                  onTap: (() {
+                                    setState(() {
+                                      _ismoodvisible = false;
+                                      _isquotevisible = true;
+                                    });
+                                  }),
+                                  child: MoodItem(
+                                    image: "images/mood_bad.jpg",
+                                    moodtext: "BAD",
+                                  )),
+                              InkWell(
+                                  onTap: (() {
+                                    setState(() {
+                                      _ismoodvisible = false;
+                                      _isquotevisible = true;
+                                    });
+                                  }),
+                                  child: MoodItem(
+                                    image: "images/mood_good.jpg",
+                                    moodtext: "GOOD",
+                                  )),
+                              InkWell(
+                                  onTap: (() {
+                                    setState(() {
+                                      _ismoodvisible = false;
+                                      _isquotevisible = true;
+                                    });
+                                  }),
+                                  child: MoodItem(
+                                    image: "images/mood_nice.jpg",
+                                    moodtext: "NICE",
+                                  )),
                             ],
                           )),
                     ),
@@ -205,43 +220,48 @@ class _HomeState extends State<Home> {
                         height: 150,
                         child: ClipRRect(
                             borderRadius: BorderRadius.circular(30),
-                            child: Image.asset("images/thought_placeholder.png")),
+                            child:
+                                Image.asset("images/thought_placeholder.png")),
                       ),
                     ),
                     SizedBox(
                       height: 25,
-
                     ),
-                        Text(
+                    Text(
                       'My 3 AM Friend',
                       style:
                           TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                     ),
                     Container(
-              padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                
-                children: [
-                  CircleAvatar(
-                    radius: 20,
-                    backgroundColor: Colors.blue,
-                    child: Image.asset("images/profile_placeholder.jpg"),
-                    //backgroundImage: NetworkImage(),
-                  ),
-                  SizedBox(width: 10,),
-                  Flexible(
-                    child: Text(
-                          'Talk Through Your Anxiety with Dr. Tanvi',
-                          style: TextStyle(fontSize: 20),
-                        ),
-                  ),
-                  SizedBox(width: 10,),
-                  Icon(Icons.phone,
-                  size: 30,)
-                ]
-              ),
-            ),
+                      padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            CircleAvatar(
+                              radius: 20,
+                              backgroundColor: Colors.blue,
+                              child:
+                                  Image.asset("images/profile_placeholder.jpg"),
+                              //backgroundImage: NetworkImage(),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Flexible(
+                              child: Text(
+                                'Talk Through Your Anxiety with Dr. Tanvi',
+                                style: TextStyle(fontSize: 20),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Icon(
+                              Icons.phone,
+                              size: 30,
+                            )
+                          ]),
+                    ),
                   ],
                 ),
               ),

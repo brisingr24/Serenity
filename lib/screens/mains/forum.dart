@@ -1,9 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:envision/widgets/postDisplay.dart';
-import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter/material.dart';
+
 import '../../models/userModel.dart';
 import '../../sevices/user.dart';
 import '../postadd.dart';
@@ -56,9 +56,7 @@ class _ForumState extends State<Forum> {
                             padding: const EdgeInsets.all(6.0),
                             child: Text('${user.name}'),
                           ),
-                          SizedBox(
-                            width: 70,
-                          ),
+                          Spacer(),
                           Align(
                             alignment: Alignment.centerLeft,
                             child: ElevatedButton(
@@ -88,7 +86,9 @@ class _ForumState extends State<Forum> {
                   return Center();
                 },
               ),
-              SizedBox(height: 20,),
+              SizedBox(
+                height: 20,
+              ),
               Text(
                 "Share Your Story !",
                 style: TextStyle(fontSize: 20),
@@ -123,7 +123,7 @@ class _ForumState extends State<Forum> {
                           ),
                         ),
                         style: ButtonStyle(
-                          elevation: MaterialStateProperty.all(6.0),
+                            elevation: MaterialStateProperty.all(6.0),
                             backgroundColor:
                                 MaterialStateProperty.all(Colors.blue.shade50),
                             fixedSize: MaterialStateProperty.all<Size>(

@@ -1,9 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-import 'package:envision/screens/bookings/bookingscreen.dart';
+import 'package:envision/screens/bookings/appointment.dart';
 import 'package:envision/screens/editprofile.dart';
-import 'package:envision/screens/bookings/bookconfirm.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 import '../../models/userModel.dart';
 import '../../sevices/user.dart';
 
@@ -17,7 +17,7 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   late final Stream<UserModel?> userModelStream;
-  String text ="";
+  String text = "";
 
   @override
   void initState() {
@@ -190,7 +190,7 @@ class _ProfileState extends State<Profile> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => BookingScreen()));
+                                builder: (context) => GridList()));
                       },
                       child: Text("BOOK"),
                     ),
@@ -218,18 +218,21 @@ class _ProfileState extends State<Profile> {
                         children: [
                           Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Text("Whats on your mind today?",style: TextStyle(fontSize: 16),),
+                            child: Text(
+                              "Whats on your mind today?",
+                              style: TextStyle(fontSize: 16),
+                            ),
                           ),
                           Form(
-                            child:  Padding(
+                            child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: TextFormField(
                                 decoration: InputDecoration(
                                   hintText: "Start Writing!",
-                                  ),
+                                ),
                                 keyboardType: TextInputType.multiline,
                                 maxLines: null,
-                                onChanged: (val){
+                                onChanged: (val) {
                                   setState(() {
                                     text = val;
                                   });

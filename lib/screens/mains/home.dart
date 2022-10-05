@@ -97,7 +97,7 @@ class _HomeState extends State<Home> {
                           }
                         },
                         child: const Text(
-                          "Panic",
+                          "Chatbot",
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 15,

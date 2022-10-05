@@ -3,7 +3,9 @@
 import 'package:flutter/material.dart';
 
 class BookingConfirm extends StatelessWidget {
-  const BookingConfirm({Key? key}) : super(key: key);
+  const BookingConfirm({
+    Key? key,
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -187,15 +187,16 @@ class _ProfileState extends State<Profile> {
                       height: 30,
                     ),
                     ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => GridList()));
-                      },
-                      child: Text("BOOK"),
-                      style: ButtonStyle(elevation: MaterialStateProperty.all(6.0))
-                    ),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      GridList(uid: widget.uid)));
+                        },
+                        child: Text("BOOK"),
+                        style: ButtonStyle(
+                            elevation: MaterialStateProperty.all(6.0))),
                     SizedBox(
                       height: 30,
                     ),
@@ -245,9 +246,11 @@ class _ProfileState extends State<Profile> {
                         ],
                       ),
                     ),
-                    SizedBox(height: 30,),
+                    SizedBox(
+                      height: 30,
+                    ),
                     ElevatedButton(
-                        onPressed: (){
+                        onPressed: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -263,14 +266,13 @@ class _ProfileState extends State<Profile> {
                         style: ButtonStyle(
                             elevation: MaterialStateProperty.all(6.0),
                             backgroundColor:
-                            MaterialStateProperty.all(Colors.blue),
+                                MaterialStateProperty.all(Colors.blue),
                             fixedSize: MaterialStateProperty.all<Size>(
-                                const Size(500,20)),
+                                const Size(500, 20)),
                             shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                )))),
+                                RoundedRectangleBorder>(RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                            )))),
                   ],
                 ),
               ),

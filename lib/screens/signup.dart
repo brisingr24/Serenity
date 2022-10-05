@@ -83,7 +83,7 @@ class _SignUpState extends State<SignUp> {
               ),
               ElevatedButton(
                   onPressed: () async => {
-                        _auth.signIn(email, pass),
+                        await _auth.signIn(email, pass),
                       },
                   child: const Text(
                     "LOG IN",

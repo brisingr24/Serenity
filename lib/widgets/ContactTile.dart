@@ -2,9 +2,17 @@ import 'package:envision/screens/bookings/bookingscreen.dart';
 import 'package:flutter/material.dart';
 
 class Contact extends StatefulWidget {
-  Contact({Key? key, this.name, this.profession, this.city, this.rating})
+  Contact(
+      {Key? key,
+      required this.docID,
+      required this.uid,
+      this.name,
+      this.profession,
+      this.city,
+      this.rating})
       : super(key: key);
-
+  String docID;
+  String uid;
   String? name;
   String? profession;
   String? city;
@@ -54,7 +62,10 @@ class _ContactState extends State<Contact> {
                 Row(
                   children: [
                     Container(
-                      child: Text("${widget.city}"),
+                      child: Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Text("${widget.city}"),
+                      ),
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                         color: Colors.blue.shade50,
@@ -65,7 +76,13 @@ class _ContactState extends State<Contact> {
                     SizedBox(width: 5),
                     Container(
                       width: 70,
-                      child: Text("${widget.rating}"),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("${widget.rating}"),
+                          Icon(Icons.star),
+                        ],
+                      ),
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                           color: Colors.blue.shade50,
@@ -79,9 +96,14 @@ class _ContactState extends State<Contact> {
                 ElevatedButton(
                   onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => BookingScreen()));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => BookingScreen(
+                          docID: widget.docID,
+                          uid: widget.uid,
+                        ),
+                      ),
+                    );
                   },
                   child: const Text("Book Now"),
                   style: ButtonStyle(

@@ -1,13 +1,14 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:circular_menu/circular_menu.dart';
+import 'package:envision/screens/chatbot.dart';
 import 'package:flutter/material.dart';
 import '../screens/mains/explore.dart';
 import '../screens/mains/forum.dart';
 import '../screens/mains/home.dart';
 import '../screens/mains/profile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:kommunicate_flutter/kommunicate_flutter.dart';
 
 
 
@@ -40,6 +41,14 @@ class _PageHostState extends State<PageHost> {
     super.dispose();
   }
 
+  goToChat(){
+    print("TAP");
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => ChatBot()));
+  }
+
   void onTappedBar(int index) {
     setState(() {
       _currentIndex = index;
@@ -55,7 +64,8 @@ class _PageHostState extends State<PageHost> {
     return Scaffold(
       body: _buildScreens()[_currentIndex],
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () async{
+        },
         child: CircularMenu(
             startingAngleInRadian: 3.665,
             endingAngleInRadian: 5.75,
@@ -69,7 +79,8 @@ class _PageHostState extends State<PageHost> {
               CircularMenuItem(icon: Icons.clear,color: Colors.red,padding: 4,onTap: () {
                 // callback
               }),
-              CircularMenuItem(icon: Icons.chat_outlined,color: Colors.red,padding: 5,iconSize: 25, onTap: () {
+              CircularMenuItem(icon: Icons.chat_outlined,color: Colors.red,padding: 5,iconSize: 30, onTap: () {
+                goToChat();
                 //callback
               }),
               CircularMenuItem(icon: Icons.report_gmailerrorred_rounded,color: Colors.red,padding: 3, onTap: () {

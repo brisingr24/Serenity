@@ -185,7 +185,7 @@ class _ProfileState extends State<Profile> {
                     SizedBox(
                       height: 30,
                     ),
-                    RaisedButton(
+                    ElevatedButton(
                       onPressed: () {
                         Navigator.push(
                             context,

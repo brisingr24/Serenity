@@ -23,7 +23,7 @@ class _postAddState extends State<postAdd> {
       appBar: AppBar(
         title: Text('CREATE POST'),
         actions: [
-          FlatButton(textColor:Colors.white,onPressed: ()async{
+          ElevatedButton(onPressed: ()async{
             _postService.savePost(text,user.name);
             Navigator.pop(context);
           }, child: Text('POST')

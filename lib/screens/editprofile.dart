@@ -34,7 +34,7 @@ class _EditProfileState extends State<EditProfile> {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          FlatButton(
+          ElevatedButton(
               onPressed: () async {
                 await _userService.updateProfile(_profileImg!, name);
                 Navigator.pop(context);
@@ -49,7 +49,7 @@ class _EditProfileState extends State<EditProfile> {
             const SizedBox(
               height: 40,
             ),
-            FlatButton(
+            ElevatedButton(
                 onPressed: () => getImage(0),
                 child: _profileImg == null
                     ? const Icon(Icons.person_add_alt_1_rounded)

@@ -1,10 +1,4 @@
-import 'package:envision/screens/bookings/book_date.dart';
-import 'package:envision/screens/bookings/book_time.dart';
-import 'package:envision/screens/landing.dart';
-import 'package:envision/screens/postadd.dart';
-import 'package:envision/screens/signup.dart';
 import 'package:envision/screens/splash.dart';
-import 'package:envision/screens/verifyscreen.dart';
 import 'package:envision/sevices/auth.dart';
 import 'package:envision/sevices/pageHost.dart';
 import 'package:flutter/material.dart';

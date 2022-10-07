@@ -1,17 +1,13 @@
-import 'package:envision/screens/bookings/book_date.dart';
-import 'package:envision/screens/bookings/book_time.dart';
-import 'package:envision/screens/landing.dart';
-import 'package:envision/screens/postadd.dart';
-import 'package:envision/screens/signup.dart';
 import 'package:envision/screens/splash.dart';
-import 'package:envision/screens/verifyscreen.dart';
 import 'package:envision/sevices/auth.dart';
 import 'package:envision/sevices/pageHost.dart';
-import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:provider/provider.dart';
-import 'models/userModel.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:provider/provider.dart';
+
+import 'models/userModel.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,18 +24,19 @@ class MyApp extends StatelessWidget {
     return StreamProvider<UserModel?>.value(
       value: AuthService().user,
       initialData: UserModel(),
-      child: MaterialApp(home: Splash(),
-      routes: {
-        '/pagehost':(context) => PageHost(),
-      },
-      localizationsDelegates: [
-        GlobalWidgetsLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: [Locale('en', 'IN')], 
-      
+      child: MaterialApp(
+        home: Splash(),
+        routes: {
+          '/pagehost': (context) => PageHost(),
+        },
+        localizationsDelegates: [
+          GlobalWidgetsLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: [Locale('en', 'IN')],
       ),
     );
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.leanBack);
   }
 }

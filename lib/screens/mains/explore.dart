@@ -4,17 +4,14 @@ import 'dart:developer';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:envision/screens/mains/forum.dart';
-import 'package:envision/widgets/catergory_item.dart';
-import 'package:envision/widgets/postDisplay.dart';
 import 'package:envision/sevices/auth.dart';
+import 'package:envision/widgets/catergory_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Explore
- extends StatefulWidget {
-  const Explore
-  ({Key? key}) : super(key: key);
+class Explore extends StatefulWidget {
+  final String uid;
+  const Explore({Key? key, required this.uid}) : super(key: key);
 
   @override
   _HomeState createState() => _HomeState();
@@ -45,7 +42,7 @@ class _HomeState extends State<Explore> {
         backgroundColor: Colors.blue,
         title: Text("EXPLORE"),
         actions: <Widget>[
-          FlatButton.icon(
+          TextButton.icon(
               label: const Text("Sign Out"),
               icon: Icon(Icons.person),
               onPressed: () async {
@@ -62,7 +59,6 @@ class _HomeState extends State<Explore> {
             Container(
               padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
               child: Row(
-                
                 children: [
                   CircleAvatar(
                     radius: 20,
@@ -86,28 +82,28 @@ class _HomeState extends State<Explore> {
                       ),
                     ],
                   ),
-                  SizedBox(width: 120,),
+                  Spacer(),
                   Align(
                     alignment: Alignment.centerLeft,
                     child: ElevatedButton(
-                      onPressed: _callNumber,
-                      child: const Text(
-                        "Panic",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
+                        onPressed: _callNumber,
+                        child: const Text(
+                          "Chatbot",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                          ),
                         ),
-                      ),
-                      style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(Colors.black),
-                          fixedSize:
-                              MaterialStateProperty.all<Size>(const Size(80, 40)),
-                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18.0),
-                          )))),
+                        style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.black),
+                            fixedSize: MaterialStateProperty.all<Size>(
+                                const Size(90, 40)),
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(18.0),
+                            )))),
                   ),
-                  
                 ],
               ),
             ),
@@ -142,7 +138,7 @@ class _HomeState extends State<Explore> {
                           borderRadius: BorderRadius.circular(15),
                           child: Image.asset("images/games.jpg")),
                     ),
-                     SizedBox(
+                    SizedBox(
                       height: 16,
                     ),
                     Text(
@@ -150,20 +146,16 @@ class _HomeState extends State<Explore> {
                       style:
                           TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                     ),
-                    
                     CarouselSlider.builder(
                       itemCount: 5,
                       itemBuilder: (BuildContext context, int itemIndex,
                               int pageViewIndex) =>
-                      Container(
-                        
-                        child: Image.asset("images/musicPlaceholder.jpg")
-                      ),
+                          Container(
+                              child:
+                                  Image.asset("images/musicPlaceholder.jpg")),
                       options: CarouselOptions(
                         height: 180,
                         autoPlay: true,
-                       
-                        
                         enableInfiniteScroll: false,
                       ),
                     ),
@@ -175,24 +167,19 @@ class _HomeState extends State<Explore> {
                       style:
                           TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                     ),
-                    
                     CarouselSlider.builder(
                       itemCount: 5,
                       itemBuilder: (BuildContext context, int itemIndex,
                               int pageViewIndex) =>
-                      Container(
-                        
-                        child: Image.asset("images/BoolPlaceHolder.jpg")
-                      ),
+                          Container(
+                              child: Image.asset("images/BoolPlaceHolder.jpg")),
                       options: CarouselOptions(
                         height: 200,
                         autoPlay: true,
-                       
-                        
                         enableInfiniteScroll: false,
                       ),
                     ),
-                     SizedBox(
+                    SizedBox(
                       height: 16,
                     ),
                     Text(
@@ -200,26 +187,19 @@ class _HomeState extends State<Explore> {
                       style:
                           TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                     ),
-                    
                     CarouselSlider.builder(
                       itemCount: 5,
                       itemBuilder: (BuildContext context, int itemIndex,
                               int pageViewIndex) =>
-                      Container(
-                        
-                        child: Image.asset("images/musicPlaceholder.jpg")
-                      ),
+                          Container(
+                              child:
+                                  Image.asset("images/musicPlaceholder.jpg")),
                       options: CarouselOptions(
                         height: 180,
                         autoPlay: true,
-                       
-                        
                         enableInfiniteScroll: false,
                       ),
                     ),
-                    
-                    
-                    
                   ],
                 ),
               ),

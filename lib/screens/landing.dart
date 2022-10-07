@@ -38,20 +38,27 @@ class LandingPage extends StatelessWidget {
                       children: [
                         Container(
                           padding: EdgeInsets.fromLTRB(0, 15, 20, 0),
-                          child: RaisedButton(
-                            elevation: 0,
-                            textColor: Colors.grey[600],
-                            color: Colors.white54,
-                            highlightColor: Colors.blueAccent,
-                            child: Text("Skip"),
-                            onPressed: () => controller.jumpToPage(2),
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(
-                                color: Colors.purpleAccent,
+                          child : ElevatedButton(
+                              onPressed: () {
+                                controller.jumpToPage(2);
+                              },
+                              child: Text(
+                                "Skip",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 16,
+                                ),
                               ),
-                              borderRadius: BorderRadius.circular(30.0),
-                            ),
-                          ),
+                              style: ButtonStyle(
+                                  elevation: MaterialStateProperty.all(6.0),
+                                  backgroundColor:
+                                  MaterialStateProperty.all(Colors.blue.shade50),
+                                  fixedSize: MaterialStateProperty.all<Size>(
+                                      const Size(150, 20)),
+                                  shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(18.0),
+                                  )))),
                         ),
                       ],
                     ),
@@ -109,22 +116,27 @@ class LandingPage extends StatelessWidget {
                         ),
                         Container(
                           padding: EdgeInsets.fromLTRB(0, 20, 20, 0),
-                          child: RaisedButton(
-                            elevation: 0,
-                            textColor: Colors.grey[600],
-                            color: Colors.white54,
-                            highlightColor: Colors.blueAccent,
-                            child: Text("Next"),
-                            onPressed: () => controller.nextPage(
-                                duration: Duration(milliseconds: 400),
-                                curve: Curves.easeInOut),
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(
-                                color: Colors.purpleAccent,
+                          child : ElevatedButton(
+                              onPressed: () {
+                                controller.nextPage(duration: Duration(milliseconds: 400), curve: Curves.easeInOut);
+                              },
+                              child: Text(
+                                "Next",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 16,
+                                ),
                               ),
-                              borderRadius: BorderRadius.circular(30.0),
-                            ),
-                          ),
+                              style: ButtonStyle(
+                                  elevation: MaterialStateProperty.all(6.0),
+                                  backgroundColor:
+                                  MaterialStateProperty.all(Colors.blue.shade50),
+                                  fixedSize: MaterialStateProperty.all<Size>(
+                                      const Size(150, 20)),
+                                  shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(18.0),
+                                  )))),
                         ),
                       ],
                     ),
@@ -141,21 +153,29 @@ class LandingPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Container(
-                            padding: EdgeInsets.fromLTRB(0, 15, 20, 0),
-                            child: RaisedButton(
-                              elevation: 0,
-                              textColor: Colors.grey[600],
-                              color: Colors.white54,
-                              highlightColor: Colors.blueAccent,
-                              child: Text("Skip"),
-                              onPressed: () => controller.jumpToPage(2),
-                              shape: RoundedRectangleBorder(
-                                side: BorderSide(
-                                  color: Colors.purpleAccent,
+                          padding: EdgeInsets.fromLTRB(0, 15, 20, 0),
+                          child : ElevatedButton(
+                              onPressed: () {
+                                controller.jumpToPage(2);
+                              },
+                              child: Text(
+                                "Skip",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 16,
                                 ),
-                                borderRadius: BorderRadius.circular(30.0),
                               ),
-                            )),
+                              style: ButtonStyle(
+                                  elevation: MaterialStateProperty.all(6.0),
+                                  backgroundColor:
+                                  MaterialStateProperty.all(Colors.blue.shade50),
+                                  fixedSize: MaterialStateProperty.all<Size>(
+                                      const Size(150, 20)),
+                                  shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(18.0),
+                                  )))),
+                        ),
                       ],
                     ),
                     SizedBox(height: 15),
@@ -211,23 +231,29 @@ class LandingPage extends StatelessWidget {
                           height: 30,
                         ),
                         Container(
-                            padding: EdgeInsets.fromLTRB(0, 20, 20, 0),
-                            child: RaisedButton(
-                              elevation: 0,
-                              textColor: Colors.grey[600],
-                              color: Colors.white54,
-                              highlightColor: Colors.blueAccent,
-                              child: Text("Next"),
-                              onPressed: () => controller.nextPage(
-                                  duration: Duration(milliseconds: 400),
-                                  curve: Curves.easeInOut),
-                              shape: RoundedRectangleBorder(
-                                side: BorderSide(
-                                  color: Colors.purpleAccent,
+                          padding: EdgeInsets.fromLTRB(0, 20, 20, 0),
+                          child : ElevatedButton(
+                              onPressed: () {
+                                controller.nextPage(duration: Duration(milliseconds: 400), curve: Curves.easeInOut);
+                              },
+                              child: Text(
+                                "Next",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 16,
                                 ),
-                                borderRadius: BorderRadius.circular(30.0),
                               ),
-                            )),
+                              style: ButtonStyle(
+                                  elevation: MaterialStateProperty.all(6.0),
+                                  backgroundColor:
+                                  MaterialStateProperty.all(Colors.blue.shade50),
+                                  fixedSize: MaterialStateProperty.all<Size>(
+                                      const Size(150, 20)),
+                                  shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(18.0),
+                                  )))),
+                        ),
                       ],
                     ),
                   ],
@@ -292,21 +318,53 @@ class LandingPage extends StatelessWidget {
                           width: 15,
                           height: 30,
                         ),
+                        // Container(
+                        //   padding: EdgeInsets.fromLTRB(0, 20, 20, 0),
+                        //   child: RaisedButton(
+                        //       child: Text("Start"),
+                        //       onPressed: () async {
+                        //         SharedPref sharedPref = SharedPref();
+                        //         await sharedPref.setFirstLogin(false);
+                        //         final bool? firstLogin = await sharedPref.getFirstLogin();
+                        //         print("hello"+firstLogin.toString());
+                        //         Navigator.push(
+                        //           context,
+                        //           MaterialPageRoute(
+                        //               builder: (context) => Wrapper()),
+                        //         );
+                        //       }),
+                        // ),
                         Container(
                           padding: EdgeInsets.fromLTRB(0, 20, 20, 0),
-                          child: RaisedButton(
-                              child: Text("Start"),
-                              onPressed: () async {
-                                SharedPref sharedPref = SharedPref();
-                                await sharedPref.setFirstLogin(false);
-                                final bool? firstLogin = await sharedPref.getFirstLogin();
-                                print("HELLOOO"+firstLogin.toString());
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Wrapper()),
-                                );
-                              }),
+                          child : ElevatedButton(
+                            onPressed: () async {
+                              SharedPref sharedPref = SharedPref();
+                              await sharedPref.setFirstLogin(false);
+                              final bool? firstLogin = await sharedPref.getFirstLogin();
+                              print("hello"+firstLogin.toString());
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => Wrapper()),
+                              );
+                            },
+                              child: Text(
+                                "Start",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 16,
+                                ),
+                              ),
+                              style: ButtonStyle(
+                                  elevation: MaterialStateProperty.all(6.0),
+                                  backgroundColor:
+                                  MaterialStateProperty.all(Colors.blue.shade50),
+                                  fixedSize: MaterialStateProperty.all<Size>(
+                                      const Size(150, 20)),
+                                  shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(18.0),
+                                  )))),
                         ),
                       ],
                     ),

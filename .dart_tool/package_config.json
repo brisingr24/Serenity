@@ -266,6 +266,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "kommunicate_flutter",
+      "rootUri": "file:///C:/Users/HP/Downloads/flutter_windows_2.8.1-stable/flutter/.pub-cache/hosted/pub.dartlang.org/kommunicate_flutter-1.5.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "lints",
       "rootUri": "file:///C:/Users/HP/Downloads/flutter_windows_2.8.1-stable/flutter/.pub-cache/hosted/pub.dartlang.org/lints-1.0.1",
       "packageUri": "lib/",
@@ -470,7 +476,7 @@
       "languageVersion": "2.16"
     }
   ],
-  "generated": "2022-10-07T17:39:03.640420Z",
+  "generated": "2022-10-07T18:40:12.554985Z",
   "generator": "pub",
   "generatorVersion": "2.16.1"
 }

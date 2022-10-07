@@ -1,23 +1,24 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:circular_menu/circular_menu.dart';
+import 'package:envision/screens/chatbot.dart';
 import 'package:flutter/material.dart';
 import '../screens/mains/explore.dart';
 import '../screens/mains/forum.dart';
 import '../screens/mains/home.dart';
 import '../screens/mains/profile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
+import 'package:kommunicate_flutter/kommunicate_flutter.dart';
 
 class PageHost extends StatefulWidget {
   @override
   _PageHostState createState() => _PageHostState();
-
 }
 
 class _PageHostState extends State<PageHost> {
   int _currentIndex = 0;
   late PageController _pageController;
+  bool a = false;
   final iconList = <IconData>[
     Icons.home,
     Icons.forum,
@@ -29,13 +30,17 @@ class _PageHostState extends State<PageHost> {
   void initState() {
     super.initState();
     _pageController = PageController();
-
   }
 
   @override
   void dispose() {
     _pageController.dispose();
     super.dispose();
+  }
+
+  goToChat() {
+    print("TAP");
+    Navigator.push(context, MaterialPageRoute(builder: (context) => ChatBot()));
   }
 
   void onTappedBar(int index) {
@@ -45,7 +50,12 @@ class _PageHostState extends State<PageHost> {
   }
 
   List<Widget> _buildScreens() {
-    return [Home(), Forum(), Explore(),Profile()];
+    return [
+      Home(uid: FirebaseAuth.instance.currentUser!.uid),
+      Forum(uid: FirebaseAuth.instance.currentUser!.uid),
+      Explore(uid: FirebaseAuth.instance.currentUser!.uid),
+      Profile(uid: FirebaseAuth.instance.currentUser!.uid)
+    ];
   }
 
   @override
@@ -53,7 +63,11 @@ class _PageHostState extends State<PageHost> {
     return Scaffold(
       body: _buildScreens()[_currentIndex],
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+          elevation: 10,
+          backgroundColor: Colors.blue,
+        onPressed: () async {
+
+        },
         child: CircularMenu(
             startingAngleInRadian: 3.665,
             endingAngleInRadian: 5.75,
@@ -65,16 +79,19 @@ class _PageHostState extends State<PageHost> {
             toggleButtonAnimatedIconData: AnimatedIcons.list_view,
             items: [
               CircularMenuItem(icon: Icons.clear,color: Colors.red,padding: 4,onTap: () {
+                setState(() {
+                  print("Working");
+                });
                 // callback
               }),
-              CircularMenuItem(icon: Icons.chat_outlined,color: Colors.red,padding: 5,iconSize: 25, onTap: () {
+              CircularMenuItem(icon: Icons.chat_outlined,color: Colors.red,padding: 4,iconSize: 32, onTap: () {
+                goToChat();
                 //callback
               }),
               CircularMenuItem(icon: Icons.report_gmailerrorred_rounded,color: Colors.red,padding: 3, onTap: () {
                 //callback
               }),
             ]),
-        //params
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar(
@@ -89,8 +106,6 @@ class _PageHostState extends State<PageHost> {
         rightCornerRadius: 32,
         onTap: (index) => setState(() => _currentIndex = index), //other params
       ),
-
     );
   }
 }
-

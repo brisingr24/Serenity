@@ -1,6 +1,4 @@
 // ignore_for_file: prefer_const_constructors
-import 'dart:ffi';
-
 import 'package:envision/models/sharedPrefModel.dart';
 import 'package:envision/screens/landing.dart';
 import 'package:envision/wrapper.dart';
@@ -24,7 +22,7 @@ class _SplashState extends State<Splash> {
   _jumpHome() async {
     SharedPref sharedPref = SharedPref();
     final bool? firstLogin = await sharedPref.getFirstLogin();
-    print("HELLOOO"+firstLogin.toString());
+    print("HELLOOO" + firstLogin.toString());
     await Future.delayed(const Duration(seconds: 3), () {});
     if (firstLogin == false) {
       Navigator.push(
@@ -56,9 +54,9 @@ class _SplashState extends State<Splash> {
           ),
           const SizedBox(height: 30),
           DefaultTextStyle(
-            style: TextStyle(fontSize: 25, color: Colors.green),
-            child: const Text("MINDFULNESS"),
-          ),
+              style: TextStyle(
+                  fontSize: 30, color: Colors.green, fontFamily: 'Pacifico'),
+              child: const Text("Mindfulness")),
         ],
       ),
     );

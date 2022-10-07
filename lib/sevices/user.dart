@@ -16,7 +16,10 @@ class UserService{
       profileImgURL: snapshot.data()['profileImgURL'],
       name: snapshot.data()['name'],
       email: snapshot.data()['email'],
-    ) :null;
+      city: snapshot.data()['city'],
+      age: snapshot.data()['age'],
+      gender: snapshot.data()['gender'],
+    ) :UserModel(name:"User");
   }
 
   Stream<UserModel?> getUserInfo(uid){
@@ -27,7 +30,7 @@ class UserService{
         .map(_userFromFirebaseSnapshot);
   }
 
-  Future <void> updateProfile (File _profileImg,String name) async {
+  Future <void> updateProfile (File _profileImg,String name,String city,String age,String gender) async {
 
     String profileImgURL = "";
 
@@ -39,6 +42,10 @@ class UserService{
     Map<String,Object> data = HashMap();
     if (name != '') data['name'] = name;
     if (profileImgURL != '') data['profileImgURL'] = profileImgURL;
+    if (city != '') data['city'] = city;
+    if (age != '') data['age'] = age;
+    if (gender != '') data['gender'] = gender;
+
 
     await FirebaseFirestore.instance
     .collection('users')

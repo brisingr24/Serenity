@@ -1,6 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:envision/models/userModel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 class AuthService {
   FirebaseAuth auth = FirebaseAuth.instance;
 
@@ -19,6 +20,7 @@ class AuthService {
         password: pass,
       ));
 
+      print("HELLOO" + user.credential.toString());
       _userFromFirebaseUser(user.user);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -38,7 +40,10 @@ class AuthService {
         password: pass,
       ));
 
-      await FirebaseFirestore.instance.collection('users').doc(user.user?.uid).set({'name':email,'email':email});
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user.user?.uid)
+          .set({'name': email, 'email': email});
 
       _userFromFirebaseUser(user.user);
     } on FirebaseAuthException catch (e) {

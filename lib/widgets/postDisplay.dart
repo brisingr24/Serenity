@@ -1,8 +1,11 @@
 // ignore_for_file: prefer_const_constructors, void_checks
-
 import 'package:envision/models/postModel.dart';
 import 'package:envision/sevices/post.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
+import '../models/userModel.dart';
+import '../sevices/user.dart';
 
 class PostDisplay extends StatefulWidget {
   final String uid;
@@ -15,6 +18,7 @@ class PostDisplay extends StatefulWidget {
 class _PostDisplayState extends State<PostDisplay> {
   late final Stream<List<PostModel>> postModelStream;
   PostService _postService = PostService();
+  late final Stream<UserModel?> userModelStream;
   int giveLike = 0;
   @override
   void initState() {
@@ -40,7 +44,12 @@ class _PostDisplayState extends State<PostDisplay> {
               physics: AlwaysScrollableScrollPhysics(),
               child: Column(
                 children: [
-                  ListView.builder(
+                  ListView.separated(
+                    separatorBuilder: (context, index) {
+                      return Divider(
+                        height: 25,
+                      );
+                    },
                     scrollDirection: Axis.vertical,
                     shrinkWrap: true,
                     itemCount: posts.length,
@@ -56,44 +65,92 @@ class _PostDisplayState extends State<PostDisplay> {
                                 child: CircularProgressIndicator(),
                               );
                             }
-                            return ListTile(
-                              title: Row(
-                                children: [
-                                  Icon(Icons.person),
-                                  Text(post.creator)
-                                ],
+                            return Container(
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(20.0),
                               ),
-                              subtitle: Column(
-                                children: [
-                                  Text(post.text),
-                                  const SizedBox(height: 15),
-                                  Align(
-                                      alignment: Alignment.centerLeft,
-                                      child: Text(
-                                          post.timestamp!.toDate().toString())),
-                                  Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: IconButton(
-                                      onPressed: () {
-                                        _postService.likePost(
-                                            post,
-                                            snapshotLike.data ?? false,
-                                            widget.uid);
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    StreamBuilder<UserModel?>(
+                                      stream: UserService()
+                                          .getUserInfo(post.creator),
+                                      builder: (context, snapshot) {
+                                        if (snapshot.hasData) {
+                                          print(snapshot.data);
+                                          if (snapshot.data != null) {
+                                            UserModel user = snapshot.data!;
+                                            return Row(
+                                              children: [
+                                                user.profileImgURL == null
+                                                    ? CircleAvatar(
+                                                        child: Image.asset(
+                                                          "images/userdef.png",
+                                                          height: 50,
+                                                          width: 50,
+                                                        ),
+                                                        backgroundColor:
+                                                            Colors.white,
+                                                      )
+                                                    : CircleAvatar(
+                                                        radius: 25,
+                                                        backgroundImage:
+                                                            NetworkImage(
+                                                          user.profileImgURL ??
+                                                              ' ',
+                                                        ),
+                                                      ),
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(8.0),
+                                                  child: Text(
+                                                    '${user.name}',
+                                                    style:
+                                                        TextStyle(fontSize: 18),
+                                                  ),
+                                                ),
+                                              ],
+                                            );
+                                          }
+                                        }
+                                        return Center();
                                       },
-                                      icon: snapshotLike.data == false
-                                          ? Icon(
-                                              Icons.favorite_border,
-                                              color: Colors.red,
-                                              size: 30,
-                                            )
-                                          : Icon(
-                                              Icons.favorite,
-                                              color: Colors.red,
-                                              size: 30,
-                                            ),
                                     ),
-                                  )
-                                ],
+                                    Padding(
+                                      padding: const EdgeInsets.all(10.0),
+                                      child: Text(post.text),
+                                    ),
+                                    Row(
+                                      children: [
+                                        IconButton(
+                                          onPressed: () {
+                                            _postService.likePost(
+                                                post,
+                                                snapshotLike.data ?? false,
+                                                widget.uid);
+                                          },
+                                          icon: snapshotLike.data == false
+                                              ? Icon(
+                                                  Icons.favorite_border,
+                                                  color: Colors.red,
+                                                  size: 30,
+                                                )
+                                              : Icon(
+                                                  Icons.favorite,
+                                                  color: Colors.red,
+                                                  size: 30,
+                                                ),
+                                        ),
+                                        Spacer(),
+                                        Text(
+                                            "${DateFormat('yyyy-MM-dd – kk:mm').format(post.timestamp!.toDate())}"),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
                             );
                           });

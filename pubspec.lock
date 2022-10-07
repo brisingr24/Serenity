@@ -301,6 +301,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.6.3"
+  kommunicate_flutter:
+    dependency: "direct main"
+    description:
+      name: kommunicate_flutter
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.5.0"
   lints:
     dependency: transitive
     description:

@@ -10,6 +10,7 @@ import 'package:envision/widgets/postDisplay.dart';
 import 'package:envision/sevices/auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -28,6 +29,11 @@ class _HomeState extends State<Home> {
     'My Books',
     'My Music'
   ];
+
+   _callNumber() async{
+  const number = '+919136711710'; //set the number here
+  bool? res = await FlutterPhoneDirectCaller.callNumber(number);
+}
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +90,7 @@ class _HomeState extends State<Home> {
                   Align(
                     alignment: Alignment.centerLeft,
                     child: ElevatedButton(
-                        onPressed: null,
+                        onPressed: _callNumber,
                         child: const Text(
                           "Panic",
                           style: TextStyle(

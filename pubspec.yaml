@@ -36,9 +36,11 @@ dependencies:
   cupertino_icons: ^1.0.2
   carousel_slider: ^4.1.1
   date_time_picker: ^2.1.0
+  flutter_phone_direct_caller: ^2.1.0
   flutter_localizations: 
     sdk: flutter
     version: ^0.0.0
+  
 
 
 dev_dependencies:

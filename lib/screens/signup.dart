@@ -27,91 +27,89 @@ class _SignUpState extends State<SignUp> {
         automaticallyImplyLeading: false,
         title: Center(child: Text("Signup")),
       ),
-      body: Container(
-        child: Form(
-          child: Column(
-            children: [
-              SizedBox(height: 40),
-              TextFormField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: "abc@abc.com",
-                  labelText: " Email",
-                  prefixIcon: Icon(Icons.mail_outline),
-                ),
-                onChanged: (val) => setState(() {
-                  email = val;
-                }),
-                keyboardType: TextInputType.emailAddress,
+      body: Form(
+        child: Column(
+          children: [
+            SizedBox(height: 40),
+            TextFormField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: "abc@abc.com",
+                labelText: " Email",
+                prefixIcon: Icon(Icons.mail_outline),
               ),
-              const SizedBox(height: 10),
-              TextFormField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: "Enter password here",
-                  labelText: " Password",
-                  prefixIcon: Icon(Icons.password),
-                  suffixIcon: IconButton(
-                    icon: isPasswordVisible
-                        ? Icon(Icons.visibility_off)
-                        : Icon(Icons.visibility),
-                    onPressed: () {
-                      showPass();
+              onChanged: (val) => setState(() {
+                email = val;
+              }),
+              keyboardType: TextInputType.emailAddress,
+            ),
+            const SizedBox(height: 10),
+            TextFormField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: "Enter password here",
+                labelText: " Password",
+                prefixIcon: Icon(Icons.password),
+                suffixIcon: IconButton(
+                  icon: isPasswordVisible
+                      ? Icon(Icons.visibility_off)
+                      : Icon(Icons.visibility),
+                  onPressed: () {
+                    showPass();
+                  },
+                ),
+              ),
+              obscureText: isPasswordVisible,
+              onChanged: (val) => setState(() {
+                pass = val;
+              }),
+            ),
+            ElevatedButton(
+                onPressed: () async => {
+                      _auth.signUp(email, pass),
                     },
+                child: const Text(
+                  "SIGN UP",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 16,
                   ),
                 ),
-                obscureText: isPasswordVisible,
-                onChanged: (val) => setState(() {
-                  pass = val;
-                }),
-              ),
-              ElevatedButton(
-                  onPressed: () async => {
-                        _auth.signUp(email, pass),
-                      },
-                  child: const Text(
-                    "SIGN UP",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                    ),
+                style: ButtonStyle(
+                    elevation: MaterialStateProperty.all(6.0),
+                    backgroundColor:
+                        MaterialStateProperty.all(Colors.blue.shade50),
+                    fixedSize:
+                        MaterialStateProperty.all<Size>(const Size(150, 20)),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                    )))),
+            const SizedBox(
+              height: 30,
+            ),
+            ElevatedButton(
+                onPressed: () async => {
+                      await _auth.signIn(email, pass),
+                    },
+                child: const Text(
+                  "LOG IN",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 16,
                   ),
-                  style: ButtonStyle(
-                      elevation: MaterialStateProperty.all(6.0),
-                      backgroundColor:
-                          MaterialStateProperty.all(Colors.blue.shade50),
-                      fixedSize:
-                          MaterialStateProperty.all<Size>(const Size(150, 20)),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18.0),
-                      )))),
-              const SizedBox(
-                height: 30,
-              ),
-              ElevatedButton(
-                  onPressed: () async => {
-                        await _auth.signIn(email, pass),
-                      },
-                  child: const Text(
-                    "LOG IN",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                    ),
-                  ),
-                  style: ButtonStyle(
-                      elevation: MaterialStateProperty.all(6.0),
-                      backgroundColor:
-                          MaterialStateProperty.all(Colors.blue.shade50),
-                      fixedSize:
-                          MaterialStateProperty.all<Size>(const Size(150, 20)),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18.0),
-                      )))),
-            ],
-          ),
+                ),
+                style: ButtonStyle(
+                    elevation: MaterialStateProperty.all(6.0),
+                    backgroundColor:
+                        MaterialStateProperty.all(Colors.blue.shade50),
+                    fixedSize:
+                        MaterialStateProperty.all<Size>(const Size(150, 20)),
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                    )))),
+          ],
         ),
       ),
     );

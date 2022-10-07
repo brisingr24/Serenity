@@ -41,20 +41,23 @@ class _ForumState extends State<Forum> {
                       return Row(
                         children: [
                           user.profileImgURL == null
-                              ? Image.asset(
-                                  "images/userdef.png",
-                                  height: 40,
-                                  width: 30,
+                              ? CircleAvatar(
+                                  child: Image.asset(
+                                    "images/userdef.png",
+                                    height: 50,
+                                    width: 50,
+                                  ),
+                                  backgroundColor: Colors.white,
                                 )
-                              : Image.network(
-                                  user.profileImgURL ?? ' ',
-                                  height: 80,
-                                  width: 50,
-                                  fit: BoxFit.cover,
+                              : CircleAvatar(
+                                  radius: 30,
+                                  backgroundImage: NetworkImage(
+                                    user.profileImgURL ?? ' ',
+                                  ),
                                 ),
                           Padding(
                             padding: const EdgeInsets.all(6.0),
-                            child: Text('${user.name}'),
+                            child: Text('${user.name}',style: TextStyle(fontSize: 20),),
                           ),
                           Spacer(),
                           Align(

@@ -3,6 +3,7 @@ import 'package:envision/screens/bookings/appointment.dart';
 import 'package:envision/screens/editprofile.dart';
 import 'package:flutter/material.dart';
 import '../../models/userModel.dart';
+import '../../widgets/ContactTile.dart';
 import '../questionnaire.dart';
 import '../../sevices/user.dart';
 import '../aboutus.dart';
@@ -17,8 +18,9 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   late final Stream<UserModel?> userModelStream;
+  Stream<List<Doctor>>? _listDoctor;
+
   String text = "";
-  bool a =false;
   @override
   void initState() {
     // TODO: implement initState
@@ -82,16 +84,19 @@ class _ProfileState extends State<Profile> {
                           return Column(
                             children: [
                               user.profileImgURL == null
-                                  ? Image.asset(
-                                      "images/userdef.png",
-                                      height: 140,
-                                      width: 150,
+                                  ? CircleAvatar(
+                                      child: Image.asset(
+                                        "images/userdef.png",
+                                        height: 50,
+                                        width: 50,
+                                      ),
+                                      backgroundColor: Colors.white,
                                     )
-                                  : Image.network(
-                                      user.profileImgURL ?? ' ',
-                                      height: 200,
-                                      width: 150,
-                                      fit: BoxFit.cover,
+                                  : CircleAvatar(
+                                      radius: 80,
+                                      backgroundImage: NetworkImage(
+                                        user.profileImgURL ?? ' ',
+                                      ),
                                     ),
                               SizedBox(
                                 height: 10,
@@ -103,10 +108,19 @@ class _ProfileState extends State<Profile> {
                                   style: TextStyle(fontSize: 22),
                                 ),
                               ),
-                              Text(
-                                '${user.email}',
-                                style: TextStyle(fontSize: 18),
-                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    '${user.age} years |',
+                                    style: TextStyle(fontSize: 18),
+                                  ),
+                                  Text(
+                                    '  ${user.gender}',
+                                    style: TextStyle(fontSize: 18),
+                                  ),
+                                ],
+                              )
                             ],
                           );
                         }
@@ -117,7 +131,6 @@ class _ProfileState extends State<Profile> {
                 ),
               ]),
               Container(
-                height: 650,
                 width: 350,
                 padding: EdgeInsets.all(10.0),
                 decoration: BoxDecoration(
@@ -208,41 +221,42 @@ class _ProfileState extends State<Profile> {
                     SizedBox(
                       height: 30,
                     ),
-                    Container(
-                      height: 150,
-                      width: 330,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        border: Border.all(color: Colors.black),
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              "Whats on your mind today?",
-                              style: TextStyle(fontSize: 16),
-                            ),
-                          ),
-                          Form(
-                            child: Padding(
+                    SingleChildScrollView(
+                      child: Container(
+                        width: 330,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border.all(color: Colors.black),
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        child: Column(
+                          children: [
+                            Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: TextFormField(
-                                decoration: InputDecoration(
-                                  hintText: "Start Writing!",
-                                ),
-                                keyboardType: TextInputType.multiline,
-                                maxLines: null,
-                                onChanged: (val) {
-                                  setState(() {
-                                    text = val;
-                                  });
-                                },
+                              child: Text(
+                                "Whats on your mind today?",
+                                style: TextStyle(fontSize: 16),
                               ),
                             ),
-                          ),
-                        ],
+                            Form(
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: TextFormField(
+                                  decoration: InputDecoration(
+                                    hintText: "Start Writing!",
+                                  ),
+                                  keyboardType: TextInputType.multiline,
+                                  maxLines: null,
+                                  onChanged: (val) {
+                                    setState(() {
+                                      text = val;
+                                    });
+                                  },
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                     SizedBox(
@@ -256,7 +270,7 @@ class _ProfileState extends State<Profile> {
                                   builder: (context) => Question()));
                         },
                         child: const Text(
-                          "Take a Survey!",
+                          "TAKE A SURVEY!",
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 16,
@@ -265,7 +279,7 @@ class _ProfileState extends State<Profile> {
                         style: ButtonStyle(
                             elevation: MaterialStateProperty.all(6.0),
                             backgroundColor:
-                            MaterialStateProperty.all(Colors.blue),
+                                MaterialStateProperty.all(Colors.blue),
                             fixedSize: MaterialStateProperty.all<Size>(
                                 const Size(500, 20)),
                             shape: MaterialStateProperty.all<

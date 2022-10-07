@@ -24,7 +24,7 @@ class _postAddState extends State<postAdd> {
         title: Text('CREATE POST'),
         actions: [
           ElevatedButton(onPressed: ()async{
-            _postService.savePost(text,user.name);
+            _postService.savePost(text);
             Navigator.pop(context);
           }, child: Text('POST')
           )

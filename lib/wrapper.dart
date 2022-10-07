@@ -1,6 +1,4 @@
 import 'package:envision/models/userModel.dart';
-import 'package:envision/screens/mains/forum.dart';
-import 'package:envision/screens/mains/home.dart';
 import 'package:envision/screens/postadd.dart';
 import 'package:envision/screens/signup.dart';
 import 'package:envision/screens/verifyscreen.dart';
@@ -14,14 +12,12 @@ class Wrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<UserModel?>(context);
-    print(user);
+    UserModel? user = Provider.of<UserModel?>(context);
+
     if (user == null) {
       return SignUp();
-    }
-    else if(user != null ){
+    } else {
       return PageHost();
-
     }
 
     return MaterialApp(
@@ -29,7 +25,7 @@ class Wrapper extends StatelessWidget {
       routes: {
         '/': (context) => VerifyScreen(),
         '/add': (context) => postAdd(),
-        '/home':(context) => PageHost(),
+        '/home': (context) => PageHost(),
       },
     );
   }

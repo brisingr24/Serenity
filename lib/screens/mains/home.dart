@@ -7,6 +7,8 @@ import 'package:envision/widgets/catergory_item.dart';
 import 'package:envision/widgets/mooditem.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kommunicate_flutter/kommunicate_flutter.dart';
+
 
 class Home extends StatefulWidget {
   final String uid;
@@ -83,9 +85,19 @@ class _HomeState extends State<Home> {
                   Align(
                     alignment: Alignment.centerLeft,
                     child: ElevatedButton(
-                        onPressed: null,
+                        onPressed: () async{
+                          try {
+                            dynamic conversationObject = {
+                              'appId': '245bd44f458f1551edc13318cb616e21c'
+                            };
+                            dynamic result = await KommunicateFlutterPlugin.buildConversation(conversationObject);
+                            print("Conversation builder success : " + result.toString());
+                          } on Exception catch (e) {
+                            print("Conversation builder error occurred : " + e.toString());
+                          }
+                        },
                         child: const Text(
-                          "Panic",
+                          "Chatbot",
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 15,
@@ -95,7 +107,7 @@ class _HomeState extends State<Home> {
                             backgroundColor:
                                 MaterialStateProperty.all(Colors.black),
                             fixedSize: MaterialStateProperty.all<Size>(
-                                const Size(80, 40)),
+                                const Size(90, 40)),
                             shape: MaterialStateProperty.all<
                                 RoundedRectangleBorder>(RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(18.0),

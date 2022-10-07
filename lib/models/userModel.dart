@@ -6,8 +6,11 @@ class UserModel extends ChangeNotifier {
   String? profileImgURL;
   String? name = "User";
   String? email;
+  String? city;
+  String? age;
+  String? gender;
 
-  UserModel({this.id, this.profileImgURL, this.name, this.email}){
+  UserModel({this.id, this.profileImgURL, this.name, this.email,this.city,this.age,this.gender}){
     notifyListeners();
   }
 }

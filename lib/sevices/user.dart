@@ -16,6 +16,9 @@ class UserService{
       profileImgURL: snapshot.data()['profileImgURL'],
       name: snapshot.data()['name'],
       email: snapshot.data()['email'],
+      city: snapshot.data()['city'],
+      age: snapshot.data()['age'],
+      gender: snapshot.data()['gender'],
     ) :UserModel(name:"User");
   }
 

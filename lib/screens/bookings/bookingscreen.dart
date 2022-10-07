@@ -1,12 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:envision/screens/bookings/bookconfirm.dart';
 import 'package:flutter/material.dart';
-
 import 'package:intl/intl.dart';
 
 class BookingScreen extends StatefulWidget {
-  const BookingScreen({Key? key}) : super(key: key);
-
+  BookingScreen({Key? key, required this.uid, required this.docID})
+      : super(key: key);
+  String docID;
+  String uid;
   @override
   State<BookingScreen> createState() => _BookingScreenState();
 }
@@ -88,16 +90,17 @@ class _BookingScreenState extends State<BookingScreen> {
               ),
               SizedBox(height: 100),
               ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
                     final loForm = _oFormKey.currentState;
 
                     if (loForm?.validate() == true) {
                       loForm?.save();
                     }
+                    await confirmBooking();
                     Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => BookingConfirm()),
-                  );
+                      context,
+                      MaterialPageRoute(builder: (context) => BookingConfirm()),
+                    );
                   },
                   child: Text('Book Now'),
                   style: ButtonStyle(
@@ -142,5 +145,22 @@ class _BookingScreenState extends State<BookingScreen> {
         ),
       ),
     );
+  }
+
+  confirmBooking() async {
+    await FirebaseFirestore.instance
+        .collection("doctor")
+        .doc(widget.docID)
+        .update({
+      "isBooked": true,
+      "requesterId": widget.uid,
+    });
+    await FirebaseFirestore.instance
+        .collection("users")
+        .doc(widget.uid)
+        .update({
+      "booked": true,
+      "docID": widget.docID,
+    });
   }
 }

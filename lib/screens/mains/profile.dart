@@ -1,10 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 import 'package:envision/screens/bookings/appointment.dart';
 import 'package:envision/screens/editprofile.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../../models/userModel.dart';
+import '../questionnaire.dart';
 import '../../sevices/user.dart';
 import '../aboutus.dart';
 
@@ -19,7 +18,7 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   late final Stream<UserModel?> userModelStream;
   String text = "";
-
+  bool a =false;
   @override
   void initState() {
     // TODO: implement initState
@@ -118,7 +117,7 @@ class _ProfileState extends State<Profile> {
                 ),
               ]),
               Container(
-                height: 600,
+                height: 650,
                 width: 350,
                 padding: EdgeInsets.all(10.0),
                 decoration: BoxDecoration(
@@ -187,15 +186,16 @@ class _ProfileState extends State<Profile> {
                       height: 30,
                     ),
                     ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => GridList()));
-                      },
-                      child: Text("BOOK"),
-                      style: ButtonStyle(elevation: MaterialStateProperty.all(6.0))
-                    ),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      GridList(uid: widget.uid)));
+                        },
+                        child: Text("BOOK"),
+                        style: ButtonStyle(
+                            elevation: MaterialStateProperty.all(6.0))),
                     SizedBox(
                       height: 30,
                     ),
@@ -245,9 +245,38 @@ class _ProfileState extends State<Profile> {
                         ],
                       ),
                     ),
-                    SizedBox(height: 30,),
+                    SizedBox(
+                      height: 30,
+                    ),
                     ElevatedButton(
-                        onPressed: (){
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Question()));
+                        },
+                        child: const Text(
+                          "Take a Survey!",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                          ),
+                        ),
+                        style: ButtonStyle(
+                            elevation: MaterialStateProperty.all(6.0),
+                            backgroundColor:
+                            MaterialStateProperty.all(Colors.blue),
+                            fixedSize: MaterialStateProperty.all<Size>(
+                                const Size(500, 20)),
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                            )))),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    ElevatedButton(
+                        onPressed: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -263,14 +292,13 @@ class _ProfileState extends State<Profile> {
                         style: ButtonStyle(
                             elevation: MaterialStateProperty.all(6.0),
                             backgroundColor:
-                            MaterialStateProperty.all(Colors.blue),
+                                MaterialStateProperty.all(Colors.blue),
                             fixedSize: MaterialStateProperty.all<Size>(
-                                const Size(500,20)),
+                                const Size(500, 20)),
                             shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                )))),
+                                RoundedRectangleBorder>(RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                            )))),
                   ],
                 ),
               ),

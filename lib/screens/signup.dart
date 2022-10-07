@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:envision/sevices/auth.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +14,11 @@ class _SignUpState extends State<SignUp> {
   final AuthService _auth = AuthService();
   String email = '';
   String pass = '';
+  bool isPasswordVisible = false;
+
+  void showPass() {
+    isPasswordVisible = !isPasswordVisible;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,32 +34,33 @@ class _SignUpState extends State<SignUp> {
               SizedBox(height: 40),
               TextFormField(
                 decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                        borderSide:
-                            BorderSide(width: 4, color: Colors.blue.shade100),
-                        borderRadius: BorderRadius.circular(8)),
-                    icon: const Icon(
-                      Icons.email_rounded,
-                      size: 30,
-                    )),
+                  border: OutlineInputBorder(),
+                  hintText: "abc@abc.com",
+                  labelText: " Email",
+                  prefixIcon: Icon(Icons.mail_outline),
+                ),
                 onChanged: (val) => setState(() {
                   email = val;
                 }),
+                keyboardType: TextInputType.emailAddress,
               ),
               const SizedBox(height: 10),
               TextFormField(
                 decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(width: 4, color: Colors.blue.shade100),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  icon: const Icon(
-                    Icons.key_rounded,
-                    color: Colors.blue,
-                    size: 30,
+                  border: OutlineInputBorder(),
+                  hintText: "Enter password here",
+                  labelText: " Password",
+                  prefixIcon: Icon(Icons.password),
+                  suffixIcon: IconButton(
+                    icon: isPasswordVisible
+                        ? Icon(Icons.visibility_off)
+                        : Icon(Icons.visibility),
+                    onPressed: () {
+                      showPass();
+                    },
                   ),
                 ),
+                obscureText: isPasswordVisible,
                 onChanged: (val) => setState(() {
                   pass = val;
                 }),
@@ -83,7 +91,7 @@ class _SignUpState extends State<SignUp> {
               ),
               ElevatedButton(
                   onPressed: () async => {
-                        _auth.signIn(email, pass),
+                        await _auth.signIn(email, pass),
                       },
                   child: const Text(
                     "LOG IN",
@@ -102,17 +110,6 @@ class _SignUpState extends State<SignUp> {
                           RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(18.0),
                       )))),
-              // RaisedButton(
-              //     child: Text("SIGN UP"),
-              //     onPressed: () async => {
-              //       _auth.signUp(email, pass),
-              //     }),
-              // SizedBox(height: 50,),
-              // RaisedButton(
-              //     child: Text("LOG IN"),
-              //     onPressed: () async => {
-              //       _auth.signIn(email, pass),
-              //     }),
             ],
           ),
         ),

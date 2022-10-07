@@ -9,7 +9,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kommunicate_flutter/kommunicate_flutter.dart';
 
-
 class Home extends StatefulWidget {
   final String uid;
   const Home({Key? key, required this.uid}) : super(key: key);
@@ -38,8 +37,14 @@ class _HomeState extends State<Home> {
         title: Text("HOME"),
         actions: <Widget>[
           TextButton.icon(
-              label: const Text("Sign Out",style: TextStyle(color: Colors.black),),
-              icon: Icon(Icons.person,color: Colors.black,),
+              label: const Text(
+                "Sign Out",
+                style: TextStyle(color: Colors.black),
+              ),
+              icon: Icon(
+                Icons.person,
+                color: Colors.black,
+              ),
               onPressed: () async {
                 _auth.signOut();
               })
@@ -85,15 +90,18 @@ class _HomeState extends State<Home> {
                   Align(
                     alignment: Alignment.centerLeft,
                     child: ElevatedButton(
-                        onPressed: () async{
+                        onPressed: () async {
                           try {
                             dynamic conversationObject = {
                               'appId': '245bd44f458f1551edc13318cb616e21c'
                             };
-                            dynamic result = await KommunicateFlutterPlugin.buildConversation(conversationObject);
-                            print("Conversation builder success : " + result.toString());
+                            dynamic result = await KommunicateFlutterPlugin
+                                .buildConversation(conversationObject);
+                            print("Conversation builder success : " +
+                                result.toString());
                           } on Exception catch (e) {
-                            print("Conversation builder error occurred : " + e.toString());
+                            print("Conversation builder error occurred : " +
+                                e.toString());
                           }
                         },
                         child: const Text(
@@ -128,7 +136,9 @@ class _HomeState extends State<Home> {
                         Text(
                           'Discover',
                           style: TextStyle(
-                              fontSize: 25, fontWeight: FontWeight.bold),
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Lobster'),
                         ),
                         Icon(
                           Icons.search,
@@ -138,7 +148,7 @@ class _HomeState extends State<Home> {
                     ),
                     Container(
                       padding: EdgeInsets.all(8),
-                      height: 80,
+                      height: 85,
                       child: ListView.builder(
                           scrollDirection: Axis.horizontal,
                           itemCount: navItem.length,

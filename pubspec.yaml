@@ -69,6 +69,16 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
+  fonts:
+    - family: Pacifico
+      fonts:
+        - asset: fonts/pacifico.ttf
+    - family: Lobster
+      fonts:
+        - asset: fonts/lobster-regular.ttf
+    - family: Peralta
+      fonts:
+        - asset: fonts/Peralta-Regular.ttf
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

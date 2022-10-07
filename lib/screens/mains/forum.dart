@@ -94,7 +94,7 @@ class _ForumState extends State<Forum> {
               ),
               Text(
                 "Share Your Story !",
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(fontSize: 23, fontFamily: "Lobster"),
               ),
               SizedBox(
                 height: 20,
@@ -121,9 +121,9 @@ class _ForumState extends State<Forum> {
                         child: Text(
                           "Add a new post",
                           style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 16,
-                          ),
+                              color: Colors.black,
+                              fontSize: 13.5,
+                              fontFamily: "Peralta"),
                         ),
                         style: ButtonStyle(
                             elevation: MaterialStateProperty.all(6.0),
@@ -143,7 +143,7 @@ class _ForumState extends State<Forum> {
               ),
               Text(
                 "Top Stories",
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(fontSize: 25, fontFamily: "Lobster"),
               ),
               SizedBox(
                 height: 20,

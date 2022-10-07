@@ -17,6 +17,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  String quoteImage = "images/thought_placeholder.png";
   bool _ismoodvisible = true;
   bool _isquotevisible = false;
   List<String> navItem = [
@@ -180,6 +181,7 @@ class _HomeState extends State<Home> {
                               InkWell(
                                   onTap: (() {
                                     setState(() {
+                                      quoteImage = "images/mehmoodquote.jpg";
                                       _ismoodvisible = false;
                                       _isquotevisible = true;
                                     });
@@ -191,17 +193,20 @@ class _HomeState extends State<Home> {
                               InkWell(
                                   onTap: (() {
                                     setState(() {
+                                      quoteImage = "images/badmoodquote.jpg";
                                       _ismoodvisible = false;
                                       _isquotevisible = true;
                                     });
                                   }),
                                   child: MoodItem(
+                                    
                                     image: "images/mood_bad.jpg",
                                     moodtext: "BAD",
                                   )),
                               InkWell(
                                   onTap: (() {
                                     setState(() {
+                                      quoteImage = "images/happymoodquote.jfif";
                                       _ismoodvisible = false;
                                       _isquotevisible = true;
                                     });
@@ -213,6 +218,7 @@ class _HomeState extends State<Home> {
                               InkWell(
                                   onTap: (() {
                                     setState(() {
+                                      quoteImage = "images/nicemoodquote.jpg";
                                       _ismoodvisible = false;
                                       _isquotevisible = true;
                                     });
@@ -230,11 +236,11 @@ class _HomeState extends State<Home> {
                         margin: EdgeInsets.all(8),
                         alignment: Alignment.center,
                         width: 500,
-                        height: 150,
+                        height: 200,
                         child: ClipRRect(
                             borderRadius: BorderRadius.circular(30),
                             child:
-                                Image.asset("images/thought_placeholder.png")),
+                                Image.asset(quoteImage)),
                       ),
                     ),
                     SizedBox(

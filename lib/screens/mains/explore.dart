@@ -88,7 +88,7 @@ class _HomeState extends State<Explore> {
                     child: ElevatedButton(
                         onPressed: _callNumber,
                         child: const Text(
-                          "Chatbot",
+                          "Panic",
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 15,

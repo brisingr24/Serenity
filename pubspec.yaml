@@ -74,10 +74,10 @@ flutter:
   fonts:
     - family: Pacifico
       fonts:
-        - asset: fonts/pacifico.ttf
+        - asset: fonts/Pacifico-Regular.ttf
     - family: Lobster
       fonts:
-        - asset: fonts/lobster-regular.ttf
+        - asset: fonts/Lobster-Regular.ttf
     - family: Peralta
       fonts:
         - asset: fonts/Peralta-Regular.ttf

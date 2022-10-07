@@ -97,7 +97,7 @@ class _HomeState extends State<Home> {
                     child: ElevatedButton(
                         onPressed: _callNumber,
                         child: const Text(
-                          "Chatbot",
+                          "Panic",
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 15,

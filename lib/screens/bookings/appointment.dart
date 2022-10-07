@@ -22,7 +22,7 @@ class _GridListState extends State<GridList> {
         img: doc.data()['img'] ?? '',
         isBooked: doc.data()['isBooked'] ?? false,
         job: doc.data()['job'] ?? '',
-        rate: doc.data()['rate'].toString() ?? '',
+        rate: doc.data()['rate']?? '',
         requesterId: doc.data()['requesterId'] ?? '',
       );
     }).toList();
@@ -50,7 +50,7 @@ class _GridListState extends State<GridList> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               StreamBuilder<List<Doctor>>(

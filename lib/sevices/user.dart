@@ -18,6 +18,7 @@ class UserService{
       email: snapshot.data()['email'],
       city: snapshot.data()['city'],
       age: snapshot.data()['age'],
+      gender: snapshot.data()['gender'],
     ) :UserModel(name:"User");
   }
 

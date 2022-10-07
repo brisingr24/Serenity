@@ -107,7 +107,7 @@ class _HomeState extends State<Home> {
                             backgroundColor:
                                 MaterialStateProperty.all(Colors.black),
                             fixedSize: MaterialStateProperty.all<Size>(
-                                const Size(80, 40)),
+                                const Size(90, 40)),
                             shape: MaterialStateProperty.all<
                                 RoundedRectangleBorder>(RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(18.0),

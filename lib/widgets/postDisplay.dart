@@ -40,124 +40,125 @@ class _PostDisplayState extends State<PostDisplay> {
           print(snapshot.data);
           if (snapshot.data!.isNotEmpty) {
             List<PostModel> posts = snapshot.data!;
-            return SingleChildScrollView(
-              physics: AlwaysScrollableScrollPhysics(),
-              child: Column(
-                children: [
-                  ListView.separated(
-                    separatorBuilder: (context, index) {
-                      return Divider(
-                        height: 25,
-                      );
-                    },
-                    scrollDirection: Axis.vertical,
-                    shrinkWrap: true,
-                    itemCount: posts.length,
-                    itemBuilder: (context, index) {
-                      final post = posts[index];
+            return Column(
+              children: [
+            Container(
+              height: 500,
+              child: ListView.separated(
+                physics: const AlwaysScrollableScrollPhysics(),
+                separatorBuilder: (context, index) {
+                  return Divider(
+                    height: 25,
+                  );
+                },
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+                itemCount: posts.length,
+                itemBuilder: (context, index) {
+                  final post = posts[index];
 
-                      return StreamBuilder<bool>(
-                          stream:
-                              _postService.getCurrentUserLike(post, widget.uid),
-                          builder: (context, snapshotLike) {
-                            if (!snapshotLike.hasData) {
-                              return Center(
-                                child: CircularProgressIndicator(),
-                              );
-                            }
-                            return Container(
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(20.0),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    StreamBuilder<UserModel?>(
-                                      stream: UserService()
-                                          .getUserInfo(post.creator),
-                                      builder: (context, snapshot) {
-                                        if (snapshot.hasData) {
-                                          print(snapshot.data);
-                                          if (snapshot.data != null) {
-                                            UserModel user = snapshot.data!;
-                                            return Row(
-                                              children: [
-                                                user.profileImgURL == null
-                                                    ? CircleAvatar(
-                                                        child: Image.asset(
-                                                          "images/userdef.png",
-                                                          height: 50,
-                                                          width: 50,
-                                                        ),
-                                                        backgroundColor:
-                                                            Colors.white,
-                                                      )
-                                                    : CircleAvatar(
-                                                        radius: 25,
-                                                        backgroundImage:
-                                                            NetworkImage(
-                                                          user.profileImgURL ??
-                                                              ' ',
-                                                        ),
-                                                      ),
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
-                                                  child: Text(
-                                                    '${user.name}',
-                                                    style:
-                                                        TextStyle(fontSize: 18),
+                  return StreamBuilder<bool>(
+                      stream:
+                          _postService.getCurrentUserLike(post, widget.uid),
+                      builder: (context, snapshotLike) {
+                        if (!snapshotLike.hasData) {
+                          return Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                        return Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                StreamBuilder<UserModel?>(
+                                  stream: UserService()
+                                      .getUserInfo(post.creator),
+                                  builder: (context, snapshot) {
+                                    if (snapshot.hasData) {
+                                      print(snapshot.data);
+                                      if (snapshot.data != null) {
+                                        UserModel user = snapshot.data!;
+                                        return Row(
+                                          children: [
+                                            user.profileImgURL == null
+                                                ? CircleAvatar(
+                                                    child: Image.asset(
+                                                      "images/userdef.png",
+                                                      height: 50,
+                                                      width: 50,
+                                                    ),
+                                                    backgroundColor:
+                                                        Colors.white,
+                                                  )
+                                                : CircleAvatar(
+                                                    radius: 25,
+                                                    backgroundImage:
+                                                        NetworkImage(
+                                                      user.profileImgURL ??
+                                                          ' ',
+                                                    ),
                                                   ),
-                                                ),
-                                              ],
-                                            );
-                                          }
-                                        }
-                                        return Center();
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Text(
+                                                '${user.name}',
+                                                style:
+                                                    TextStyle(fontSize: 18),
+                                              ),
+                                            ),
+                                          ],
+                                        );
+                                      }
+                                    }
+                                    return Center();
+                                  },
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Text(post.text),
+                                ),
+                                Row(
+                                  children: [
+                                    IconButton(
+                                      onPressed: () {
+                                        _postService.likePost(
+                                            post,
+                                            snapshotLike.data ?? false,
+                                            widget.uid);
                                       },
+                                      icon: snapshotLike.data == false
+                                          ? Icon(
+                                              Icons.favorite_border,
+                                              color: Colors.red,
+                                              size: 30,
+                                            )
+                                          : Icon(
+                                              Icons.favorite,
+                                              color: Colors.red,
+                                              size: 30,
+                                            ),
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(10.0),
-                                      child: Text(post.text),
-                                    ),
-                                    Row(
-                                      children: [
-                                        IconButton(
-                                          onPressed: () {
-                                            _postService.likePost(
-                                                post,
-                                                snapshotLike.data ?? false,
-                                                widget.uid);
-                                          },
-                                          icon: snapshotLike.data == false
-                                              ? Icon(
-                                                  Icons.favorite_border,
-                                                  color: Colors.red,
-                                                  size: 30,
-                                                )
-                                              : Icon(
-                                                  Icons.favorite,
-                                                  color: Colors.red,
-                                                  size: 30,
-                                                ),
-                                        ),
-                                        Spacer(),
-                                        Text(
-                                            "${DateFormat('yyyy-MM-dd – kk:mm').format(post.timestamp!.toDate())}"),
-                                      ],
-                                    ),
+                                    Spacer(),
+                                    Text(
+                                        "${DateFormat('yyyy-MM-dd – kk:mm').format(post.timestamp!.toDate())}"),
                                   ],
                                 ),
-                              ),
-                            );
-                          });
-                    },
-                  ),
-                ],
+                              ],
+                            ),
+                          ),
+                        );
+                      });
+                },
               ),
+            ),
+              ],
             );
           }
         }

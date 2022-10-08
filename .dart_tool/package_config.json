@@ -188,6 +188,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "flutter_phone_direct_caller",
+      "rootUri": "file:///C:/Users/Aditya%20Rawat/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_phone_direct_caller-2.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_plugin_android_lifecycle",
       "rootUri": "file:///C:/Users/Aditya%20Rawat/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_plugin_android_lifecycle-2.0.7",
       "packageUri": "lib/",
@@ -410,6 +416,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "spincircle_bottom_bar",
+      "rootUri": "file:///C:/Users/Aditya%20Rawat/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/spincircle_bottom_bar-2.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.13"
+    },
+    {
       "name": "stack_trace",
       "rootUri": "file:///C:/Users/Aditya%20Rawat/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/stack_trace-1.10.0",
       "packageUri": "lib/",
@@ -470,7 +482,7 @@
       "languageVersion": "2.16"
     }
   ],
-  "generated": "2022-10-07T16:43:41.342311Z",
+  "generated": "2022-10-08T09:47:07.978736Z",
   "generator": "pub",
   "generatorVersion": "2.16.1"
 }

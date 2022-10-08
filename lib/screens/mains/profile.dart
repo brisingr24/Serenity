@@ -2,11 +2,11 @@
 import 'package:envision/screens/bookings/appointment.dart';
 import 'package:envision/screens/editprofile.dart';
 import 'package:flutter/material.dart';
+
 import '../../models/userModel.dart';
-import '../../widgets/ContactTile.dart';
-import '../questionnaire.dart';
 import '../../sevices/user.dart';
 import '../aboutus.dart';
+import '../questionnaire.dart';
 
 class Profile extends StatefulWidget {
   final String uid;
@@ -31,7 +31,7 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 80,
+        toolbarHeight: 40,
         title: Center(
           child: Text(
             "My Profile",
@@ -52,7 +52,7 @@ class _ProfileState extends State<Profile> {
                 Align(
                   alignment: Alignment.center,
                   child: Container(
-                    color: Colors.blue.shade50,
+                    color: Color(0xFFFFF5E4),
                     height: 55,
                     width: 350,
                     padding: EdgeInsets.all(10.0),
@@ -67,7 +67,7 @@ class _ProfileState extends State<Profile> {
                     padding: EdgeInsets.all(10.0),
                     margin: EdgeInsets.only(top: 70),
                     decoration: BoxDecoration(
-                      color: Colors.blue.shade50,
+                      color: Color(0xFFFFF5E4),
                       borderRadius: BorderRadius.circular(30.0),
                     ),
                   ),
@@ -134,7 +134,7 @@ class _ProfileState extends State<Profile> {
                 width: 350,
                 padding: EdgeInsets.all(10.0),
                 decoration: BoxDecoration(
-                  color: Colors.blue.shade50,
+                  color: Color(0xFFFFF5E4),
                   borderRadius: BorderRadius.vertical(
                       top: Radius.circular(0), bottom: Radius.circular(30)),
                 ),
@@ -208,7 +208,9 @@ class _ProfileState extends State<Profile> {
                         },
                         child: Text("BOOK"),
                         style: ButtonStyle(
-                            elevation: MaterialStateProperty.all(6.0))),
+                            elevation: MaterialStateProperty.all(6.0),
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                Color(0xFFFF9494)))),
                     SizedBox(
                       height: 30,
                     ),
@@ -279,7 +281,7 @@ class _ProfileState extends State<Profile> {
                         style: ButtonStyle(
                             elevation: MaterialStateProperty.all(6.0),
                             backgroundColor:
-                                MaterialStateProperty.all(Colors.blue),
+                                MaterialStateProperty.all(Color(0xFFFF9494)),
                             fixedSize: MaterialStateProperty.all<Size>(
                                 const Size(500, 20)),
                             shape: MaterialStateProperty.all<
@@ -306,7 +308,7 @@ class _ProfileState extends State<Profile> {
                         style: ButtonStyle(
                             elevation: MaterialStateProperty.all(6.0),
                             backgroundColor:
-                                MaterialStateProperty.all(Colors.blue),
+                                MaterialStateProperty.all(Color(0xFFFF9494)),
                             fixedSize: MaterialStateProperty.all<Size>(
                                 const Size(500, 20)),
                             shape: MaterialStateProperty.all<

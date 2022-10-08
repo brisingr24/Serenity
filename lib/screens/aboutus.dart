@@ -15,7 +15,7 @@ class _AboutUsState extends State<AboutUs> {
     Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color(0xFFFDF3FF),
+        backgroundColor: Color(0xFFFFF5E4),
         // appBar: AppBar(
         //   automaticallyImplyLeading: false,
         //   title: Center(child: Text("About Us")),
@@ -44,14 +44,14 @@ class _AboutUsState extends State<AboutUs> {
                     'About SRM University',
                     style: TextStyle(
                         color: Colors.black,
-                        fontWeight: FontWeight.bold,
                         fontSize: 23,
+                        fontFamily: 'secular',
                         letterSpacing: 0.3),
                   ),
                   SizedBox(width: 10),
                   Container(
                     height: 1,
-                    width: size.width / 4.7,
+                    width: size.width / 5.1,
                     color: Colors.black,
                   )
                 ],
@@ -62,7 +62,11 @@ class _AboutUsState extends State<AboutUs> {
               child: Text(
                 'It runs 11,000 trains every day on tracks that spread over 60,000 km in length. It employs close to 1.54 million people, making it the seventh-largest employer in the world, according to Forbes.',
                 style: TextStyle(
-                    color: Colors.black, wordSpacing: 0.45, fontSize: 18),
+                    color: Colors.black,
+                    wordSpacing: 0.45,
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'raleway'),
               ),
             ),
             SizedBox(
@@ -82,8 +86,8 @@ class _AboutUsState extends State<AboutUs> {
                   ),
                   onPressed: null,
                   style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(
-                        Colors.purple.shade400),
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(Color(0xFFFF9494)),
                   ),
                 ),
               ],
@@ -109,14 +113,14 @@ class _AboutUsState extends State<AboutUs> {
                     'About Aaruush',
                     style: TextStyle(
                         color: Colors.black,
-                        fontWeight: FontWeight.bold,
+                        fontFamily: 'secular',
                         fontSize: 23,
                         letterSpacing: 0.3),
                   ),
                   SizedBox(width: 10),
                   Container(
                     height: 1,
-                    width: size.width / 2.4,
+                    width: size.width / 2.45,
                     color: Colors.black,
                   ),
                 ],
@@ -129,7 +133,11 @@ class _AboutUsState extends State<AboutUs> {
                 'It employs close to 1.54 million people, making it the seventh-largest employer in the world, according to Forbes.',
                 textAlign: TextAlign.left,
                 style: TextStyle(
-                    color: Colors.black, wordSpacing: 0.45, fontSize: 18),
+                    color: Colors.black,
+                    wordSpacing: 0.45,
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'raleway'),
               ),
             ),
             SizedBox(
@@ -149,7 +157,8 @@ class _AboutUsState extends State<AboutUs> {
                   onPressed: null,
                   style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all<Color>(
-                          Colors.purple.shade400)),
+                    Color(0xFFFF9494),
+                  )),
                 ),
               ],
             ),
@@ -173,14 +182,14 @@ class _AboutUsState extends State<AboutUs> {
                     'About Team Envision',
                     style: TextStyle(
                         color: Colors.black,
-                        fontWeight: FontWeight.bold,
+                        fontFamily: 'secular',
                         fontSize: 23,
                         letterSpacing: 0.3),
                   ),
                   SizedBox(width: 10),
                   Container(
                     height: 1,
-                    width: size.width / 4,
+                    width: size.width / 4.7,
                     color: Colors.black,
                   ),
                 ],
@@ -193,7 +202,11 @@ class _AboutUsState extends State<AboutUs> {
                 ' It employs close to 1.54 million people, making it the seventh-largest employer in the world, according to Forbes.',
                 textAlign: TextAlign.left,
                 style: TextStyle(
-                    color: Colors.black, wordSpacing: 0.45, fontSize: 18),
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    wordSpacing: 0.45,
+                    fontSize: 17,
+                    fontFamily: 'raleway'),
               ),
             ),
             SizedBox(
@@ -212,8 +225,8 @@ class _AboutUsState extends State<AboutUs> {
                   ),
                   onPressed: null,
                   style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(
-                          Colors.purple.shade400)),
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Color(0xFFFF9494))),
                 ),
               ],
             ),
@@ -223,7 +236,7 @@ class _AboutUsState extends State<AboutUs> {
             Image.asset("images/env2.png"),
             Text(
               "Made with love by Team Envision ❤",
-              style: TextStyle(fontSize: 20),
+              style: TextStyle(fontSize: 14, fontFamily: 'silkscreen'),
             ),
             SizedBox(
               height: 30,

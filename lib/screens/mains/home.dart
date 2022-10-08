@@ -28,10 +28,10 @@ class _HomeState extends State<Home> {
     'My Music'
   ];
 
-   _callNumber() async{
-  const number = '+919136711710'; //set the number here
-  bool? res = await FlutterPhoneDirectCaller.callNumber(number);
-}
+  _callNumber() async {
+    const number = '+919136711710'; //set the number here
+    bool? res = await FlutterPhoneDirectCaller.callNumber(number);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,8 +39,11 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.blue,
-        title: Text("HOME"),
+        backgroundColor: Color(0xFFFFD1D1),
+        title: Text(
+          "HOME",
+          style: TextStyle(color: Colors.black),
+        ),
         actions: <Widget>[
           TextButton.icon(
               label: const Text(
@@ -59,7 +62,7 @@ class _HomeState extends State<Home> {
       body: Container(
         padding: EdgeInsets.all(16),
         constraints: BoxConstraints.expand(),
-        color: Colors.blue[50],
+        color: Color(0xFFFFF5E4),
         child: Column(
           children: [
             Container(
@@ -129,9 +132,9 @@ class _HomeState extends State<Home> {
                         Text(
                           'Discover',
                           style: TextStyle(
-                              fontSize: 25,
+                              fontSize: 20,
                               fontWeight: FontWeight.bold,
-                              fontFamily: 'Lobster'),
+                              fontFamily: 'peralta'),
                         ),
                         Icon(
                           Icons.search,
@@ -157,15 +160,17 @@ class _HomeState extends State<Home> {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
                       child: Text(
-                        'GOOD MORNING!!!',
+                        'Good Morning!!!',
                         style: TextStyle(
-                            fontSize: 22, fontWeight: FontWeight.bold),
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'peralta'),
                       ),
                     ),
-                    SizedBox(height: 15),
+                    SizedBox(height: 10),
                     Text(
                       'How are you feeling today?',
-                      style: TextStyle(fontSize: 20),
+                      style: TextStyle(fontSize: 17),
                     ),
                     SizedBox(
                       height: 15,
@@ -199,7 +204,6 @@ class _HomeState extends State<Home> {
                                     });
                                   }),
                                   child: MoodItem(
-                                    
                                     image: "images/mood_bad.jpg",
                                     moodtext: "BAD",
                                   )),
@@ -239,8 +243,7 @@ class _HomeState extends State<Home> {
                         height: 200,
                         child: ClipRRect(
                             borderRadius: BorderRadius.circular(30),
-                            child:
-                                Image.asset(quoteImage)),
+                            child: Image.asset(quoteImage)),
                       ),
                     ),
                     SizedBox(
@@ -248,8 +251,10 @@ class _HomeState extends State<Home> {
                     ),
                     Text(
                       'My 3 AM Friend',
-                      style:
-                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'peralta'),
                     ),
                     Container(
                       padding: EdgeInsets.fromLTRB(0, 10, 0, 10),

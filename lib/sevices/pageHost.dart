@@ -1,17 +1,14 @@
 // ignore_for_file: prefer_const_constructors
-import 'dart:developer';
-import 'package:spincircle_bottom_bar/modals.dart';
-import 'package:spincircle_bottom_bar/spincircle_bottom_bar.dart';
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
-import 'package:circular_menu/circular_menu.dart';
 import 'package:envision/screens/chatbot.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:kommunicate_flutter/kommunicate_flutter.dart';
+
 import '../screens/mains/explore.dart';
 import '../screens/mains/forum.dart';
 import '../screens/mains/home.dart';
 import '../screens/mains/profile.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:kommunicate_flutter/kommunicate_flutter.dart';
 
 class PageHost extends StatefulWidget {
   @override
@@ -60,27 +57,29 @@ class _PageHostState extends State<PageHost> {
       Profile(uid: FirebaseAuth.instance.currentUser!.uid)
     ];
   }
+
   // onTap: (index) => setState(() => _currentIndex = index)
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:  _buildScreens()[_currentIndex],
+      body: _buildScreens()[_currentIndex],
       floatingActionButton: FloatingActionButton(
-        onPressed: () async{
+        onPressed: () async {
           try {
             dynamic conversationObject = {
               'appId': '245bd44f458f1551edc13318cb616e21c'
             };
-            dynamic result = await KommunicateFlutterPlugin
-                .buildConversation(conversationObject);
-            print("Conversation builder success : " +
-                result.toString());
+            dynamic result = await KommunicateFlutterPlugin.buildConversation(
+                conversationObject);
+            print("Conversation builder success : " + result.toString());
           } on Exception catch (e) {
-            print("Conversation builder error occurred : " +
-                e.toString());
+            print("Conversation builder error occurred : " + e.toString());
           }
         },
-        child: Icon(Icons.chat,size: 30,),
+        child: Icon(
+          Icons.chat,
+          size: 30,
+        ),
         // child: CircularMenu(
         //     startingAngleInRadian: 3.665,
         //     endingAngleInRadian: 5.75,
@@ -159,4 +158,3 @@ class _PageHostState extends State<PageHost> {
 //   ),
 //   child:   _buildScreens()[_currentIndex],
 // ),
-

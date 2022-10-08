@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'dart:developer';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:envision/sevices/auth.dart';
@@ -17,6 +18,8 @@ class Explore extends StatefulWidget {
 }
 
 class _HomeState extends State<Explore> {
+
+  
   List<String> navItem = [
     'Self Care',
     'My Journal ',
@@ -24,6 +27,11 @@ class _HomeState extends State<Explore> {
     'My Books',
     'My Music'
   ];
+  _callNumber() async{
+  const number = '+919136711710'; //set the number here
+  bool? res = await FlutterPhoneDirectCaller.callNumber(number);
+}
+
 
   @override
   Widget build(BuildContext context) {
@@ -78,19 +86,19 @@ class _HomeState extends State<Explore> {
                   Align(
                     alignment: Alignment.centerLeft,
                     child: ElevatedButton(
-                        onPressed: null,
+                        onPressed: _callNumber,
                         child: const Text(
                           "Panic",
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 18,
+                            fontSize: 15,
                           ),
                         ),
                         style: ButtonStyle(
                             backgroundColor:
                                 MaterialStateProperty.all(Colors.black),
                             fixedSize: MaterialStateProperty.all<Size>(
-                                const Size(80, 40)),
+                                const Size(90, 40)),
                             shape: MaterialStateProperty.all<
                                 RoundedRectangleBorder>(RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(18.0),

@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -65,12 +67,6 @@ class _GridListState extends State<GridList> {
                       physics: NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       padding: EdgeInsets.all(10),
-                      // gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      //   crossAxisCount: 2,
-                      //   crossAxisSpacing: 20,
-                      //   mainAxisSpacing: 100,
-                      //   childAspectRatio: 1.3,
-                      // ),
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                         crossAxisSpacing: 10,

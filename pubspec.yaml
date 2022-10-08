@@ -37,9 +37,11 @@ dependencies:
   cupertino_icons: ^1.0.2
   carousel_slider: ^4.1.1
   date_time_picker: ^2.1.0
+  flutter_phone_direct_caller: ^2.1.0
   flutter_localizations: 
     sdk: flutter
     version: ^0.0.0
+  
 
 
 dev_dependencies:
@@ -55,7 +57,6 @@ dev_dependencies:
   firebase_storage: ^10.3.7
   image_picker: ^0.8.5+3
   shared_preferences: ^2.0.15
-  date_time_picker: ^2.1.0
 
 
   # The "flutter_lints" package below contains a set of recommended lints to
@@ -73,10 +74,10 @@ flutter:
   fonts:
     - family: Pacifico
       fonts:
-        - asset: fonts/pacifico.ttf
+        - asset: fonts/Pacifico-Regular.ttf
     - family: Lobster
       fonts:
-        - asset: fonts/lobster-regular.ttf
+        - asset: fonts/Lobster-Regular.ttf
     - family: Peralta
       fonts:
         - asset: fonts/Peralta-Regular.ttf

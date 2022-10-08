@@ -30,7 +30,7 @@ class UserService{
         .map(_userFromFirebaseSnapshot);
   }
 
-  Future <void> updateProfile (File _profileImg,String name) async {
+  Future <void> updateProfile (File _profileImg,String name,String city,String age,String gender) async {
 
     String profileImgURL = "";
 
@@ -42,6 +42,10 @@ class UserService{
     Map<String,Object> data = HashMap();
     if (name != '') data['name'] = name;
     if (profileImgURL != '') data['profileImgURL'] = profileImgURL;
+    if (city != '') data['city'] = city;
+    if (age != '') data['age'] = age;
+    if (gender != '') data['gender'] = gender;
+
 
     await FirebaseFirestore.instance
     .collection('users')

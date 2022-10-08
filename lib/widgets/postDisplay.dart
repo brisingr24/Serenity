@@ -86,25 +86,30 @@ class _PostDisplayState extends State<PostDisplay> {
                                             return Row(
                                               children: [
                                                 user.profileImgURL == null
-                                                    ? Image.asset(
-                                                        "images/userdef.png",
-                                                        height: 40,
-                                                        width: 30,
+                                                    ? CircleAvatar(
+                                                        child: Image.asset(
+                                                          "images/userdef.png",
+                                                          height: 50,
+                                                          width: 50,
+                                                        ),
+                                                        backgroundColor:
+                                                            Colors.white,
                                                       )
-                                                    : Image.network(
-                                                        user.profileImgURL ??
-                                                            ' ',
-                                                        height: 40,
-                                                        width: 30,
-                                                        fit: BoxFit.cover,
+                                                    : CircleAvatar(
+                                                        radius: 25,
+                                                        backgroundImage:
+                                                            NetworkImage(
+                                                          user.profileImgURL ??
+                                                              ' ',
+                                                        ),
                                                       ),
                                                 Padding(
                                                   padding:
-                                                      const EdgeInsets.all(6.0),
+                                                      const EdgeInsets.all(8.0),
                                                   child: Text(
                                                     '${user.name}',
                                                     style:
-                                                        TextStyle(fontSize: 16),
+                                                        TextStyle(fontSize: 18),
                                                   ),
                                                 ),
                                               ],

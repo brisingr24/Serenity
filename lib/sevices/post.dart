@@ -16,9 +16,8 @@ class PostService {
     }).toList();
   }
 
-  Future savePost(text,name) async {
+  Future savePost(text) async {
     await FirebaseFirestore.instance.collection('posts').add({
-      'name': name,
       'text': text,
       'creator': FirebaseAuth.instance.currentUser?.uid,
       'timestamp': FieldValue.serverTimestamp()

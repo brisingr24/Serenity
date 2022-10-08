@@ -10,17 +10,15 @@ import '../screens/mains/profile.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:kommunicate_flutter/kommunicate_flutter.dart';
 
-
-
 class PageHost extends StatefulWidget {
   @override
   _PageHostState createState() => _PageHostState();
-
 }
 
 class _PageHostState extends State<PageHost> {
   int _currentIndex = 0;
   late PageController _pageController;
+  bool a = false;
   final iconList = <IconData>[
     Icons.home,
     Icons.forum,
@@ -32,7 +30,6 @@ class _PageHostState extends State<PageHost> {
   void initState() {
     super.initState();
     _pageController = PageController();
-
   }
 
   @override
@@ -41,12 +38,9 @@ class _PageHostState extends State<PageHost> {
     super.dispose();
   }
 
-  goToChat(){
+  goToChat() {
     print("TAP");
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => ChatBot()));
+    Navigator.push(context, MaterialPageRoute(builder: (context) => ChatBot()));
   }
 
   void onTappedBar(int index) {
@@ -56,7 +50,12 @@ class _PageHostState extends State<PageHost> {
   }
 
   List<Widget> _buildScreens() {
-    return [Home(uid: FirebaseAuth.instance.currentUser!.uid), Forum(uid: FirebaseAuth.instance.currentUser!.uid), Explore(uid: FirebaseAuth.instance.currentUser!.uid),Profile(uid: FirebaseAuth.instance.currentUser!.uid)];
+    return [
+      Home(uid: FirebaseAuth.instance.currentUser!.uid),
+      Forum(uid: FirebaseAuth.instance.currentUser!.uid),
+      Explore(uid: FirebaseAuth.instance.currentUser!.uid),
+      Profile(uid: FirebaseAuth.instance.currentUser!.uid)
+    ];
   }
 
   @override
@@ -64,7 +63,10 @@ class _PageHostState extends State<PageHost> {
     return Scaffold(
       body: _buildScreens()[_currentIndex],
       floatingActionButton: FloatingActionButton(
-        onPressed: () async{
+          elevation: 10,
+          backgroundColor: Colors.blue,
+        onPressed: () async {
+
         },
         child: CircularMenu(
             startingAngleInRadian: 3.665,
@@ -77,9 +79,12 @@ class _PageHostState extends State<PageHost> {
             toggleButtonAnimatedIconData: AnimatedIcons.list_view,
             items: [
               CircularMenuItem(icon: Icons.clear,color: Colors.red,padding: 4,onTap: () {
+                setState(() {
+                  print("Working");
+                });
                 // callback
               }),
-              CircularMenuItem(icon: Icons.chat_outlined,color: Colors.red,padding: 5,iconSize: 30, onTap: () {
+              CircularMenuItem(icon: Icons.chat_outlined,color: Colors.red,padding: 4,iconSize: 32, onTap: () {
                 goToChat();
                 //callback
               }),
@@ -87,7 +92,6 @@ class _PageHostState extends State<PageHost> {
                 //callback
               }),
             ]),
-        //params
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar(
@@ -102,8 +106,6 @@ class _PageHostState extends State<PageHost> {
         rightCornerRadius: 32,
         onTap: (index) => setState(() => _currentIndex = index), //other params
       ),
-
     );
   }
 }
-

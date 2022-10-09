@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import '../../models/userModel.dart';
 import '../../sevices/user.dart';
 import '../aboutus.dart';
+import '../journal.dart';
 import '../questionnaire.dart';
 
 class Profile extends StatefulWidget {
@@ -240,23 +241,36 @@ class _ProfileState extends State<Profile> {
                                 style: TextStyle(fontSize: 16),
                               ),
                             ),
-                            Form(
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: TextFormField(
-                                  decoration: InputDecoration(
-                                    hintText: "Start Writing!",
-                                  ),
-                                  keyboardType: TextInputType.multiline,
-                                  maxLines: null,
-                                  onChanged: (val) {
-                                    setState(() {
-                                      text = val;
-                                    });
-                                  },
-                                ),
+                            Container(
+                              height: 100,
+                              color: Colors.blue,
+                              child: GestureDetector(
+                                onTap: (){
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Journal(widget.uid)),
+                                  );
+                                },
                               ),
                             ),
+                            // Form(
+                            //   child: Padding(
+                            //     padding: const EdgeInsets.all(8.0),
+                            //     child: TextFormField(
+                            //       decoration: InputDecoration(
+                            //         hintText: "Start Writing!",
+                            //       ),
+                            //       keyboardType: TextInputType.multiline,
+                            //       maxLines: null,
+                            //       onChanged: (val) {
+                            //         setState(() {
+                            //           text = val;
+                            //         });
+                            //       },
+                            //     ),
+                            //   ),
+                            // ),
                           ],
                         ),
                       ),

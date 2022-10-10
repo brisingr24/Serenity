@@ -1,7 +1,10 @@
 // ignore_for_file: prefer_const_constructors
+import 'dart:developer';
+
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:circular_menu/circular_menu.dart';
 import 'package:envision/screens/chatbot.dart';
+import 'package:envision/widgets/circularmenu.dart';
 import 'package:flutter/material.dart';
 import '../screens/mains/explore.dart';
 import '../screens/mains/forum.dart';
@@ -61,38 +64,36 @@ class _PageHostState extends State<PageHost> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _buildScreens()[_currentIndex],
-      floatingActionButton: FloatingActionButton(
-          elevation: 10,
-          backgroundColor: Colors.blue,
-        onPressed: () async {
-
-        },
-        child: CircularMenu(
-            startingAngleInRadian: 3.665,
-            endingAngleInRadian: 5.75,
-            radius: 70,
-            toggleButtonColor: Colors.transparent,
-            // toggleButtonIconColor: Colors.transparent,
-            toggleButtonSize: 30,
-            toggleButtonPadding: 1,
-            toggleButtonAnimatedIconData: AnimatedIcons.list_view,
-            items: [
-              CircularMenuItem(icon: Icons.clear,color: Colors.red,padding: 4,onTap: () {
-                setState(() {
-                  print("Working");
-                });
-                // callback
-              }),
-              CircularMenuItem(icon: Icons.chat_outlined,color: Colors.red,padding: 4,iconSize: 32, onTap: () {
-                goToChat();
-                //callback
-              }),
-              CircularMenuItem(icon: Icons.report_gmailerrorred_rounded,color: Colors.red,padding: 3, onTap: () {
-                //callback
-              }),
-            ]),
-      ),
+      body: 
+      // floatingActionButton: CircularMen(),
+       CircularMenu(
+        backgroundWidget: _buildScreens()[_currentIndex],
+          startingAngleInRadian: 3.665,
+          endingAngleInRadian: 5.75,
+          radius: 70,
+          toggleButtonColor: Colors.blue,
+          // toggleButtonIconColor: Colors.transparent,
+          toggleButtonSize: 30,
+          toggleButtonPadding: 1,
+          toggleButtonAnimatedIconData: AnimatedIcons.list_view,
+          items: [
+            CircularMenuItem(icon: Icons.clear,color: Colors.red,padding: 4,onTap: () {
+              setState(() {
+                log("Working");
+              });
+              // callback
+            }),
+            CircularMenuItem(icon: Icons.chat_outlined,color: Colors.red,padding: 4,iconSize: 32, onTap: () {
+              goToChat();
+              //callback
+            }),
+            CircularMenuItem(icon: Icons.report_gmailerrorred_rounded,color: Colors.red,padding: 3, onTap: () {
+              setState(() {
+                log("Working");
+              });
+              //callback
+            }),
+          ]),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar(
         icons: iconList,

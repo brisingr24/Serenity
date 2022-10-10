@@ -280,9 +280,10 @@ class _HomeState extends State<Home> {
                             SizedBox(
                               width: 10,
                             ),
-                            Icon(
-                              Icons.phone,
-                              size: 30,
+                            IconButton(
+                              onPressed:_callNumber,
+                              icon: Icon(Icons.phone),
+                              iconSize: 30,
                             )
                           ]),
                     ),

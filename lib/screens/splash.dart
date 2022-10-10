@@ -25,14 +25,14 @@ class _SplashState extends State<Splash> {
     print("HELLOOO" + firstLogin.toString());
     await Future.delayed(const Duration(seconds: 3), () {});
     if (firstLogin == false) {
-      Navigator.push(
+      Navigator.pushReplacement(
         context,
         MaterialPageRoute(
           builder: (context) => Wrapper(),
         ),
       );
     } else {
-      Navigator.push(
+      Navigator.pushReplacement(
         context,
         MaterialPageRoute(
           builder: (context) => LandingPage(),

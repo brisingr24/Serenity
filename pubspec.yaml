@@ -54,6 +54,7 @@ dev_dependencies:
   readmore: ^2.2.0
   animated_bottom_navigation_bar: ^1.1.0
   circular_menu: ^2.0.1
+  spincircle_bottom_bar: ^2.0.0
   firebase_storage: ^10.3.7
   image_picker: ^0.8.5+3
   shared_preferences: ^2.0.15
@@ -81,6 +82,15 @@ flutter:
     - family: Peralta
       fonts:
         - asset: fonts/Peralta-Regular.ttf
+    - family: silkscreen
+      fonts:
+        - asset: fonts/silkscreen.ttf
+    - family: secular
+      fonts:
+        - asset: fonts/secular.ttf
+    - family: raleway
+      fonts:
+        - asset: fonts/raleway.ttf
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

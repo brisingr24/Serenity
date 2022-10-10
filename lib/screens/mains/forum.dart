@@ -19,10 +19,14 @@ class _ForumState extends State<Forum> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue.shade50,
+      backgroundColor: Color(0xFFFFF5E4),
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Center(child: Text("FORUM")),
+        backgroundColor: Color(0xFFFFD1D1),
+        title: Text(
+          "FORUM",
+          style: TextStyle(color: Colors.black),
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -57,7 +61,10 @@ class _ForumState extends State<Forum> {
                                 ),
                           Padding(
                             padding: const EdgeInsets.all(6.0),
-                            child: Text('${user.name}',style: TextStyle(fontSize: 20),),
+                            child: Text(
+                              '${user.name}',
+                              style: TextStyle(fontSize: 20),
+                            ),
                           ),
                           Spacer(),
                           Align(
@@ -94,7 +101,7 @@ class _ForumState extends State<Forum> {
               ),
               Text(
                 "Share Your Story !",
-                style: TextStyle(fontSize: 23, fontFamily: "Lobster"),
+                style: TextStyle(fontSize: 25, fontFamily: "Lobster"),
               ),
               SizedBox(
                 height: 20,
@@ -114,9 +121,9 @@ class _ForumState extends State<Forum> {
                     child: ElevatedButton(
                         onPressed: () {
                           Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => postAdd()),
-                          );
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => postAdd()));
                         },
                         child: Text(
                           "Add a new post",
@@ -128,7 +135,7 @@ class _ForumState extends State<Forum> {
                         style: ButtonStyle(
                             elevation: MaterialStateProperty.all(6.0),
                             backgroundColor:
-                                MaterialStateProperty.all(Colors.blue.shade50),
+                                MaterialStateProperty.all(Color(0xFFFF9494)),
                             fixedSize: MaterialStateProperty.all<Size>(
                                 const Size(150, 20)),
                             shape: MaterialStateProperty.all<

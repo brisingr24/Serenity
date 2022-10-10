@@ -1,13 +1,13 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'dart:developer';
-import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:envision/sevices/auth.dart';
 import 'package:envision/widgets/catergory_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
 class Explore extends StatefulWidget {
   final String uid;
@@ -18,8 +18,6 @@ class Explore extends StatefulWidget {
 }
 
 class _HomeState extends State<Explore> {
-
-  
   List<String> navItem = [
     'Self Care',
     'My Journal ',
@@ -27,11 +25,10 @@ class _HomeState extends State<Explore> {
     'My Books',
     'My Music'
   ];
-  _callNumber() async{
-  const number = '+919136711710'; //set the number here
-  bool? res = await FlutterPhoneDirectCaller.callNumber(number);
-}
-
+  _callNumber() async {
+    const number = '+919136711710'; //set the number here
+    bool? res = await FlutterPhoneDirectCaller.callNumber(number);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,12 +36,21 @@ class _HomeState extends State<Explore> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.blue,
-        title: Text("EXPLORE"),
+        backgroundColor: Color(0xFFFFD1D1),
+        title: Text(
+          "EXPLORE",
+          style: TextStyle(color: Colors.black),
+        ),
         actions: <Widget>[
           TextButton.icon(
-              label: const Text("Sign Out"),
-              icon: Icon(Icons.person),
+              label: const Text(
+                "Sign Out",
+                style: TextStyle(color: Colors.black),
+              ),
+              icon: Icon(
+                Icons.person,
+                color: Colors.black,
+              ),
               onPressed: () async {
                 _auth.signOut();
               })
@@ -53,7 +59,7 @@ class _HomeState extends State<Explore> {
       body: Container(
         padding: EdgeInsets.all(16),
         constraints: BoxConstraints.expand(),
-        color: Colors.blue[50],
+        color: Color(0xFFFFF5E4),
         child: Column(
           children: [
             Container(
@@ -130,7 +136,7 @@ class _HomeState extends State<Explore> {
                     Text(
                       'Games',
                       style:
-                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
                       height: 150,
@@ -144,7 +150,7 @@ class _HomeState extends State<Explore> {
                     Text(
                       'Music',
                       style:
-                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
                     CarouselSlider.builder(
                       itemCount: 5,
@@ -165,7 +171,7 @@ class _HomeState extends State<Explore> {
                     Text(
                       'Books',
                       style:
-                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
                     CarouselSlider.builder(
                       itemCount: 5,
@@ -185,7 +191,7 @@ class _HomeState extends State<Explore> {
                     Text(
                       'More',
                       style:
-                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
                     CarouselSlider.builder(
                       itemCount: 5,

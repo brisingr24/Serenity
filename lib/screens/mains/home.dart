@@ -139,6 +139,7 @@ class _HomeState extends State<Home> {
                           style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
+                              letterSpacing: 1,
                               fontFamily: 'peralta'),
                         ),
                         Icon(
@@ -169,6 +170,7 @@ class _HomeState extends State<Home> {
                         style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
+                            letterSpacing: 1,
                             fontFamily: 'peralta'),
                       ),
                     ),
@@ -198,7 +200,7 @@ class _HomeState extends State<Home> {
                                     });
                                   }),
                                   child: MoodItem(
-                                    image: "images/mood_meh.jpg",
+                                    image: "images/1 emoji.png",
                                     moodtext: "MEH",
                                   )),
                               InkWell(
@@ -211,7 +213,7 @@ class _HomeState extends State<Home> {
                                     });
                                   }),
                                   child: MoodItem(
-                                    image: "images/mood_bad.jpg",
+                                    image: "images/2 emoji.png",
                                     moodtext: "BAD",
                                   )),
                               InkWell(
@@ -224,7 +226,7 @@ class _HomeState extends State<Home> {
                                     });
                                   }),
                                   child: MoodItem(
-                                    image: "images/mood_good.jpg",
+                                    image: "images/3 emoji.png",
                                     moodtext: "GOOD",
                                   )),
                               InkWell(
@@ -237,19 +239,19 @@ class _HomeState extends State<Home> {
                                     });
                                   }),
                                   child: MoodItem(
-                                    image: "images/mood_nice.jpg",
+                                    image: "images/4 emoji.png",
                                     moodtext: "NICE",
                                   )),
                             ],
                           )),
                     ),
-                    
                     Visibility(
                       visible: _isquotevisible,
                       child: FutureBuilder(
                         future: quotesApi.getdata(_category),
                         builder: ((context, snapshot) {
-                          if (snapshot.connectionState == ConnectionState.none) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.none) {
                             return const AlertDialog(
                               title: Text("Failed to load Data"),
                             );
@@ -262,14 +264,14 @@ class _HomeState extends State<Home> {
                               ),
                             );
                           }
-                          if (snapshot.connectionState == ConnectionState.done) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.done) {
                             // If we got an error
                             if (snapshot.hasError) {
                               return Center(
                                   child: AlertDialog(
                                 title: Text('${snapshot.error}'),
-                              )
-                                  );
+                              ));
                             } else if (snapshot.hasData) {
                               QuoteModel? quoteModel =
                                   snapshot.data as QuoteModel?;
@@ -299,6 +301,7 @@ class _HomeState extends State<Home> {
                       style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
+                          letterSpacing: 1,
                           fontFamily: 'peralta'),
                     ),
                     Container(

@@ -50,7 +50,7 @@ class _SplashState extends State<Splash> {
           Container(
             height: 300,
             width: 300,
-            child: Image.asset("images/splash.jpg"),
+            child: Image.asset("images/calm_girl.gif"),
           ),
           const SizedBox(height: 30),
           DefaultTextStyle(

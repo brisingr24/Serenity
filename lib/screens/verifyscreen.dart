@@ -1,9 +1,9 @@
 import 'dart:async';
-  import 'package:envision/screens/mains/home.dart';
+
 import 'package:envision/screens/signup.dart';
 import 'package:envision/sevices/pageHost.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class VerifyScreen extends StatefulWidget {
@@ -50,13 +50,25 @@ class _VerifyScreenState extends State<VerifyScreen> {
     });
     return SafeArea(
       child: Scaffold(
-        body: Container(
-          child: Center(
-            child: Text(
-              "An Email verification link has been sent to you, Please verify..",
-              style: TextStyle(fontSize: 20, color: Colors.black),
+        backgroundColor: Color(0xFFFFF5E4),
+        body: Column(
+          children: [
+            SizedBox(
+              height: 20,
             ),
-          ),
+            Image.asset("images/calm_boy.gif"),
+            Container(
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Text(
+                    "An Email verification link has been sent to you, Please verify..",
+                    style: TextStyle(fontSize: 15, color: Colors.black),
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

@@ -24,7 +24,7 @@ class _GridListState extends State<GridList> {
         img: doc.data()['img'] ?? '',
         isBooked: doc.data()['isBooked'] ?? false,
         job: doc.data()['job'] ?? '',
-        rate: doc.data()['rate']?? '',
+        rate: doc.data()['rate'] ?? '',
         requesterId: doc.data()['requesterId'] ?? '',
       );
     }).toList();

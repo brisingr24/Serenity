@@ -2,9 +2,12 @@
 
 import 'dart:developer';
 
+import 'package:envision/models/quoteModel.dart';
 import 'package:envision/sevices/auth.dart';
+import 'package:envision/sevices/qoutesApi.dart';
 import 'package:envision/widgets/catergory_item.dart';
 import 'package:envision/widgets/mooditem.dart';
+import 'package:envision/widgets/moodquote.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
@@ -18,6 +21,8 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   String quoteImage = "images/thought_placeholder.png";
+  String? _category;
+  QuotesApi quotesApi = QuotesApi();
   bool _ismoodvisible = true;
   bool _isquotevisible = false;
   List<String> navItem = [
@@ -170,7 +175,7 @@ class _HomeState extends State<Home> {
                     SizedBox(height: 10),
                     Text(
                       'How are you feeling today?',
-                      style: TextStyle(fontSize: 17),
+                      style: TextStyle(fontSize: 18),
                     ),
                     SizedBox(
                       height: 15,
@@ -186,6 +191,7 @@ class _HomeState extends State<Home> {
                               InkWell(
                                   onTap: (() {
                                     setState(() {
+                                      _category = "courage";
                                       quoteImage = "images/mehmoodquote.jpg";
                                       _ismoodvisible = false;
                                       _isquotevisible = true;
@@ -198,6 +204,7 @@ class _HomeState extends State<Home> {
                               InkWell(
                                   onTap: (() {
                                     setState(() {
+                                      _category = "failure";
                                       quoteImage = "images/badmoodquote.jpg";
                                       _ismoodvisible = false;
                                       _isquotevisible = true;
@@ -210,6 +217,7 @@ class _HomeState extends State<Home> {
                               InkWell(
                                   onTap: (() {
                                     setState(() {
+                                      _category = "happiness";
                                       quoteImage = "images/happymoodquote.jfif";
                                       _ismoodvisible = false;
                                       _isquotevisible = true;
@@ -222,6 +230,7 @@ class _HomeState extends State<Home> {
                               InkWell(
                                   onTap: (() {
                                     setState(() {
+                                      _category = "inspirational";
                                       quoteImage = "images/nicemoodquote.jpg";
                                       _ismoodvisible = false;
                                       _isquotevisible = true;
@@ -234,16 +243,52 @@ class _HomeState extends State<Home> {
                             ],
                           )),
                     ),
+                    
                     Visibility(
                       visible: _isquotevisible,
-                      child: Container(
-                        margin: EdgeInsets.all(8),
-                        alignment: Alignment.center,
-                        width: 500,
-                        height: 200,
-                        child: ClipRRect(
-                            borderRadius: BorderRadius.circular(30),
-                            child: Image.asset(quoteImage)),
+                      child: FutureBuilder(
+                        future: quotesApi.getdata(_category),
+                        builder: ((context, snapshot) {
+                          if (snapshot.connectionState == ConnectionState.none) {
+                            return const AlertDialog(
+                              title: Text("Failed to load Data"),
+                            );
+                          }
+                          if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
+                            return const Center(
+                              child: CircularProgressIndicator(
+                                color: Colors.pink,
+                              ),
+                            );
+                          }
+                          if (snapshot.connectionState == ConnectionState.done) {
+                            // If we got an error
+                            if (snapshot.hasError) {
+                              return Center(
+                                  child: AlertDialog(
+                                title: Text('${snapshot.error}'),
+                              )
+                                  );
+                            } else if (snapshot.hasData) {
+                              QuoteModel? quoteModel =
+                                  snapshot.data as QuoteModel?;
+                              // log(_category.toString()+" "+quoteModel!.category.toString());
+                              return MoodQuote(
+                                quote: quoteModel?.quote,
+                                author: quoteModel?.author,
+                              );
+                            }
+                          }
+                          return const Center(
+                              child: AlertDialog(
+                            alignment: Alignment.center,
+                            title: Text(
+                              "Failed to load Data",
+                              textAlign: TextAlign.center,
+                            ),
+                          ));
+                        }),
                       ),
                     ),
                     SizedBox(
@@ -280,9 +325,10 @@ class _HomeState extends State<Home> {
                             SizedBox(
                               width: 10,
                             ),
-                            Icon(
-                              Icons.phone,
-                              size: 30,
+                            IconButton(
+                              onPressed: _callNumber,
+                              icon: Icon(Icons.phone),
+                              iconSize: 30,
                             )
                           ]),
                     ),

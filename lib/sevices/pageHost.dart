@@ -110,7 +110,7 @@ class _PageHostState extends State<PageHost> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar(
         icons: iconList,
-        backgroundColor: Colors.blue,
+        backgroundColor: Color(0xFFFFD1D1),
         activeIndex: _currentIndex,
         splashColor: Colors.orange,
         splashSpeedInMilliseconds: 300,

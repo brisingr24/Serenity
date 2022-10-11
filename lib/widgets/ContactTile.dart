@@ -68,7 +68,7 @@ class _ContactState extends State<Contact> {
                       ),
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                        color: Colors.blue.shade50,
+                        color: Color(0xFFFF9494),
                         borderRadius: BorderRadius.circular(7),
                       ),
                       width: 70,
@@ -85,7 +85,7 @@ class _ContactState extends State<Contact> {
                       ),
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                          color: Colors.blue.shade50,
+                          color: Color(0xFFFF9494),
                           borderRadius: BorderRadius.circular(7)),
                     ),
                   ],
@@ -108,14 +108,14 @@ class _ContactState extends State<Contact> {
                   child: const Text("Book Now"),
                   style: ButtonStyle(
                     backgroundColor:
-                        MaterialStateProperty.all<Color>(Colors.lightBlue),
+                        MaterialStateProperty.all<Color>(Color(0xFFFF9494)),
                   ),
                 ),
               ],
             ),
           ),
           decoration: BoxDecoration(
-            color: Colors.blue.shade100,
+            color: Color(0xFFFFE3E1),
             borderRadius: BorderRadius.circular(28),
           ),
         ),

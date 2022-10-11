@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "858379656031-ticdaoffqh4tftf20cvvdi82d166c9ql.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.envision",
+            "certificate_hash": "8742326c20419ccf5572f23980149671f45e73da"
+          }
+        },
+        {
           "client_id": "858379656031-37gn07iiunm1vkb3c72ptnkuhu8u2sif.apps.googleusercontent.com",
           "client_type": 3
         }

@@ -22,11 +22,12 @@ class _EditProfileState extends State<EditProfile> {
   String city = "";
   String age = "";
   String gender = "";
+  String phone = "";
 
-  Future getImage(int type) async {
+  Future getImage() async {
     final pickedFile = await picker.getImage(source: ImageSource.gallery);
     setState(() {
-      if (pickedFile != null && type == 0) {
+      if (pickedFile != null) {
         _profileImg = File(pickedFile.path);
       }
     });
@@ -39,7 +40,7 @@ class _EditProfileState extends State<EditProfile> {
         actions: [
           ElevatedButton(
               onPressed: () async {
-                await _userService.updateProfile(_profileImg!, name,city,age,gender);
+                await _userService.updateProfile(_profileImg!, name,city,age,gender,phone);
                 Navigator.pop(context);
                 setState(() {});
               },
@@ -56,7 +57,7 @@ class _EditProfileState extends State<EditProfile> {
               Text("ADD PROFILE PICTURE!",style: TextStyle(fontSize: 20),),
               SizedBox(height: 15,),
               ElevatedButton(
-                  onPressed: () => getImage(0),
+                  onPressed: () => getImage(),
                   child: _profileImg == null
                       ? const Icon(Icons.person_add_alt_1_rounded)
                       : Image.file(
@@ -124,6 +125,21 @@ class _EditProfileState extends State<EditProfile> {
                     gender = val;
                   }),
                   keyboardType: TextInputType.name,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: "Enter Phone No.",
+                    labelText: "Phone",
+                    prefixIcon: Icon(Icons.phone),
+                  ),
+                  onChanged: (val) => setState(() {
+                    phone = val;
+                  }),
+                  keyboardType: TextInputType.phone,
                 ),
               ),
             ],

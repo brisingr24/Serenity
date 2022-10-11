@@ -15,7 +15,7 @@ class _AboutUsState extends State<AboutUs> {
     Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color(0xFFFFF5E4),
+        backgroundColor: Color(0xFFFDF3FF),
         // appBar: AppBar(
         //   automaticallyImplyLeading: false,
         //   title: Center(child: Text("About Us")),
@@ -51,7 +51,7 @@ class _AboutUsState extends State<AboutUs> {
                   SizedBox(width: 10),
                   Container(
                     height: 1,
-                    width: size.width / 5.1,
+                    width: size.width / 4.7,
                     color: Colors.black,
                   )
                 ],

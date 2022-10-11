@@ -48,7 +48,7 @@ class _GridListState extends State<GridList> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.blue.shade50,
+        backgroundColor: Color(0xFFFFF5E4),
         body: SingleChildScrollView(
           child: Column(
             children: [

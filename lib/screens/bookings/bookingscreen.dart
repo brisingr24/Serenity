@@ -48,6 +48,7 @@ class _BookingScreenState extends State<BookingScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Book Appointment'),
+        backgroundColor: Color(0xFFFFD1D1),
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.only(left: 20, right: 20, top: 10),
@@ -104,7 +105,8 @@ class _BookingScreenState extends State<BookingScreen> {
                   },
                   child: Text('Book Now'),
                   style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.blue),
+                      backgroundColor:
+                          MaterialStateProperty.all(Color(0xffFF9494)),
                       fixedSize:
                           MaterialStateProperty.all<Size>(const Size(100, 40)),
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -133,7 +135,8 @@ class _BookingScreenState extends State<BookingScreen> {
                   },
                   child: Text('Reset'),
                   style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.blue),
+                      backgroundColor:
+                          MaterialStateProperty.all(Color(0xFFFF9494)),
                       fixedSize:
                           MaterialStateProperty.all<Size>(const Size(100, 40)),
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(

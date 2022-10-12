@@ -24,14 +24,24 @@ class PostService {
     });
   }
 
-  Stream<bool> getCurrentUserLike(PostModel post, String uid) {
+  Stream<bool> getCurrentUserLike(PostModel post) {
     return FirebaseFirestore.instance
         .collection("posts")
         .doc(post.id)
         .collection("likes")
-        .doc(uid)
+        .doc(FirebaseAuth.instance.currentUser?.uid)
         .snapshots()
         .map((snapshot) => snapshot.exists);
+  }
+
+  Future<int> getCountLike(PostModel post) async{
+    int count = 0;
+    await FirebaseFirestore.instance
+        .collection("posts")
+        .doc(post.id)
+        .collection("likes")
+        .get().then((value) => value.docs.forEach((element) {count++;}));
+    return count;
   }
 
   Stream<List<PostModel>> getPostByUser(uid) {
@@ -41,13 +51,13 @@ class PostService {
         .map(_postListFromSnapshot);
   }
 
-  Future likePost(PostModel post, bool current, String uid) async {
+  Future likePost(PostModel post, bool current) async {
     if (current) {
       await FirebaseFirestore.instance
           .collection("posts")
           .doc(post.id)
           .collection("likes")
-          .doc(uid)
+          .doc(FirebaseAuth.instance.currentUser?.uid)
           .delete();
     }
     if (!current) {
@@ -55,7 +65,7 @@ class PostService {
           .collection("posts")
           .doc(post.id)
           .collection("likes")
-          .doc(uid)
+          .doc(FirebaseAuth.instance.currentUser?.uid)
           .set({});
     }
   }

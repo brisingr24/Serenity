@@ -31,23 +31,17 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 40,
-        title: Center(
-          child: Text(
-            "My Profile",
-            style: TextStyle(color: Colors.black, fontSize: 24),
-          ),
-        ),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        automaticallyImplyLeading: false,
-      ),
+      backgroundColor: Colors.blue.shade50,
       body: SingleChildScrollView(
         child: Align(
           alignment: Alignment.center,
           child: Column(
             children: [
+              SizedBox(height: 70),
+              Text(
+                "My Profile",
+                style: TextStyle(color: Colors.black, fontSize: 32),
+              ),
               SizedBox(height: 20),
               Stack(children: [
                 Align(
@@ -57,13 +51,13 @@ class _ProfileState extends State<Profile> {
                     height: 55,
                     width: 350,
                     padding: EdgeInsets.all(10.0),
-                    margin: EdgeInsets.only(top: 230),
+                    margin: EdgeInsets.only(top: 180),
                   ),
                 ),
                 Align(
                   alignment: Alignment.center,
                   child: Container(
-                    height: 180,
+                    height: 150,
                     width: 350,
                     padding: EdgeInsets.all(10.0),
                     margin: EdgeInsets.only(top: 70),
@@ -88,9 +82,8 @@ class _ProfileState extends State<Profile> {
                                   ? CircleAvatar(
                                       child: Image.asset(
                                         "images/userdef.png",
-                                        height: 50,
-                                        width: 50,
                                       ),
+                                      radius: 60,
                                       backgroundColor: Colors.white,
                                     )
                                   : CircleAvatar(
@@ -112,16 +105,23 @@ class _ProfileState extends State<Profile> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
+                                  user.age != null?
                                   Text(
                                     '${user.age} years |',
                                     style: TextStyle(fontSize: 18),
-                                  ),
+                                  ):SizedBox(width: 1,),
+                                  user.gender != null?
                                   Text(
-                                    '  ${user.gender}',
+                                    '${user.gender}',
                                     style: TextStyle(fontSize: 18),
-                                  ),
+                                  ):SizedBox(width: 1,),
                                 ],
-                              )
+                              ),
+                              user.city != null?
+                              Text(
+                                '${user.city}',
+                                style: TextStyle(fontSize: 18),
+                              ):SizedBox(height: 1,),
                             ],
                           );
                         }
@@ -224,54 +224,27 @@ class _ProfileState extends State<Profile> {
                     SizedBox(
                       height: 30,
                     ),
-                    SingleChildScrollView(
-                      child: Container(
-                        width: 330,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          border: Border.all(color: Colors.black),
-                          borderRadius: BorderRadius.circular(20.0),
-                        ),
-                        child: Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                "Whats on your mind today?",
-                                style: TextStyle(fontSize: 16),
-                              ),
-                            ),
-                            Container(
-                              height: 100,
-                              color: Colors.blue,
-                              child: GestureDetector(
-                                onTap: (){
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Journal(widget.uid)),
-                                  );
-                                },
-                              ),
-                            ),
-                            // Form(
-                            //   child: Padding(
-                            //     padding: const EdgeInsets.all(8.0),
-                            //     child: TextFormField(
-                            //       decoration: InputDecoration(
-                            //         hintText: "Start Writing!",
-                            //       ),
-                            //       keyboardType: TextInputType.multiline,
-                            //       maxLines: null,
-                            //       onChanged: (val) {
-                            //         setState(() {
-                            //           text = val;
-                            //         });
-                            //       },
-                            //     ),
-                            //   ),
-                            // ),
-                          ],
+                    Container(
+                      height: 50,
+                      width: 330,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(color: Colors.black),
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      child: Center(
+                        child: GestureDetector(
+                          child: Text(
+                            "Whats on your mind today?",
+                            style: TextStyle(fontSize: 16),
+                          ),
+                          onTap: (){
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Journal(widget.uid)),
+                            );
+                          },
                         ),
                       ),
                     ),
@@ -329,6 +302,9 @@ class _ProfileState extends State<Profile> {
                                 RoundedRectangleBorder>(RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10.0),
                             )))),
+                    SizedBox(
+                      height: 30,
+                    ),
                   ],
                 ),
               ),

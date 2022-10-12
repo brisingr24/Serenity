@@ -212,42 +212,6 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "font_awesome_flutter",
-      "rootUri": "file:///C:/Users/Aditya%20Rawat/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/font_awesome_flutter-10.2.1",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
-      "name": "google_sign_in",
-      "rootUri": "file:///C:/Users/Aditya%20Rawat/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/google_sign_in-5.4.2",
-      "packageUri": "lib/",
-      "languageVersion": "2.14"
-    },
-    {
-      "name": "google_sign_in_android",
-      "rootUri": "file:///C:/Users/Aditya%20Rawat/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/google_sign_in_android-6.1.1",
-      "packageUri": "lib/",
-      "languageVersion": "2.14"
-    },
-    {
-      "name": "google_sign_in_ios",
-      "rootUri": "file:///C:/Users/Aditya%20Rawat/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/google_sign_in_ios-5.5.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.14"
-    },
-    {
-      "name": "google_sign_in_platform_interface",
-      "rootUri": "file:///C:/Users/Aditya%20Rawat/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/google_sign_in_platform_interface-2.3.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
-      "name": "google_sign_in_web",
-      "rootUri": "file:///C:/Users/Aditya%20Rawat/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/google_sign_in_web-0.10.2",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
       "name": "http",
       "rootUri": "file:///C:/Users/Aditya%20Rawat/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/http-0.13.5",
       "packageUri": "lib/",
@@ -386,12 +350,6 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "quiver",
-      "rootUri": "file:///C:/Users/Aditya%20Rawat/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/quiver-3.1.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
       "name": "readmore",
       "rootUri": "file:///C:/Users/Aditya%20Rawat/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/readmore-2.2.0",
       "packageUri": "lib/",
@@ -524,7 +482,7 @@
       "languageVersion": "2.16"
     }
   ],
-  "generated": "2022-10-10T15:17:09.510942Z",
+  "generated": "2022-10-11T14:26:04.574436Z",
   "generator": "pub",
   "generatorVersion": "2.16.1"
 }

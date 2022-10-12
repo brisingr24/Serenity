@@ -12,9 +12,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
-import '../../models/userModel.dart';
-import '../../sevices/user.dart';
-
 class Home extends StatefulWidget {
   final String uid;
   const Home({Key? key, required this.uid}) : super(key: key);

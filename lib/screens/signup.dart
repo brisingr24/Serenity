@@ -4,7 +4,6 @@ import 'package:envision/sevices/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
 
@@ -68,6 +67,7 @@ class _SignUpState extends State<SignUp> {
                   pass = val;
                 }),
               ),
+              const SizedBox(height: 10),
               Consumer<AuthService>(
                 builder: (context, provider, child) {
                   return TextFormField(
@@ -78,17 +78,13 @@ class _SignUpState extends State<SignUp> {
                       labelText: "Name",
                       prefixIcon: Icon(Icons.person),
                     ),
-
                   );
                 },
               ),
-
               Consumer<AuthService>(builder: (context, provider, child) {
                 return ElevatedButton(
                     onPressed: () async => {
-                      provider.getName(),
-                      print("Hello + ${provider.username}"),
-
+                          provider.getName(),
                           provider.signUp(email, pass),
                         },
                     child: const Text(
@@ -110,11 +106,9 @@ class _SignUpState extends State<SignUp> {
                           borderRadius: BorderRadius.circular(18.0),
                         ))));
               }),
-
               const SizedBox(
                 height: 30,
               ),
-
               ElevatedButton(
                   onPressed: () async => {
                         await _auth.signIn(email, pass),

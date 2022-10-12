@@ -10,7 +10,6 @@ class AuthService extends ChangeNotifier{
 
   Future getName() async{
     username = text.text;
-    print("BRO ${username}");
     notifyListeners();
   }
 

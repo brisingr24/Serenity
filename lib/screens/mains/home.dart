@@ -11,6 +11,8 @@ import 'package:envision/widgets/moodquote.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
+import '../../models/userModel.dart';
+import '../../sevices/user.dart';
 
 class Home extends StatefulWidget {
   final String uid;

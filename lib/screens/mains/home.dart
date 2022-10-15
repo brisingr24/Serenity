@@ -3,6 +3,7 @@
 import 'dart:developer';
 
 import 'package:envision/models/quoteModel.dart';
+import 'package:envision/screens/signup.dart';
 import 'package:envision/sevices/auth.dart';
 import 'package:envision/sevices/qoutesApi.dart';
 import 'package:envision/widgets/catergory_item.dart';
@@ -64,6 +65,8 @@ class _HomeState extends State<Home> {
               ),
               onPressed: () async {
                 _auth.signOut();
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (context) => SignUp()));
               })
         ],
       ),
@@ -138,8 +141,8 @@ class _HomeState extends State<Home> {
               Text(
                 'Discover',
                 style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
+                    fontSize: 24,
+                    fontWeight: FontWeight.w400,
                     fontFamily: 'peralta'),
               ),
               Container(
@@ -162,8 +165,8 @@ class _HomeState extends State<Home> {
                 child: Text(
                   'Good Morning!!!',
                   style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
+                      fontSize: 24,
+                      fontWeight: FontWeight.w400,
                       fontFamily: 'peralta'),
                 ),
               ),
@@ -292,8 +295,8 @@ class _HomeState extends State<Home> {
               Text(
                 'My 3 AM Friend',
                 style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
+                    fontSize: 24,
+                    fontWeight: FontWeight.w400,
                     fontFamily: 'peralta'),
               ),
               Container(

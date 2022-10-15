@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import '../../models/userModel.dart';
 import '../../sevices/user.dart';
 import '../aboutus.dart';
-import '../journal.dart';
+import '../../myJournal/journal.dart';
 import '../questionnaire.dart';
 
 class Profile extends StatefulWidget {
@@ -48,7 +48,7 @@ class _ProfileState extends State<Profile> {
                   alignment: Alignment.center,
                   child: Container(
                     color: Color(0xFFFFF5E4),
-                    height: 55,
+                    height: 80,
                     width: 350,
                     padding: EdgeInsets.all(10.0),
                     margin: EdgeInsets.only(top: 180),

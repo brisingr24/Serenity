@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:async';
 
 import 'package:envision/screens/signup.dart';
@@ -41,7 +43,9 @@ class _VerifyScreenState extends State<VerifyScreen> {
         Duration(
           minutes: 2,
         ), () {
-      if (mounted) {
+      if (mounted){
+        user?.delete();
+        print("User deleted");
         Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(builder: (context) => SignUp()),
@@ -52,19 +56,27 @@ class _VerifyScreenState extends State<VerifyScreen> {
       child: Scaffold(
         backgroundColor: Color(0xFFFFF5E4),
         body: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SizedBox(
               height: 20,
             ),
             Image.asset("images/calm_boy.gif"),
-            Container(
-              child: Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Text(
-                    "An Email verification link has been sent to you, Please verify..",
-                    style: TextStyle(fontSize: 15, color: Colors.black),
-                  ),
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text(
+                  "An Email verification link has been sent to you, Please verify...",
+                  style: TextStyle(fontSize: 20, color: Colors.black),
+                ),
+              ),
+            ),
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text(
+                  "Please check your spam folder in case you don't receive it in inbox",
+                  style: TextStyle(fontSize: 20, color: Colors.black),
                 ),
               ),
             ),

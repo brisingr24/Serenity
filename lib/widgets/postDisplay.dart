@@ -41,11 +41,12 @@ class _PostDisplayState extends State<PostDisplay> {
           print(snapshot.data);
           if (snapshot.data!.isNotEmpty) {
             List<PostModel> posts = snapshot.data!;
-            return SingleChildScrollView(
-              physics: AlwaysScrollableScrollPhysics(),
-              child: Column(
-                children: [
-                  ListView.separated(
+            return Column(
+              children: [
+                SizedBox(
+                  height: 400,
+                  child: ListView.separated(
+                    physics: AlwaysScrollableScrollPhysics(),
                     separatorBuilder: (context, index) {
                       return Divider(
                         height: 25,
@@ -159,8 +160,8 @@ class _PostDisplayState extends State<PostDisplay> {
                           });
                     },
                   ),
-                ],
-              ),
+                ),
+              ],
             );
           }
         }

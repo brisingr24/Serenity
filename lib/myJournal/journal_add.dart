@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:intl/intl.dart';
+
 
 class JournalAdd extends StatefulWidget {
   JournalAdd(this.uid,{Key? key}) : super(key: key);
@@ -14,7 +16,7 @@ class _JournalAddState extends State<JournalAdd> {
 
   TextEditingController _title = TextEditingController();
   TextEditingController _main = TextEditingController();
-  String date = DateTime.now().toString();
+  String date = DateFormat('yyyy-MM-dd').format(DateTime.now());
 
   @override
   Widget build(BuildContext context) {

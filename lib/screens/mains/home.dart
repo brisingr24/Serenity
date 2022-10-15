@@ -3,6 +3,7 @@
 import 'dart:developer';
 
 import 'package:envision/models/quoteModel.dart';
+import 'package:envision/screens/signup.dart';
 import 'package:envision/sevices/auth.dart';
 import 'package:envision/sevices/qoutesApi.dart';
 import 'package:envision/widgets/catergory_item.dart';
@@ -64,6 +65,8 @@ class _HomeState extends State<Home> {
               ),
               onPressed: () async {
                 _auth.signOut();
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (context) => SignUp()));
               })
         ],
       ),

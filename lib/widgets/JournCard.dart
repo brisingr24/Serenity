@@ -8,14 +8,15 @@ Widget JournCard(Function()?onTap,QueryDocumentSnapshot doc){
       padding: EdgeInsets.all(8.0),
       margin: EdgeInsets.all(8.0),
       decoration: BoxDecoration(
-        color: Colors.yellowAccent,
+        color: Colors.amber.shade300,
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(doc["note_title"],),
-          Text(doc["note_content"],),
+          SizedBox(height: 80,),
+          Align(alignment:Alignment.bottomRight,child: Text(doc["creation_date"],)),
         ],
       ),
     ),

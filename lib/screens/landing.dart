@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, deprecated_member_use
+ // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, deprecated_member_use
 
 import 'package:envision/models/sharedPrefModel.dart';
 import 'package:flutter/cupertino.dart';
@@ -17,11 +17,12 @@ class LandingPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
+        backgroundColor: Color(0xFFFFD1D1),
         title: Text(
-          'Landing Page',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          'Mindfulness',
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
-        centerTitle: true,
+        centerTitle:  true,
       ),
       body: Container(
         //padding: const EdgeInsets.only(bottom: 80),
@@ -29,7 +30,7 @@ class LandingPage extends StatelessWidget {
           controller: controller,
           children: [
             Container(
-              color: Color(0xDBDCE8FF),
+              color: Color(0xFFFFF5E4),
               child: Column(children: [
                 Column(
                   children: [
@@ -52,7 +53,7 @@ class LandingPage extends StatelessWidget {
                               style: ButtonStyle(
                                   elevation: MaterialStateProperty.all(6.0),
                                   backgroundColor: MaterialStateProperty.all(
-                                      Colors.blue.shade50),
+                                      Color(0xFFFF9494)),
                                   fixedSize: MaterialStateProperty.all<Size>(
                                       const Size(150, 20)),
                                   shape: MaterialStateProperty.all<
@@ -133,7 +134,7 @@ class LandingPage extends StatelessWidget {
                               style: ButtonStyle(
                                   elevation: MaterialStateProperty.all(6.0),
                                   backgroundColor: MaterialStateProperty.all(
-                                      Colors.blue.shade50),
+                                      Color(0xFFFF9494)),
                                   fixedSize: MaterialStateProperty.all<Size>(
                                       const Size(150, 20)),
                                   shape: MaterialStateProperty.all<
@@ -149,7 +150,7 @@ class LandingPage extends StatelessWidget {
               ]),
             ),
             Container(
-              color: Color(0xDBDCE8FF),
+              color: Color(0xFFFFF4E5),
               child: Column(children: [
                 Column(
                   children: [
@@ -172,7 +173,7 @@ class LandingPage extends StatelessWidget {
                               style: ButtonStyle(
                                   elevation: MaterialStateProperty.all(6.0),
                                   backgroundColor: MaterialStateProperty.all(
-                                      Colors.blue.shade50),
+                                      Color(0xFFFF9494)),
                                   fixedSize: MaterialStateProperty.all<Size>(
                                       const Size(150, 20)),
                                   shape: MaterialStateProperty.all<
@@ -253,7 +254,7 @@ class LandingPage extends StatelessWidget {
                               style: ButtonStyle(
                                   elevation: MaterialStateProperty.all(6.0),
                                   backgroundColor: MaterialStateProperty.all(
-                                      Colors.blue.shade50),
+                                      Color(0xFFFF9494)),
                                   fixedSize: MaterialStateProperty.all<Size>(
                                       const Size(150, 20)),
                                   shape: MaterialStateProperty.all<
@@ -269,7 +270,7 @@ class LandingPage extends StatelessWidget {
               ]),
             ),
             Container(
-              color: Color(0xDBDCE8FF),
+              color: Color(0xFFFFF4E5),
               child: Column(children: [
                 Column(
                   children: [
@@ -366,7 +367,7 @@ class LandingPage extends StatelessWidget {
                               style: ButtonStyle(
                                   elevation: MaterialStateProperty.all(6.0),
                                   backgroundColor: MaterialStateProperty.all(
-                                      Colors.blue.shade50),
+                                      Color(0xFFFF9494)),
                                   fixedSize: MaterialStateProperty.all<Size>(
                                       const Size(150, 20)),
                                   shape: MaterialStateProperty.all<

@@ -24,7 +24,7 @@ class _GridListState extends State<GridList> {
         img: doc.data()['img'] ?? '',
         isBooked: doc.data()['isBooked'] ?? false,
         job: doc.data()['job'] ?? '',
-        rate: doc.data()['rate']?? '',
+        rate: doc.data()['rate'] ?? '',
         requesterId: doc.data()['requesterId'] ?? '',
       );
     }).toList();
@@ -48,7 +48,7 @@ class _GridListState extends State<GridList> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.blue.shade50,
+        backgroundColor: Color(0xFFFFF5E4),
         body: SingleChildScrollView(
           child: Column(
             children: [

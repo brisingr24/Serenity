@@ -61,6 +61,8 @@ class _PageHostState extends State<PageHost> {
     return Scaffold(
       body: _buildScreens()[_currentIndex],
       floatingActionButton: FloatingActionButton(
+        splashColor: Colors.orange,
+        backgroundColor: Color(0xFFFFD1D1),
         onPressed: () async {
           try {
             dynamic conversationObject = {
@@ -75,6 +77,7 @@ class _PageHostState extends State<PageHost> {
         },
         child: Icon(
           Icons.chat,
+          color: Colors.black,
           size: 30,
         ),
       ),
@@ -82,6 +85,8 @@ class _PageHostState extends State<PageHost> {
       bottomNavigationBar: AnimatedBottomNavigationBar(
         icons: iconList,
         backgroundColor: Color(0xFFFFD1D1),
+        inactiveColor: Colors.black,
+        activeColor: Colors.deepPurple,
         activeIndex: _currentIndex,
         splashColor: Colors.orange,
         splashSpeedInMilliseconds: 300,

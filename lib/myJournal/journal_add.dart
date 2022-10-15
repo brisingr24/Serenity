@@ -14,9 +14,9 @@ class JournalAdd extends StatefulWidget {
 
 class _JournalAddState extends State<JournalAdd> {
 
-  TextEditingController _title = TextEditingController();
-  TextEditingController _main = TextEditingController();
-  String date = DateFormat('yyyy-MM-dd').format(DateTime.now());
+  final TextEditingController _title = TextEditingController();
+  final TextEditingController _main = TextEditingController();
+  String date = DateFormat.yMMMMd().format(DateTime.now());
 
   @override
   Widget build(BuildContext context) {

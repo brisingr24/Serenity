@@ -19,7 +19,8 @@ class _PostDisplayState extends State<PostDisplay> {
   late final Stream<List<PostModel>> postModelStream;
   PostService _postService = PostService();
   late final Stream<UserModel?> userModelStream;
-  int giveLike = 0;
+  int ct=0;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -40,11 +41,12 @@ class _PostDisplayState extends State<PostDisplay> {
           print(snapshot.data);
           if (snapshot.data!.isNotEmpty) {
             List<PostModel> posts = snapshot.data!;
-            return SingleChildScrollView(
-              physics: AlwaysScrollableScrollPhysics(),
-              child: Column(
-                children: [
-                  ListView.separated(
+            return Column(
+              children: [
+                SizedBox(
+                  height: 400,
+                  child: ListView.separated(
+                    physics: AlwaysScrollableScrollPhysics(),
                     separatorBuilder: (context, index) {
                       return Divider(
                         height: 25,
@@ -58,7 +60,7 @@ class _PostDisplayState extends State<PostDisplay> {
 
                       return StreamBuilder<bool>(
                           stream:
-                              _postService.getCurrentUserLike(post, widget.uid),
+                              _postService.getCurrentUserLike(post),
                           builder: (context, snapshotLike) {
                             if (!snapshotLike.hasData) {
                               return Center(
@@ -126,11 +128,12 @@ class _PostDisplayState extends State<PostDisplay> {
                                     Row(
                                       children: [
                                         IconButton(
-                                          onPressed: () {
+                                          onPressed: () async{
                                             _postService.likePost(
                                                 post,
-                                                snapshotLike.data ?? false,
-                                                widget.uid);
+                                                snapshotLike.data ?? false);
+                                            // ct = await PostService().getCountLike(post);
+                                            // print("Counts : " + ct.toString());
                                           },
                                           icon: snapshotLike.data == false
                                               ? Icon(
@@ -144,6 +147,7 @@ class _PostDisplayState extends State<PostDisplay> {
                                                   size: 30,
                                                 ),
                                         ),
+                                        //Text("${ct}"),
                                         Spacer(),
                                         Text(
                                             "${DateFormat('yyyy-MM-dd – kk:mm').format(post.timestamp!.toDate())}"),
@@ -156,8 +160,8 @@ class _PostDisplayState extends State<PostDisplay> {
                           });
                     },
                   ),
-                ],
-              ),
+                ),
+              ],
             );
           }
         }

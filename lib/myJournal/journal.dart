@@ -1,14 +1,14 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'package:envision/screens/journal_add.dart';
-import 'package:envision/screens/journal_edit.dart';
-import 'package:envision/screens/journal_read.dart';
+import 'package:envision/myJournal/journal_add.dart';
+import 'package:envision/myJournal/journal_edit.dart';
+import 'package:envision/myJournal/journal_read.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../widgets/JournCard.dart';
 
 class Journal extends StatefulWidget {
-  Journal(this.uid,{Key? key}) : super(key: key);
+  Journal(this.uid, {Key? key}) : super(key: key);
   String uid;
   @override
   _JournalState createState() => _JournalState();
@@ -28,12 +28,25 @@ class _JournalState extends State<Journal> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Your Recent notes"),
-            SizedBox(height: 20,),
+            Align(
+                alignment: Alignment.center,
+                child: Text(
+                  "My Notes",
+                  style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w300,
+                      fontFamily: 'peralta'),
+                )),
+            SizedBox(
+              height: 20,
+            ),
             Expanded(
               child: StreamBuilder<QuerySnapshot>(
-                stream:
-                FirebaseFirestore.instance.collection("users").doc(widget.uid).collection("journal").snapshots(),
+                stream: FirebaseFirestore.instance
+                    .collection("users")
+                    .doc(widget.uid)
+                    .collection("journal")
+                    .snapshots(),
                 builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return Center(child: CircularProgressIndicator());
@@ -42,18 +55,22 @@ class _JournalState extends State<Journal> {
                     return GridView(
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2),
-                      children: snapshot.data!.docs.map((note) =>
-                          JournCard(() {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => JournalEditor(note,widget.uid,note.id)),
-                            );
-                          }, note)).toList(),
+                      children: snapshot.data!.docs
+                          .map((note) => JournCard(() {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => JournalEditor(
+                                          note, widget.uid, note.id)),
+                                );
+                              }, note))
+                          .toList(),
                     );
                   }
-                  return Text("There's No Notes",
-                    style: TextStyle(fontSize: 15, color: Colors.black54),);
+                  return Text(
+                    "There's No Notes",
+                    style: TextStyle(fontSize: 15, color: Colors.black54),
+                  );
                 },
               ),
             ),
@@ -61,11 +78,10 @@ class _JournalState extends State<Journal> {
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: (){
+        onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(
-                builder: (context) => JournalAdd(widget.uid)),
+            MaterialPageRoute(builder: (context) => JournalAdd(widget.uid)),
           );
         },
         label: Text("Add Note"),

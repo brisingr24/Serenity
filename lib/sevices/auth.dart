@@ -1,17 +1,28 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:envision/models/userModel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 
-class AuthService {
+class AuthService extends ChangeNotifier{
+
+  final text =TextEditingController();
+  String username ="";
+
+  Future getName() async{
+    username = text.text;
+    notifyListeners();
+  }
+
   FirebaseAuth auth = FirebaseAuth.instance;
 
   UserModel? _userFromFirebaseUser(User? user) {
-    return user != null ? UserModel(id: user.uid) : null;
+    return user != null ? UserModel(id: user.uid,name: username) : null;
   }
 
   Stream<UserModel?> get user {
     return auth.authStateChanges().map(_userFromFirebaseUser);
   }
+
 
   Future signIn(email, pass) async {
     try {
@@ -20,7 +31,6 @@ class AuthService {
         password: pass,
       ));
 
-      print("HELLOO" + user.credential.toString());
       _userFromFirebaseUser(user.user);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -40,10 +50,12 @@ class AuthService {
         password: pass,
       ));
 
+      print("MY name is ${username} , ${email}");
+
       await FirebaseFirestore.instance
           .collection('users')
           .doc(user.user?.uid)
-          .set({'name': email, 'email': email});
+          .set({'name': username, 'email': email});
 
       _userFromFirebaseUser(user.user);
     } on FirebaseAuthException catch (e) {
@@ -52,6 +64,8 @@ class AuthService {
       print(e);
     }
   }
+
+
 
   Future signOut() async {
     print("${auth.currentUser}");

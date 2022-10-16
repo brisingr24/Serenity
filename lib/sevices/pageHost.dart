@@ -40,11 +40,6 @@ class _PageHostState extends State<PageHost> {
     super.dispose();
   }
 
-  goToChat() {
-    print("TAP");
-    Navigator.push(context, MaterialPageRoute(builder: (context) => ChatBot()));
-  }
-
   void onTappedBar(int index) {
     setState(() {
       _currentIndex = index;
@@ -66,6 +61,8 @@ class _PageHostState extends State<PageHost> {
     return Scaffold(
       body: _buildScreens()[_currentIndex],
       floatingActionButton: FloatingActionButton(
+        splashColor: Colors.orange,
+        backgroundColor: Color(0xFFFFD1D1),
         onPressed: () async {
           try {
             dynamic conversationObject = {
@@ -80,37 +77,16 @@ class _PageHostState extends State<PageHost> {
         },
         child: Icon(
           Icons.chat,
+          color: Colors.black,
           size: 30,
         ),
-        // child: CircularMenu(
-        //     startingAngleInRadian: 3.665,
-        //     endingAngleInRadian: 5.75,
-        //     radius: 70,
-        //     toggleButtonColor: Colors.blue,
-        //     // toggleButtonIconColor: Colors.transparent,
-        //     toggleButtonSize: 40,
-        //     toggleButtonPadding: 4,
-        //     toggleButtonAnimatedIconData: AnimatedIcons.list_view,
-        //     items: [
-        //       CircularMenuItem(icon: Icons.clear,color: Colors.red,padding: 4,onTap: () {
-        //         setState(() {
-        //           log("Working");
-        //         });
-        //         // callback
-        //       }),
-        //       CircularMenuItem(icon: Icons.chat_outlined,color: Colors.red,padding: 4,iconSize: 32, onTap: () {
-        //         goToChat();
-        //         //callback
-        //       }),
-        //       CircularMenuItem(icon: Icons.report_gmailerrorred_rounded,color: Colors.red,padding: 3, onTap: () {
-        //         //callback
-        //       }),
-        //     ]),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar(
         icons: iconList,
         backgroundColor: Color(0xFFFFD1D1),
+        inactiveColor: Colors.black,
+        activeColor: Colors.deepPurple,
         activeIndex: _currentIndex,
         splashColor: Colors.orange,
         splashSpeedInMilliseconds: 300,
@@ -121,42 +97,9 @@ class _PageHostState extends State<PageHost> {
         onTap: (index) {
           setState(() {
             _currentIndex = index;
-            print(index);
           });
         },
       ),
     );
   }
 }
-// body: SpinCircleBottomBarHolder(
-//   bottomNavigationBar: SCBottomBarDetails(
-//       circleColors: [Colors.white, Colors.orange, Colors.redAccent],
-//       iconTheme: IconThemeData(color: Colors.black45),
-//       activeIconTheme: IconThemeData(color: Colors.orange),
-//       backgroundColor: Colors.white,
-//       titleStyle: TextStyle(color: Colors.black45,fontSize: 12),
-//       activeTitleStyle: TextStyle(color: Colors.black,fontSize: 12,fontWeight: FontWeight.bold),
-//       actionButtonDetails: SCActionButtonDetails(
-//           color: Colors.redAccent,
-//           icon: Icon(
-//             Icons.expand_less,
-//             color: Colors.white,
-//           ),
-//           elevation: 2),
-//       elevation: 2.0,
-//       items: [
-//         // Suggested count : 4
-//         SCBottomBarItem(icon: Icons.home, title: "Home", onPressed: () {(index) => setState(() => _currentIndex = index);print("${_currentIndex}");}),
-//         SCBottomBarItem(icon: Icons.forum, title: "Forum", onPressed: () {(index) => setState(() => _currentIndex = index);print("${_currentIndex}");}),
-//         SCBottomBarItem(icon: Icons.explore, title: "Explore", onPressed: () {(index) => setState(() => _currentIndex = index);print("${_currentIndex}");}),
-//         SCBottomBarItem(icon: Icons.man, title: "Profile", onPressed: () {(index) => setState(() => _currentIndex = index);print("${_currentIndex}");}),
-//       ],
-//       circleItems: [
-//         SCItem(onPressed: () {  }, icon: Icon(Icons.clear,color: Colors.red,size: 30,)),
-//         SCItem(onPressed: () {  }, icon: Icon(Icons.chat_bubble_outline)),
-//         SCItem(onPressed: () {  }, icon: Icon(Icons.report_gmailerrorred_rounded)),
-//       ],
-//       bnbHeight: 80 // Suggested Height 80
-//   ),
-//   child:   _buildScreens()[_currentIndex],
-// ),

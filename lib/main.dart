@@ -1,4 +1,4 @@
-import 'package:envision/screens/verifyscreen.dart';
+import 'package:envision/screens/splash.dart';
 import 'package:envision/sevices/auth.dart';
 import 'package:envision/sevices/pageHost.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       value: AuthService().user,
       initialData: UserModel(),
       child: MaterialApp(
-        home: VerifyScreen(),
+        home: Splash(),
         routes: {
           '/pagehost': (context) => PageHost(),
         },

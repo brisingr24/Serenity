@@ -40,7 +40,8 @@ class _EditProfileState extends State<EditProfile> {
         actions: [
           ElevatedButton(
               onPressed: () async {
-                await _userService.updateProfile(_profileImg!, name,city,age,gender,phone);
+                await _userService.updateProfile(
+                     name, city, age, gender, phone);
                 Navigator.pop(context);
                 setState(() {});
               },
@@ -54,8 +55,13 @@ class _EditProfileState extends State<EditProfile> {
               const SizedBox(
                 height: 40,
               ),
-              Text("ADD PROFILE PICTURE!",style: TextStyle(fontSize: 20),),
-              SizedBox(height: 15,),
+              Text(
+                "ADD PROFILE PICTURE!",
+                style: TextStyle(fontSize: 20),
+              ),
+              SizedBox(
+                height: 15,
+              ),
               ElevatedButton(
                   onPressed: () => getImage(),
                   child: _profileImg == null
@@ -64,9 +70,22 @@ class _EditProfileState extends State<EditProfile> {
                           _profileImg!,
                           height: 100,
                         )),
-              SizedBox(height: 20,),
-              Text("Edit",style: TextStyle(fontSize: 20),),
-              SizedBox(height: 15,),
+              ElevatedButton(
+                  onPressed: () async {
+                    await _userService.updatePic(
+                        _profileImg!);
+                  },
+                  child: Text("SAVE PIC")),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                "Edit",
+                style: TextStyle(fontSize: 20),
+              ),
+              SizedBox(
+                height: 15,
+              ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(

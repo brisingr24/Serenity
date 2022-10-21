@@ -10,7 +10,7 @@ class BookingConfirm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.blue.shade50,
+        backgroundColor: Color(0xFFFFF5E4),
         body: Center(
           child: Container(
             width: 350,
@@ -88,13 +88,13 @@ class BookingConfirm extends StatelessWidget {
                           foregroundColor:
                               MaterialStateProperty.all(Colors.black54),
                           backgroundColor:
-                              MaterialStateProperty.all(Colors.white54),
+                              MaterialStateProperty.all(Color(0xFFFF9494)),
                           overlayColor:
                               MaterialStateProperty.all(Colors.blueAccent),
                           shape: MaterialStateProperty.all(
                             RoundedRectangleBorder(
                               side: BorderSide(
-                                color: Colors.purpleAccent,
+                                color: Colors.pinkAccent,
                               ),
                               borderRadius: BorderRadius.circular(30.0),
                             ),
@@ -113,13 +113,13 @@ class BookingConfirm extends StatelessWidget {
                           foregroundColor:
                               MaterialStateProperty.all(Colors.black),
                           backgroundColor:
-                              MaterialStateProperty.all(Colors.white54),
+                              MaterialStateProperty.all(Color(0xFFFF9494)),
                           overlayColor:
                               MaterialStateProperty.all(Colors.blueAccent),
                           shape: MaterialStateProperty.all(
                             RoundedRectangleBorder(
                               side: BorderSide(
-                                color: Colors.purpleAccent,
+                                color: Colors.pinkAccent,
                               ),
                               borderRadius: BorderRadius.circular(30.0),
                             ),

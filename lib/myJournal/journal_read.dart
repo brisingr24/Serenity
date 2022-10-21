@@ -1,10 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 
 class JournalRead extends StatefulWidget {
-  JournalRead(this.doc,{Key? key}) : super(key: key);
+  JournalRead(this.doc, {Key? key}) : super(key: key);
   QueryDocumentSnapshot doc;
 
   @override
@@ -15,9 +15,9 @@ class _JournalReadState extends State<JournalRead> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue.shade50,
+      backgroundColor: Color(0xFFFF9494),
       appBar: AppBar(
-        backgroundColor: Colors.blue.shade50,
+        backgroundColor: Color(0xFfFF9494),
         elevation: 0,
       ),
       body: SafeArea(
@@ -26,14 +26,19 @@ class _JournalReadState extends State<JournalRead> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(widget.doc["note_title"],),
-              Text(widget.doc["creation_date"],),
-              Text(widget.doc["note_content"],),
+              Text(
+                widget.doc["note_title"],
+              ),
+              Text(
+                widget.doc["creation_date"],
+              ),
+              Text(
+                widget.doc["note_content"],
+              ),
             ],
           ),
         ),
       ),
-
     );
   }
 }

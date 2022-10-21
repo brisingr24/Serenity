@@ -1,10 +1,10 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:envision/myJournal/journal_add.dart';
 import 'package:envision/myJournal/journal_edit.dart';
-import 'package:envision/myJournal/journal_read.dart';
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 import '../widgets/JournCard.dart';
 
 class Journal extends StatefulWidget {
@@ -18,8 +18,9 @@ class _JournalState extends State<Journal> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue.shade50,
+      backgroundColor: Color(0xFFFFF5E4),
       appBar: AppBar(
+        backgroundColor: Color(0xFFFF9494),
         title: Text("MY JOURNAL"),
       ),
       body: Padding(
@@ -78,6 +79,7 @@ class _JournalState extends State<Journal> {
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
+        backgroundColor: Color(0xFFFF9494),
         onPressed: () {
           Navigator.push(
             context,

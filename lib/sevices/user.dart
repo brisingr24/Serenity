@@ -31,18 +31,11 @@ class UserService{
         .map(_userFromFirebaseSnapshot);
   }
 
-  Future <void> updateProfile (File _profileImg,String name,String city,String age,String gender,String phone) async {
+  Future <void> updateProfile (String name,String city,String age,String gender,String phone) async {
 
-    String profileImgURL = "";
-
-    if(_profileImg != null){
-      //save image to storage
-      profileImgURL = await _utilsService.uploadFile(_profileImg,'user/profile/${FirebaseAuth.instance.currentUser?.uid}/profile');
-    }
 
     Map<String,Object> data = HashMap();
     if (name != '') data['name'] = name;
-    if (profileImgURL != '') data['profileImgURL'] = profileImgURL;
     if (city != '') data['city'] = city;
     if (age != '') data['age'] = age;
     if (gender != '') data['gender'] = gender;
@@ -52,5 +45,23 @@ class UserService{
     .collection('users')
     .doc(FirebaseAuth.instance.currentUser?.uid)
     .update(data);
+  }
+
+  Future <void> updatePic (File _profileImg) async {
+
+    String profileImgURL = "";
+
+    if(_profileImg != null){
+      //save image to storage
+      profileImgURL = await _utilsService.uploadFile(_profileImg,'user/profile/${FirebaseAuth.instance.currentUser?.uid}/profile');
+    }
+
+    Map<String,Object> data = HashMap();
+    if (profileImgURL != '') data['profileImgURL'] = profileImgURL;
+
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(FirebaseAuth.instance.currentUser?.uid)
+        .update(data);
   }
 }

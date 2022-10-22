@@ -52,11 +52,11 @@ class _SplashState extends State<Splash> {
             width: 300,
             child: Image.asset("images/calm_girl.gif"),
           ),
-          const SizedBox(height: 30),
+          const SizedBox(height: 25),
           DefaultTextStyle(
               style: TextStyle(
-                  fontSize: 30, color: Colors.green, fontFamily: 'Pacifico'),
-              child: const Text("Mindfulness")),
+                  fontSize: 50, color: Colors.green, fontFamily: 'Pacifico'),
+              child: const Text("Serenity")),
         ],
       ),
     );

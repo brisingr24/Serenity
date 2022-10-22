@@ -2,9 +2,11 @@
 import 'package:envision/screens/bookings/appointment.dart';
 import 'package:envision/screens/editprofile.dart';
 import 'package:flutter/material.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import '../../models/userModel.dart';
 import '../../sevices/user.dart';
+import '../../widgets/ContactTile.dart';
 import '../aboutus.dart';
 import '../../myJournal/journal.dart';
 import '../questionnaire.dart';
@@ -73,7 +75,6 @@ class _ProfileState extends State<Profile> {
                     stream: UserService().getUserInfo(widget.uid),
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
-                        print(snapshot.data);
                         if (snapshot.data != null) {
                           UserModel user = snapshot.data!;
                           return Column(
@@ -199,6 +200,46 @@ class _ProfileState extends State<Profile> {
                     SizedBox(
                       height: 30,
                     ),
+                  // StreamBuilder<UserModel?>(
+                  //     stream: UserService().getUserInfo(widget.uid),
+                  //     builder: (context, snapshot) {
+                  //       if (!snapshot.hasData) {
+                  //         return Center(child: CircularProgressIndicator());
+                  //       }
+                  //       var data = snapshot.data;
+                  //       if (data == null) return Center(child: Text("No data"));
+                  //
+                  //       UserModel user = snapshot.data!;
+                  //       return Text(user.name.toString());
+                  //     }),
+                  //   StreamBuilder<List<Doctor>>(
+                  //       stream: _listDoctor,
+                  //       builder: (context, snapshot) {
+                  //         if (!snapshot.hasData) {
+                  //           return Center(child: CircularProgressIndicator());
+                  //         }
+                  //         var data = snapshot.data;
+                  //         if (data == null) return Center(child: Text("No data"));
+                  //
+                  //         return Container(
+                  //           padding: EdgeInsets.all(8),
+                  //           height: 85,
+                  //           child: ListView.builder(
+                  //               scrollDirection: Axis.horizontal,
+                  //               itemCount: (data.isNotEmpty) ? data.length : 0,
+                  //               shrinkWrap: true,
+                  //               itemBuilder: (context, index) {
+                  //                 return Contact(
+                  //                   uid: widget.uid,
+                  //                   docID: data[index].id ?? "",
+                  //                   name: data[index].name,
+                  //                   profession: data[index].job,
+                  //                   city: data[index].city,
+                  //                   rating: data[index].rate,
+                  //                 );
+                  //               }),
+                  //         );
+                  //       }),
                     ElevatedButton(
                         onPressed: () {
                           Navigator.push(

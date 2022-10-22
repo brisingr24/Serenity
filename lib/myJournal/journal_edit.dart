@@ -76,7 +76,6 @@ class _JournalEditorState extends State<JournalEditor> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async{
-        print("hello" + widget.doc.toString());
         await FirebaseFirestore.instance.collection("users").doc(widget.uid).collection("journal").doc(widget.nid).update({
           'creation_date': date,
           'note_content': _main.text,

@@ -1,5 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 Widget JournCard(Function()? onTap, QueryDocumentSnapshot doc) {
   return InkWell(
@@ -23,7 +23,7 @@ Widget JournCard(Function()? onTap, QueryDocumentSnapshot doc) {
                       fontSize: 20,
                       fontWeight: FontWeight.w300))),
           const SizedBox(
-            height: 58,
+            height: 70,
           ),
           Align(
               alignment: Alignment.bottomLeft,

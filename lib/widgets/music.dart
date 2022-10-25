@@ -4,11 +4,9 @@ import 'package:url_launcher/url_launcher.dart';
 class music_container extends StatelessWidget {
   music_container({
     Key? key,
-    required this.image,
     required this.url,
   }) : super(key: key);
 
-  String image;
   String url;
 
   @override
@@ -16,9 +14,10 @@ class music_container extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(8.0)),
         height: 100,
         child: InkWell(
-          child: Image.asset("$image"),
+          child: Image.asset("images/spotify.png"),
           onTap: () => launch("$url"),
         ),
       ),
@@ -55,11 +54,11 @@ class more_container extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: Container(
-        height: 180,
+        height: 150,
         child: InkWell(
-          child: Image.network("$url"),
+          child: Image.asset("$image"),
           onTap: () => launch("$url"),
         ),
       ),

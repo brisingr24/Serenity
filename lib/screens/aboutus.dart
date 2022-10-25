@@ -129,7 +129,7 @@ class _AboutUsState extends State<AboutUs> {
             Padding(
               padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
               child: Text(
-                'Aaruush is the student-run, official Annual Techno-Management Fest of SRM Institute of Science and Technology, Chennai. Aaruush comprises 14 domains, which provide a platform to showcase and innovate a multitude of ideas which range from Architecture to Medical Sciences. The cohesive structure which connects the Domains is the 12 committees of Aaruush alongside Team Envision and Team Outreach. Aaruush organizes several workshops, expos, conferences, luminary hours and non-profit initiatives to facilitate the general progress of human society with a footfall of 72,000+ and online following of 60,000+.',
+                'Aaruush is the student-run, official Annual Techno-Management Fest of SRM Institute of Science and Technology, Chennai. Aaruush comprises 14 domains and 14 committees, which provide a platform to showcase and innovate a multitude of ideas which range from Architecture to Medical Sciences. The cohesive structure which connects the Domains is the 14 committees of Aaruush alongside Team Envision and Team Outreach. Aaruush organizes several workshops, expos, conferences, luminary hours and non-profit initiatives to facilitate the general progress of human society with a footfall of 72,000+ and online following of 60,000+.',
                 textAlign: TextAlign.left,
                 style: TextStyle(
                     color: Colors.black,

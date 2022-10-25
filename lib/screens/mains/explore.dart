@@ -282,7 +282,8 @@ class _HomeState extends State<Explore> {
                       child: Row(
                         children: [
                           more_container(
-                              image: "https://youtu.be/PReWdfg2cM8",
+                              image:
+                                  "https://i3.ytimg.com/vi/PReWdfg2cM8/maxresdefault.jpg",
                               url: "https://youtu.be/PReWdfg2cM8"),
                           more_container(
                               image:

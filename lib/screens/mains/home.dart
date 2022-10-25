@@ -12,6 +12,7 @@ import 'package:envision/widgets/moodquote.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
+
 import '../../models/userModel.dart';
 import '../../sevices/user.dart';
 
@@ -87,19 +88,19 @@ class _HomeState extends State<Home> {
                         children: [
                           user.profileImgURL == null
                               ? CircleAvatar(
-                            child: Image.asset(
-                              "images/userdef.png",
-                              height: 50,
-                              width: 50,
-                            ),
-                            backgroundColor: Colors.white,
-                          )
+                                  child: Image.asset(
+                                    "images/userdef.png",
+                                    height: 50,
+                                    width: 50,
+                                  ),
+                                  backgroundColor: Colors.white,
+                                )
                               : CircleAvatar(
-                            radius: 30,
-                            backgroundImage: NetworkImage(
-                              user.profileImgURL ?? ' ',
-                            ),
-                          ),
+                                  radius: 30,
+                                  backgroundImage: NetworkImage(
+                                    user.profileImgURL ?? ' ',
+                                  ),
+                                ),
                           Padding(
                             padding: const EdgeInsets.all(6.0),
                             child: Text(
@@ -121,14 +122,14 @@ class _HomeState extends State<Home> {
                                 ),
                                 style: ButtonStyle(
                                     backgroundColor:
-                                    MaterialStateProperty.all(Colors.black),
+                                        MaterialStateProperty.all(Colors.black),
                                     fixedSize: MaterialStateProperty.all<Size>(
                                         const Size(80, 16)),
                                     shape: MaterialStateProperty.all<
-                                        RoundedRectangleBorder>(
+                                            RoundedRectangleBorder>(
                                         RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(18.0),
-                                        )))),
+                                      borderRadius: BorderRadius.circular(18.0),
+                                    )))),
                           ),
                         ],
                       );
@@ -137,7 +138,9 @@ class _HomeState extends State<Home> {
                   return Center();
                 },
               ),
-              SizedBox(height: 20,),
+              SizedBox(
+                height: 20,
+              ),
               Text(
                 'Discover',
                 style: TextStyle(
@@ -196,7 +199,7 @@ class _HomeState extends State<Home> {
                               });
                             }),
                             child: MoodItem(
-                              image: "images/mood_meh.jpg",
+                              image: "images/1 emoji.png",
                               moodtext: "MEH",
                             )),
                         InkWell(
@@ -209,7 +212,7 @@ class _HomeState extends State<Home> {
                               });
                             }),
                             child: MoodItem(
-                              image: "images/mood_bad.jpg",
+                              image: "images/2 emoji.png",
                               moodtext: "BAD",
                             )),
                         InkWell(
@@ -222,7 +225,7 @@ class _HomeState extends State<Home> {
                               });
                             }),
                             child: MoodItem(
-                              image: "images/mood_good.jpg",
+                              image: "images/3 emoji.png",
                               moodtext: "GOOD",
                             )),
                         InkWell(
@@ -235,13 +238,12 @@ class _HomeState extends State<Home> {
                               });
                             }),
                             child: MoodItem(
-                              image: "images/mood_nice.jpg",
+                              image: "images/4 emoji.png",
                               moodtext: "NICE",
                             )),
                       ],
                     )),
               ),
-
               Visibility(
                 visible: _isquotevisible,
                 child: FutureBuilder(
@@ -252,8 +254,7 @@ class _HomeState extends State<Home> {
                         title: Text("Failed to load Data"),
                       );
                     }
-                    if (snapshot.connectionState ==
-                        ConnectionState.waiting) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
                       return const Center(
                         child: CircularProgressIndicator(
                           color: Colors.pink,
@@ -266,11 +267,9 @@ class _HomeState extends State<Home> {
                         return Center(
                             child: AlertDialog(
                           title: Text('${snapshot.error}'),
-                        )
-                            );
+                        ));
                       } else if (snapshot.hasData) {
-                        QuoteModel? quoteModel =
-                            snapshot.data as QuoteModel?;
+                        QuoteModel? quoteModel = snapshot.data as QuoteModel?;
                         // log(_category.toString()+" "+quoteModel!.category.toString());
                         return MoodQuote(
                           quote: quoteModel?.quote,

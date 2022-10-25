@@ -16,7 +16,7 @@ Widget JournCard(Function()?onTap,QueryDocumentSnapshot doc){
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Align(alignment:Alignment.centerLeft,child: Text(doc["note_title"],style: TextStyle(fontFamily: 'secular',fontSize: 20,fontWeight: FontWeight.w300))),
-          const SizedBox(height: 80,),
+          const SizedBox(height: 70,),
           Align(alignment:Alignment.bottomLeft,child: Text(doc["creation_date"],style: TextStyle(fontFamily: 'secular',fontSize: 16,fontWeight: FontWeight.w100))),
         ],
       ),

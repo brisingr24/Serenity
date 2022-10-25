@@ -41,8 +41,9 @@ class _EditProfileState extends State<EditProfile> {
         backgroundColor: Color(0xFFFF9494),
         actions: [
           ElevatedButton(
-              style:
-                  ElevatedButton.styleFrom(backgroundColor: Color(0xFFFF9494)),
+              style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all(Color(0xFFFF9494))),
               onPressed: () async {
                 await _userService.updateProfile(
                     name, city, age, gender, phone);
@@ -67,8 +68,9 @@ class _EditProfileState extends State<EditProfile> {
                 height: 15,
               ),
               ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFFFF9494)),
+                  style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all(Color(0xFFFF9494))),
                   onPressed: () => getImage(),
                   child: _profileImg == null
                       ? const Icon(Icons.person_add_alt_1_rounded)
@@ -77,8 +79,9 @@ class _EditProfileState extends State<EditProfile> {
                           height: 100,
                         )),
               ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFFFF9494)),
+                  style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all(Color(0xFFFF9494))),
                   onPressed: () async {
                     await _userService.updatePic(_profileImg!);
                   },

@@ -81,7 +81,6 @@ class _HomeState extends State<Home> {
                 stream: UserService().getUserInfo(widget.uid),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
-                    print(snapshot.data);
                     if (snapshot.data != null) {
                       UserModel user = snapshot.data!;
                       return Row(
@@ -112,7 +111,7 @@ class _HomeState extends State<Home> {
                           Align(
                             alignment: Alignment.centerLeft,
                             child: ElevatedButton(
-                                onPressed: null,
+                                onPressed: _callNumber,
                                 child: const Text(
                                   "Panic",
                                   style: TextStyle(
@@ -121,6 +120,7 @@ class _HomeState extends State<Home> {
                                   ),
                                 ),
                                 style: ButtonStyle(
+                                    elevation: MaterialStateProperty.all(6.0),
                                     backgroundColor:
                                         MaterialStateProperty.all(Colors.black),
                                     fixedSize: MaterialStateProperty.all<Size>(

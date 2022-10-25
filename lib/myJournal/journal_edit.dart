@@ -39,7 +39,7 @@ class _JournalEditorState extends State<JournalEditor> {
         actions: [
           ElevatedButton(
               style:
-                  ElevatedButton.styleFrom(backgroundColor: Color(0xFFFF9494)),
+                  ElevatedButton.styleFrom(primary: Color(0xFFFF9494)),
               onPressed: () async {
                 await FirebaseFirestore.instance
                     .collection("users")

@@ -1,13 +1,14 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'dart:developer';
-
 import 'package:envision/sevices/auth.dart';
 import 'package:envision/widgets/catergory_item.dart';
 import 'package:envision/widgets/music.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
+import '../../models/userModel.dart';
+import '../../sevices/user.dart';
+import '../signup.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Explore extends StatefulWidget {
@@ -54,6 +55,8 @@ class _HomeState extends State<Explore> {
               ),
               onPressed: () async {
                 _auth.signOut();
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (context) => SignUp()));
               })
         ],
       ),
@@ -63,56 +66,66 @@ class _HomeState extends State<Explore> {
         color: Color(0xFFFFF5E4),
         child: Column(
           children: [
-            Container(
-              padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
-              child: Row(
-                children: [
-                  CircleAvatar(
-                    radius: 20,
-                    child: Image.asset("images/profile_placeholder.jpg"),
-                    backgroundColor: Colors.blue,
-                    //backgroundImage: NetworkImage(),
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'USER',
-                        style: TextStyle(fontSize: 20),
-                      ),
-                      Text(
-                        'My Safe Place',
-                        style: TextStyle(fontSize: 14),
-                      ),
-                    ],
-                  ),
-                  Spacer(),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: ElevatedButton(
-                        onPressed: _callNumber,
-                        child: const Text(
-                          "Panic",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 15,
+            StreamBuilder<UserModel?>(
+              stream: UserService().getUserInfo(widget.uid),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  if (snapshot.data != null) {
+                    UserModel user = snapshot.data!;
+                    return Row(
+                      children: [
+                        user.profileImgURL == null
+                            ? CircleAvatar(
+                          child: Image.asset(
+                            "images/userdef.png",
+                            height: 50,
+                            width: 50,
+                          ),
+                          backgroundColor: Colors.white,
+                        )
+                            : CircleAvatar(
+                          radius: 30,
+                          backgroundImage: NetworkImage(
+                            user.profileImgURL ?? ' ',
                           ),
                         ),
-                        style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.all(Colors.black),
-                            fixedSize: MaterialStateProperty.all<Size>(
-                                const Size(90, 40)),
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(18.0),
-                            )))),
-                  ),
-                ],
-              ),
+                        Padding(
+                          padding: const EdgeInsets.all(6.0),
+                          child: Text(
+                            '${user.name}',
+                            style: TextStyle(fontSize: 20),
+                          ),
+                        ),
+                        Spacer(),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: ElevatedButton(
+                              onPressed: _callNumber,
+                              child: const Text(
+                                "Panic",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                ),
+                              ),
+                              style: ButtonStyle(
+                                  elevation: MaterialStateProperty.all(6.0),
+                                  backgroundColor:
+                                  MaterialStateProperty.all(Colors.black),
+                                  fixedSize: MaterialStateProperty.all<Size>(
+                                      const Size(80, 16)),
+                                  shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(18.0),
+                                      )))),
+                        ),
+                      ],
+                    );
+                  }
+                }
+                return Center();
+              },
             ),
             Expanded(
               child: SingleChildScrollView(
@@ -157,30 +170,6 @@ class _HomeState extends State<Explore> {
                       style:
                           TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
-                    // CarouselSlider.builder(
-                    //   itemCount: 5,
-                    //   itemBuilder: (BuildContext context, int itemIndex,
-                    //           int pageViewIndex) =>
-                    //       Container(
-                    //           child:
-                    //               Image.asset("images/musicPlaceholder.jpg")),
-                    //   options: CarouselOptions(
-                    //     height: 180,
-                    //     autoPlay: true,
-                    //     enableInfiniteScroll: false,
-                    //   ),
-                    // ),
-                    // Container(
-                    //   height: 50,
-                    //   width: 50,
-                    //   color: Colors.pink,
-                    //   child: Center(
-                    //     child: InkWell(
-                    //         child: Text("Hello World"),
-                    //         onTap: () => launch(
-                    //             "https://www.youtube.com/watch?v=nf4_Ke5B1K8")),
-                    //   ),
-                    // ),
                     SingleChildScrollView(
                       padding: EdgeInsets.all(8.0),
                       scrollDirection: Axis.horizontal,
@@ -214,18 +203,6 @@ class _HomeState extends State<Explore> {
                       style:
                           TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
-                    // CarouselSlider.builder(
-                    //   itemCount: 5,
-                    //   itemBuilder: (BuildContext context, int itemIndex,
-                    //           int pageViewIndex) =>
-                    //       Container(
-                    //           child: Image.asset("images/BoolPlaceHolder.jpg")),
-                    //   options: CarouselOptions(
-                    //     height: 200,
-                    //     autoPlay: true,
-                    //     enableInfiniteScroll: false,
-                    //   ),
-                    // ),
                     SingleChildScrollView(
                       padding: EdgeInsets.all(6.0),
                       scrollDirection: Axis.horizontal,
@@ -263,19 +240,6 @@ class _HomeState extends State<Explore> {
                       style:
                           TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
-                    // CarouselSlider.builder(
-                    //   itemCount: 5,
-                    //   itemBuilder: (BuildContext context, int itemIndex,
-                    //           int pageViewIndex) =>
-                    //       Container(
-                    //           child:
-                    //               Image.asset("images/musicPlaceholder.jpg")),
-                    //   options: CarouselOptions(
-                    //     height: 180,
-                    //     autoPlay: true,
-                    //     enableInfiniteScroll: false,
-                    //   ),
-                    // ),
                     SingleChildScrollView(
                       padding: EdgeInsets.all(6.0),
                       scrollDirection: Axis.horizontal,

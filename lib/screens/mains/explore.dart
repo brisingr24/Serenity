@@ -1,7 +1,5 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'dart:developer';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:envision/sevices/auth.dart';
 import 'package:envision/widgets/catergory_item.dart';
 import 'package:envision/widgets/music.dart';
@@ -172,30 +170,6 @@ class _HomeState extends State<Explore> {
                       style:
                           TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
-                    // CarouselSlider.builder(
-                    //   itemCount: 5,
-                    //   itemBuilder: (BuildContext context, int itemIndex,
-                    //           int pageViewIndex) =>
-                    //       Container(
-                    //           child:
-                    //               Image.asset("images/musicPlaceholder.jpg")),
-                    //   options: CarouselOptions(
-                    //     height: 180,
-                    //     autoPlay: true,
-                    //     enableInfiniteScroll: false,
-                    //   ),
-                    // ),
-                    // Container(
-                    //   height: 50,
-                    //   width: 50,
-                    //   color: Colors.pink,
-                    //   child: Center(
-                    //     child: InkWell(
-                    //         child: Text("Hello World"),
-                    //         onTap: () => launch(
-                    //             "https://www.youtube.com/watch?v=nf4_Ke5B1K8")),
-                    //   ),
-                    // ),
                     SingleChildScrollView(
                       padding: EdgeInsets.all(8.0),
                       scrollDirection: Axis.horizontal,
@@ -229,18 +203,6 @@ class _HomeState extends State<Explore> {
                       style:
                           TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
-                    // CarouselSlider.builder(
-                    //   itemCount: 5,
-                    //   itemBuilder: (BuildContext context, int itemIndex,
-                    //           int pageViewIndex) =>
-                    //       Container(
-                    //           child: Image.asset("images/BoolPlaceHolder.jpg")),
-                    //   options: CarouselOptions(
-                    //     height: 200,
-                    //     autoPlay: true,
-                    //     enableInfiniteScroll: false,
-                    //   ),
-                    // ),
                     SingleChildScrollView(
                       padding: EdgeInsets.all(6.0),
                       scrollDirection: Axis.horizontal,
@@ -278,19 +240,6 @@ class _HomeState extends State<Explore> {
                       style:
                           TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
-                    // CarouselSlider.builder(
-                    //   itemCount: 5,
-                    //   itemBuilder: (BuildContext context, int itemIndex,
-                    //           int pageViewIndex) =>
-                    //       Container(
-                    //           child:
-                    //               Image.asset("images/musicPlaceholder.jpg")),
-                    //   options: CarouselOptions(
-                    //     height: 180,
-                    //     autoPlay: true,
-                    //     enableInfiniteScroll: false,
-                    //   ),
-                    // ),
                     SingleChildScrollView(
                       padding: EdgeInsets.all(6.0),
                       scrollDirection: Axis.horizontal,

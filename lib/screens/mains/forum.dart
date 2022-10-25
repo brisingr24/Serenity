@@ -9,7 +9,6 @@ import '../../sevices/user.dart';
 import '../postadd.dart';
 import '../signup.dart';
 
-
 class Forum extends StatefulWidget {
   final String uid;
   const Forum({Key? key, required this.uid}) : super(key: key);
@@ -18,8 +17,6 @@ class Forum extends StatefulWidget {
 }
 
 class _ForumState extends State<Forum> {
-
-
   final AuthService _auth = AuthService();
 
   _callNumber() async {
@@ -96,7 +93,7 @@ class _ForumState extends State<Forum> {
                         Align(
                           alignment: Alignment.centerLeft,
                           child: ElevatedButton(
-                onPressed: _callNumber,
+                              onPressed: _callNumber,
                               child: const Text(
                                 "Panic",
                                 style: TextStyle(
@@ -146,10 +143,8 @@ class _ForumState extends State<Forum> {
                   alignment: Alignment.bottomRight,
                   child: ElevatedButton(
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => postAdd()));
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => postAdd()));
                       },
                       child: Text(
                         "Add a new post",
@@ -164,8 +159,9 @@ class _ForumState extends State<Forum> {
                               MaterialStateProperty.all(Color(0xFFFF9494)),
                           fixedSize: MaterialStateProperty.all<Size>(
                               const Size(150, 20)),
-                          shape: MaterialStateProperty.all<
-                              RoundedRectangleBorder>(RoundedRectangleBorder(
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18.0),
                           )))),
                 ),

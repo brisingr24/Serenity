@@ -6,9 +6,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../models/userModel.dart';
 import '../../sevices/user.dart';
-import '../../widgets/JournCard.dart';
 import '../aboutus.dart';
-import '../../myJournal/journal.dart';
+import '../myJournal/journal.dart';
 import '../questionnaire.dart';
 
 class Profile extends StatefulWidget {

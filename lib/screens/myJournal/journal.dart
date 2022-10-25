@@ -1,11 +1,10 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:envision/myJournal/journal_add.dart';
-import 'package:envision/myJournal/journal_edit.dart';
 import 'package:flutter/material.dart';
-
-import '../widgets/JournCard.dart';
+import 'package:envision/screens/myJournal/journal_add.dart';
+import 'package:envision/screens/myJournal/journal_edit.dart';
+import '../../widgets/JournCard.dart';
 
 class Journal extends StatefulWidget {
   Journal(this.uid, {Key? key}) : super(key: key);

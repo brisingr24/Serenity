@@ -1,8 +1,6 @@
 // ignore_for_file: prefer_const_constructors
-
+import 'package:envision/screens/mains/profile.dart';
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 import '../../models/userModel.dart';
 import '../../sevices/user.dart';
 
@@ -136,7 +134,11 @@ class BookingConfirm extends StatelessWidget {
                           ),
                         ),
                         child: Text("My Bookings"),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Profile(uid: uid)),
+                        );},
                       ),
                     )
                   ],

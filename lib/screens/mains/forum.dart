@@ -1,12 +1,14 @@
 // ignore_for_file: prefer_const_constructors
-
 import 'package:envision/widgets/postDisplay.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import '../../models/userModel.dart';
+import 'package:envision/sevices/auth.dart';
 import '../../sevices/user.dart';
 import '../postadd.dart';
+import '../signup.dart';
+
 
 class Forum extends StatefulWidget {
   final String uid;
@@ -16,6 +18,15 @@ class Forum extends StatefulWidget {
 }
 
 class _ForumState extends State<Forum> {
+
+
+  final AuthService _auth = AuthService();
+
+  _callNumber() async {
+    const number = '+919136711710'; //set the number here
+    bool? res = await FlutterPhoneDirectCaller.callNumber(number);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,6 +38,22 @@ class _ForumState extends State<Forum> {
           "FORUM",
           style: TextStyle(color: Colors.black),
         ),
+        actions: <Widget>[
+          TextButton.icon(
+              label: const Text(
+                "Sign Out",
+                style: TextStyle(color: Colors.black),
+              ),
+              icon: Icon(
+                Icons.person,
+                color: Colors.black,
+              ),
+              onPressed: () async {
+                _auth.signOut();
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (context) => SignUp()));
+              })
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(14.0),
@@ -69,7 +96,7 @@ class _ForumState extends State<Forum> {
                         Align(
                           alignment: Alignment.centerLeft,
                           child: ElevatedButton(
-                              onPressed: null,
+                onPressed: _callNumber,
                               child: const Text(
                                 "Panic",
                                 style: TextStyle(

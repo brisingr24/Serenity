@@ -6,7 +6,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../models/userModel.dart';
 import '../../sevices/user.dart';
-import '../../widgets/ContactTile.dart';
+import '../../widgets/JournCard.dart';
 import '../aboutus.dart';
 import '../../myJournal/journal.dart';
 import '../questionnaire.dart';
@@ -21,14 +21,6 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   late final Stream<UserModel?> userModelStream;
-  Stream<List<Doctor>>? _listDoctor;
-
-  String text = "";
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -106,23 +98,32 @@ class _ProfileState extends State<Profile> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  user.age != null?
-                                  Text(
-                                    '${user.age} years |',
-                                    style: TextStyle(fontSize: 18),
-                                  ):SizedBox(width: 1,),
-                                  user.gender != null?
-                                  Text(
-                                    '${user.gender}',
-                                    style: TextStyle(fontSize: 18),
-                                  ):SizedBox(width: 1,),
+                                  user.age != null
+                                      ? Text(
+                                          '${user.age} years |',
+                                          style: TextStyle(fontSize: 18),
+                                        )
+                                      : SizedBox(
+                                          width: 1,
+                                        ),
+                                  user.gender != null
+                                      ? Text(
+                                          '${user.gender}',
+                                          style: TextStyle(fontSize: 18),
+                                        )
+                                      : SizedBox(
+                                          width: 1,
+                                        ),
                                 ],
                               ),
-                              user.city != null?
-                              Text(
-                                '${user.city}',
-                                style: TextStyle(fontSize: 18),
-                              ):SizedBox(height: 1,),
+                              user.city != null
+                                  ? Text(
+                                      '${user.city}',
+                                      style: TextStyle(fontSize: 18),
+                                    )
+                                  : SizedBox(
+                                      height: 1,
+                                    ),
                             ],
                           );
                         }
@@ -200,53 +201,68 @@ class _ProfileState extends State<Profile> {
                     SizedBox(
                       height: 30,
                     ),
-                  // StreamBuilder<UserModel?>(
-                  //     stream: UserService().getUserInfo(widget.uid),
-                  //     builder: (context, snapshot) {
-                  //       if (!snapshot.hasData) {
-                  //         return Center(child: CircularProgressIndicator());
-                  //       }
-                  //       var data = snapshot.data;
-                  //       if (data == null) return Center(child: Text("No data"));
-                  //
-                  //       UserModel user = snapshot.data!;
-                  //       return Text(user.name.toString());
-                  //     }),
-                  //   StreamBuilder<List<Doctor>>(
-                  //       stream: _listDoctor,
-                  //       builder: (context, snapshot) {
-                  //         if (!snapshot.hasData) {
-                  //           return Center(child: CircularProgressIndicator());
-                  //         }
-                  //         var data = snapshot.data;
-                  //         if (data == null) return Center(child: Text("No data"));
-                  //
-                  //         return Container(
-                  //           padding: EdgeInsets.all(8),
-                  //           height: 85,
-                  //           child: ListView.builder(
-                  //               scrollDirection: Axis.horizontal,
-                  //               itemCount: (data.isNotEmpty) ? data.length : 0,
-                  //               shrinkWrap: true,
-                  //               itemBuilder: (context, index) {
-                  //                 return Contact(
-                  //                   uid: widget.uid,
-                  //                   docID: data[index].id ?? "",
-                  //                   name: data[index].name,
-                  //                   profession: data[index].job,
-                  //                   city: data[index].city,
-                  //                   rating: data[index].rate,
-                  //                 );
-                  //               }),
-                  //         );
-                  //       }),
+                    StreamBuilder<UserModel?>(
+                        stream: UserService().getUserInfo(widget.uid),
+                        builder: (context, snapshot) {
+                          if (!snapshot.hasData) {
+                            return Center(
+                                child: Text("Book Your First Appointment!"));
+                          }
+                          var data = snapshot.data;
+                          if (data == null) {
+                            return Center(child: Text("No data"));
+                          }
+
+                          if (data.booked == true) {
+                            return StreamBuilder<DocumentSnapshot>(
+                              stream: FirebaseFirestore.instance
+                                  .collection("doctor")
+                                  .doc(data.docID)
+                                  .snapshots(),
+                              builder: (context,snapshot) {
+                                if (snapshot.connectionState == ConnectionState.waiting) {
+                                  return Center(child: CircularProgressIndicator());
+                                }
+                                if (snapshot.hasData) {
+                                  var data2 = snapshot.data;
+                                  return Container(
+                                      color: Colors.black,
+                                      height: 120,
+                                      width: 300,
+                                      child: ListView.builder(
+                                          scrollDirection: Axis.horizontal,
+                                          itemCount: 2,
+                                          shrinkWrap: true,
+                                          itemBuilder: (context, index) {
+                                            return Padding(
+                                              padding: const EdgeInsets.all(8.0),
+                                              child: Container(
+                                                color: Colors.white,
+                                                height: 100,
+                                                width: 150,
+                                                child: Center(child: Text(data2.toString()),),
+                                              ),
+                                            );
+                                          }));
+                                }
+                                return Text(
+                                  "There's No Notes",
+                                  style: TextStyle(fontSize: 15, color: Colors.black54),
+                                );
+                              },
+                            );
+                          } else {
+                            return Center(
+                                child: Text("Book Your First Appointment!"));
+                          }
+                        }),
                     ElevatedButton(
                         onPressed: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      GridList(uid: widget.uid)));
+                                      Appointment(uid: widget.uid)));
                         },
                         child: Text("BOOK"),
                         style: ButtonStyle(
@@ -279,7 +295,7 @@ class _ProfileState extends State<Profile> {
                             "Whats on your mind today?",
                             style: TextStyle(fontSize: 16),
                           ),
-                          onTap: (){
+                          onTap: () {
                             Navigator.push(
                               context,
                               MaterialPageRoute(

@@ -17,13 +17,12 @@ class PostDisplay extends StatefulWidget {
 
 class _PostDisplayState extends State<PostDisplay> {
   late final Stream<List<PostModel>> postModelStream;
-  PostService _postService = PostService();
+  final PostService _postService = PostService();
   late final Stream<UserModel?> userModelStream;
   int ct=0;
 
   @override
   void initState() {
-    // TODO: implement initState
     postModelStream = _postService.getPostByUser(widget.uid);
     super.initState();
   }

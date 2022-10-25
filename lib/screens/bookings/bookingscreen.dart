@@ -100,7 +100,7 @@ class _BookingScreenState extends State<BookingScreen> {
                     await confirmBooking();
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => BookingConfirm()),
+                      MaterialPageRoute(builder: (context) => BookingConfirm(uid: widget.uid,docID: widget.docID,)),
                     );
                   },
                   child: Text('Book Now'),

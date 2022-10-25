@@ -1,6 +1,7 @@
 import 'package:envision/screens/bookings/bookingscreen.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class Contact extends StatefulWidget {
   Contact(
       {Key? key,

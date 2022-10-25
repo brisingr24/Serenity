@@ -1,11 +1,17 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
+import '../../models/userModel.dart';
+import '../../sevices/user.dart';
+
+// ignore: must_be_immutable
 class BookingConfirm extends StatelessWidget {
-  const BookingConfirm({
-    Key? key,
-  });
+  BookingConfirm({Key? key, required this.uid, required this.docID})
+      : super(key: key);
+  String docID;
+  String uid;
 
   @override
   Widget build(BuildContext context) {
@@ -38,26 +44,30 @@ class BookingConfirm extends StatelessWidget {
                                 ),
                               ),
                               SizedBox(height: 60),
-                              Container(
-                                child: Text(
-                                  'Hey Student',
-                                  style: TextStyle(
-                                    // fontWeight: FontWeight.bold,
-                                    fontSize: 25,
-                                  ),
-                                ),
-                              ),
+                              StreamBuilder<UserModel?>(
+                                  stream: UserService().getUserInfo(uid),
+                                  builder: (context, snapshot) {
+                                    if (snapshot.hasData) {
+                                      if (snapshot.data != null) {
+                                        UserModel user = snapshot.data!;
+                                        return Text(
+                                          '${user.name}',
+                                          style: TextStyle(fontSize: 20),
+                                        );
+                                      } else
+                                        return Center();
+                                    } else
+                                      return Center();
+                                  }),
                               SizedBox(
                                 height: 30,
                               ),
-                              Container(
-                                child: Text(
-                                  'Your Booking has been confirmed!',
-                                  style: TextStyle(
-                                    // fontWeight: FontWeight.bold,
-                                    fontSize: 20,
-                                    color: Colors.green,
-                                  ),
+                              Text(
+                                'Your Booking has been confirmed!',
+                                style: TextStyle(
+                                  // fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                  color: Colors.green,
                                 ),
                               ),
                             ],

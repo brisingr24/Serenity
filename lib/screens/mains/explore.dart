@@ -1,8 +1,5 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-import 'dart:developer';
-
 import 'package:envision/sevices/auth.dart';
-import 'package:envision/widgets/catergory_item.dart';
 import 'package:envision/widgets/music.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -134,28 +131,32 @@ class _HomeState extends State<Explore> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      padding: EdgeInsets.all(8),
-                      height: 80,
-                      child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: navItem.length,
-                          shrinkWrap: true,
-                          itemBuilder: (context, index) {
-                            return InkWell(
-                                onTap: (() {
-                                  log(navItem[index]);
-                                }),
-                                child: CategoryItem(item: navItem[index]));
-                          }),
+                    // Container(
+                    //   padding: EdgeInsets.all(8),
+                    //   height: 80,
+                    //   // child: ListView.builder(
+                    //   //     scrollDirection: Axis.horizontal,
+                    //   //     itemCount: navItem.length,
+                    //   //     shrinkWrap: true,
+                    //   //     itemBuilder: (context, index) {
+                    //   //       return InkWell(
+                    //   //           onTap: (() {
+                    //   //             log(navItem[index]);
+                    //   //           }),
+                    //   //           child: CategoryItem(item: navItem[index]));
+                    //   //     }),
+                    // ),
+                    SizedBox(
+                      height: 20,
                     ),
                     Text(
                       'Games',
                       style:
                           TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
+                    SizedBox(height: 8),
                     SizedBox(
-                      height: 150,
+                      height: 170,
                       child: Center(
                         child: ClipRRect(
                             borderRadius: BorderRadius.circular(15),

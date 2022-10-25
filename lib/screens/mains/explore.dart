@@ -4,12 +4,14 @@ import 'dart:developer';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:envision/sevices/auth.dart';
 import 'package:envision/widgets/catergory_item.dart';
+import 'package:envision/widgets/music.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import '../../models/userModel.dart';
 import '../../sevices/user.dart';
 import '../signup.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Explore extends StatefulWidget {
   final String uid;
@@ -156,7 +158,11 @@ class _HomeState extends State<Explore> {
                       height: 150,
                       child: ClipRRect(
                           borderRadius: BorderRadius.circular(15),
-                          child: Image.asset("images/games.jpg")),
+                          child: InkWell(
+                            child: Image.asset("images/games.jpg"),
+                            onTap: () => launch(
+                                "https://play.google.com/store/search?q=alto%27s+odyssey&c=apps"),
+                          )),
                     ),
                     SizedBox(
                       height: 16,
@@ -166,19 +172,55 @@ class _HomeState extends State<Explore> {
                       style:
                           TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
-                    CarouselSlider.builder(
-                      itemCount: 5,
-                      itemBuilder: (BuildContext context, int itemIndex,
-                              int pageViewIndex) =>
-                          Container(
-                              child:
-                                  Image.asset("images/musicPlaceholder.jpg")),
-                      options: CarouselOptions(
-                        height: 180,
-                        autoPlay: true,
-                        enableInfiniteScroll: false,
+                    // CarouselSlider.builder(
+                    //   itemCount: 5,
+                    //   itemBuilder: (BuildContext context, int itemIndex,
+                    //           int pageViewIndex) =>
+                    //       Container(
+                    //           child:
+                    //               Image.asset("images/musicPlaceholder.jpg")),
+                    //   options: CarouselOptions(
+                    //     height: 180,
+                    //     autoPlay: true,
+                    //     enableInfiniteScroll: false,
+                    //   ),
+                    // ),
+                    // Container(
+                    //   height: 50,
+                    //   width: 50,
+                    //   color: Colors.pink,
+                    //   child: Center(
+                    //     child: InkWell(
+                    //         child: Text("Hello World"),
+                    //         onTap: () => launch(
+                    //             "https://www.youtube.com/watch?v=nf4_Ke5B1K8")),
+                    //   ),
+                    // ),
+                    SingleChildScrollView(
+                      padding: EdgeInsets.all(8.0),
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          music_container(
+                              image: "images/musicPlaceholder.jpg",
+                              url:
+                                  "https://open.spotify.com/playlist/0ffnLxCftwLzmXDO7DJEXc?si=BpKndlCtSnWcZ__V_GiSKw&utm_source=whats"),
+                          music_container(
+                              image: "images/musicPlaceholder.jpg",
+                              url:
+                                  "https://stackoverflow.com/questions/43583411/how-to-create-a-hyperlink-in-flutter-widget"),
+                          music_container(
+                              image: "images/musicPlaceholder.jpg",
+                              url:
+                                  "https://api.flutter.dev/flutter/widgets/ListView-class.html"),
+                          music_container(
+                              image: "images/musicPlaceholder.jpg",
+                              url:
+                                  "https://stackoverflow.com/questions/43149055/how-do-i-open-a-web-browser-url-from-my-flutter-code"),
+                        ],
                       ),
                     ),
+
                     SizedBox(
                       height: 16,
                     ),
@@ -187,16 +229,45 @@ class _HomeState extends State<Explore> {
                       style:
                           TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
-                    CarouselSlider.builder(
-                      itemCount: 5,
-                      itemBuilder: (BuildContext context, int itemIndex,
-                              int pageViewIndex) =>
-                          Container(
-                              child: Image.asset("images/BoolPlaceHolder.jpg")),
-                      options: CarouselOptions(
-                        height: 200,
-                        autoPlay: true,
-                        enableInfiniteScroll: false,
+                    // CarouselSlider.builder(
+                    //   itemCount: 5,
+                    //   itemBuilder: (BuildContext context, int itemIndex,
+                    //           int pageViewIndex) =>
+                    //       Container(
+                    //           child: Image.asset("images/BoolPlaceHolder.jpg")),
+                    //   options: CarouselOptions(
+                    //     height: 200,
+                    //     autoPlay: true,
+                    //     enableInfiniteScroll: false,
+                    //   ),
+                    // ),
+                    SingleChildScrollView(
+                      padding: EdgeInsets.all(6.0),
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          books_container(
+                              image: "images/book1.jpg",
+                              url: "https://amzn.eu/d/4KW8r0k"),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          books_container(
+                              image: "images/book2.jpg",
+                              url: "https://amzn.eu/d/4KW8r0k"),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          books_container(
+                              image: "images/book3.jpg",
+                              url: "https://amzn.eu/d/2BZbg2b"),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          books_container(
+                              image: "images/book4.jpg",
+                              url: "https://amzn.eu/d/2BZbg2b"),
+                        ],
                       ),
                     ),
                     SizedBox(
@@ -207,19 +278,42 @@ class _HomeState extends State<Explore> {
                       style:
                           TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
-                    CarouselSlider.builder(
-                      itemCount: 5,
-                      itemBuilder: (BuildContext context, int itemIndex,
-                              int pageViewIndex) =>
-                          Container(
-                              child:
-                                  Image.asset("images/musicPlaceholder.jpg")),
-                      options: CarouselOptions(
-                        height: 180,
-                        autoPlay: true,
-                        enableInfiniteScroll: false,
+                    // CarouselSlider.builder(
+                    //   itemCount: 5,
+                    //   itemBuilder: (BuildContext context, int itemIndex,
+                    //           int pageViewIndex) =>
+                    //       Container(
+                    //           child:
+                    //               Image.asset("images/musicPlaceholder.jpg")),
+                    //   options: CarouselOptions(
+                    //     height: 180,
+                    //     autoPlay: true,
+                    //     enableInfiniteScroll: false,
+                    //   ),
+                    // ),
+                    SingleChildScrollView(
+                      padding: EdgeInsets.all(6.0),
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          more_container(
+                              image: "https://youtu.be/PReWdfg2cM8",
+                              url: "https://youtu.be/PReWdfg2cM8"),
+                          more_container(
+                              image:
+                                  "https://img.youtube.com/vi/H8xMIjz6LRY/0.jpg",
+                              url: "https://youtu.be/H8xMIjz6LRY"),
+                          more_container(
+                              image:
+                                  "https://img.youtube.com/vi/Bzh9HmjqwLg/0.jpg",
+                              url: "https://youtu.be/Bzh9HmjqwLg"),
+                          more_container(
+                              image:
+                                  "https://img.youtube.com/vi/bwP2qIC8sc4/0.jpg",
+                              url: "https://youtu.be/bwP2qIC8sc4")
+                        ],
                       ),
-                    ),
+                    )
                   ],
                 ),
               ),

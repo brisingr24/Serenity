@@ -1,9 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'dart:io';
+
 import 'package:envision/sevices/user.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 
 class EditProfile extends StatefulWidget {
@@ -37,11 +38,14 @@ class _EditProfileState extends State<EditProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color(0xFFFF9494),
         actions: [
           ElevatedButton(
+              style:
+                  ElevatedButton.styleFrom(backgroundColor: Color(0xFFFF9494)),
               onPressed: () async {
                 await _userService.updateProfile(
-                     name, city, age, gender, phone);
+                    name, city, age, gender, phone);
                 Navigator.pop(context);
                 setState(() {});
               },
@@ -63,6 +67,8 @@ class _EditProfileState extends State<EditProfile> {
                 height: 15,
               ),
               ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xFFFF9494)),
                   onPressed: () => getImage(),
                   child: _profileImg == null
                       ? const Icon(Icons.person_add_alt_1_rounded)
@@ -71,9 +77,10 @@ class _EditProfileState extends State<EditProfile> {
                           height: 100,
                         )),
               ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xFFFF9494)),
                   onPressed: () async {
-                    await _userService.updatePic(
-                        _profileImg!);
+                    await _userService.updatePic(_profileImg!);
                   },
                   child: Text("SAVE PIC")),
               SizedBox(
@@ -90,7 +97,8 @@ class _EditProfileState extends State<EditProfile> {
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(),
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Color(0xFFFFD1D1))),
                     hintText: "Enter User Name",
                     labelText: "Username",
                     prefixIcon: Icon(Icons.person_add_alt_1_rounded),
@@ -105,11 +113,15 @@ class _EditProfileState extends State<EditProfile> {
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    hintText: "Enter City",
-                    labelText: "city",
-                    prefixIcon: Icon(Icons.location_city),
-                  ),
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xFFFFD1D1))),
+                      hintText: "Enter City",
+                      labelText: "city",
+                      prefixIcon: Icon(
+                        Icons.location_city,
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Color(0xFFFF9494)))),
                   onChanged: (val) => setState(() {
                     city = val;
                   }),
@@ -153,7 +165,9 @@ class _EditProfileState extends State<EditProfile> {
                     border: OutlineInputBorder(),
                     hintText: "Enter Phone No.",
                     labelText: "Phone",
-                    prefixIcon: Icon(Icons.phone),
+                    prefixIcon: Icon(
+                      Icons.phone,
+                    ),
                   ),
                   onChanged: (val) => setState(() {
                     phone = val;

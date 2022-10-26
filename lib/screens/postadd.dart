@@ -14,20 +14,23 @@ class postAdd extends StatefulWidget {
 
 class _postAddState extends State<postAdd> {
   final PostService _postService = PostService();
-  String text ="";
+  String text = "";
   @override
   Widget build(BuildContext context) {
-    UserModel user = Provider.of<UserModel> (context);
+    UserModel user = Provider.of<UserModel>(context);
     return Scaffold(
-      backgroundColor: Colors.blue.shade50,
+      backgroundColor: Color(0xFFFFF5E4),
       appBar: AppBar(
         title: Text('CREATE POST'),
+        backgroundColor: Color(0xFFFF9494),
         actions: [
-          ElevatedButton(onPressed: ()async{
-            _postService.savePost(text);
-            Navigator.pop(context);
-          }, child: Text('POST')
-          )
+          ElevatedButton(
+              style: ElevatedButton.styleFrom(primary: Color(0xFFFF9494)),
+              onPressed: () async {
+                _postService.savePost(text);
+                Navigator.pop(context);
+              },
+              child: Text('POST'))
         ],
       ),
       body: SingleChildScrollView(
@@ -35,14 +38,14 @@ class _postAddState extends State<postAdd> {
           padding: const EdgeInsets.all(16.0),
           child: Container(
             child: Form(
-              child:  TextFormField(
+              child: TextFormField(
                 decoration: InputDecoration(
                   hintText: "Start Writing!",
                   hintMaxLines: 4,
                 ),
-                    keyboardType: TextInputType.multiline,
-                    maxLines: null,
-                onChanged: (val){
+                keyboardType: TextInputType.multiline,
+                maxLines: null,
+                onChanged: (val) {
                   setState(() {
                     text = val;
                   });

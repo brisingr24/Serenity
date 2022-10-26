@@ -1,15 +1,14 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-import 'dart:developer';
 import 'package:envision/sevices/auth.dart';
-import 'package:envision/widgets/catergory_item.dart';
 import 'package:envision/widgets/music.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 import '../../models/userModel.dart';
 import '../../sevices/user.dart';
 import '../signup.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class Explore extends StatefulWidget {
   final String uid;
@@ -76,19 +75,19 @@ class _HomeState extends State<Explore> {
                       children: [
                         user.profileImgURL == null
                             ? CircleAvatar(
-                          child: Image.asset(
-                            "images/userdef.png",
-                            height: 50,
-                            width: 50,
-                          ),
-                          backgroundColor: Colors.white,
-                        )
+                                child: Image.asset(
+                                  "images/userdef.png",
+                                  height: 50,
+                                  width: 50,
+                                ),
+                                backgroundColor: Colors.white,
+                              )
                             : CircleAvatar(
-                          radius: 30,
-                          backgroundImage: NetworkImage(
-                            user.profileImgURL ?? ' ',
-                          ),
-                        ),
+                                radius: 30,
+                                backgroundImage: NetworkImage(
+                                  user.profileImgURL ?? ' ',
+                                ),
+                              ),
                         Padding(
                           padding: const EdgeInsets.all(6.0),
                           child: Text(
@@ -111,14 +110,14 @@ class _HomeState extends State<Explore> {
                               style: ButtonStyle(
                                   elevation: MaterialStateProperty.all(6.0),
                                   backgroundColor:
-                                  MaterialStateProperty.all(Colors.black),
+                                      MaterialStateProperty.all(Colors.black),
                                   fixedSize: MaterialStateProperty.all<Size>(
                                       const Size(80, 16)),
                                   shape: MaterialStateProperty.all<
-                                      RoundedRectangleBorder>(
+                                          RoundedRectangleBorder>(
                                       RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(18.0),
-                                      )))),
+                                    borderRadius: BorderRadius.circular(18.0),
+                                  )))),
                         ),
                       ],
                     );
@@ -132,35 +131,41 @@ class _HomeState extends State<Explore> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      padding: EdgeInsets.all(8),
-                      height: 80,
-                      child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: navItem.length,
-                          shrinkWrap: true,
-                          itemBuilder: (context, index) {
-                            return InkWell(
-                                onTap: (() {
-                                  log(navItem[index]);
-                                }),
-                                child: CategoryItem(item: navItem[index]));
-                          }),
+                    // Container(
+                    //   padding: EdgeInsets.all(8),
+                    //   height: 80,
+                    //   // child: ListView.builder(
+                    //   //     scrollDirection: Axis.horizontal,
+                    //   //     itemCount: navItem.length,
+                    //   //     shrinkWrap: true,
+                    //   //     itemBuilder: (context, index) {
+                    //   //       return InkWell(
+                    //   //           onTap: (() {
+                    //   //             log(navItem[index]);
+                    //   //           }),
+                    //   //           child: CategoryItem(item: navItem[index]));
+                    //   //     }),
+                    // ),
+                    SizedBox(
+                      height: 20,
                     ),
                     Text(
                       'Games',
                       style:
                           TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
+                    SizedBox(height: 8),
                     SizedBox(
-                      height: 150,
-                      child: ClipRRect(
-                          borderRadius: BorderRadius.circular(15),
-                          child: InkWell(
-                            child: Image.asset("images/games.jpg"),
-                            onTap: () => launch(
-                                "https://play.google.com/store/search?q=alto%27s+odyssey&c=apps"),
-                          )),
+                      height: 170,
+                      child: Center(
+                        child: ClipRRect(
+                            borderRadius: BorderRadius.circular(15),
+                            child: InkWell(
+                              child: Image.asset("images/altos.png"),
+                              onTap: () => launch(
+                                  "https://play.google.com/store/search?q=alto%27s+odyssey&c=apps"),
+                            )),
+                      ),
                     ),
                     SizedBox(
                       height: 16,
@@ -176,25 +181,20 @@ class _HomeState extends State<Explore> {
                       child: Row(
                         children: [
                           music_container(
-                              image: "images/musicPlaceholder.jpg",
                               url:
                                   "https://open.spotify.com/playlist/0ffnLxCftwLzmXDO7DJEXc?si=BpKndlCtSnWcZ__V_GiSKw&utm_source=whats"),
                           music_container(
-                              image: "images/musicPlaceholder.jpg",
                               url:
                                   "https://stackoverflow.com/questions/43583411/how-to-create-a-hyperlink-in-flutter-widget"),
                           music_container(
-                              image: "images/musicPlaceholder.jpg",
                               url:
                                   "https://api.flutter.dev/flutter/widgets/ListView-class.html"),
                           music_container(
-                              image: "images/musicPlaceholder.jpg",
                               url:
                                   "https://stackoverflow.com/questions/43149055/how-do-i-open-a-web-browser-url-from-my-flutter-code"),
                         ],
                       ),
                     ),
-
                     SizedBox(
                       height: 16,
                     ),
@@ -246,20 +246,17 @@ class _HomeState extends State<Explore> {
                       child: Row(
                         children: [
                           more_container(
-                              image:
-                                  "https://i3.ytimg.com/vi/PReWdfg2cM8/maxresdefault.jpg",
+                              image: "images/vid1.jpg",
                               url: "https://youtu.be/PReWdfg2cM8"),
                           more_container(
-                              image:
-                                  "https://img.youtube.com/vi/H8xMIjz6LRY/0.jpg",
-                              url: "https://youtu.be/H8xMIjz6LRY"),
+                              image: "images/vid2.jpg",
+                              url:
+                                  "https://www.youtube.com/watch?v=wOGqlVqyvCM"),
                           more_container(
-                              image:
-                                  "https://img.youtube.com/vi/Bzh9HmjqwLg/0.jpg",
+                              image: "images/vid3.jpg",
                               url: "https://youtu.be/Bzh9HmjqwLg"),
                           more_container(
-                              image:
-                                  "https://img.youtube.com/vi/bwP2qIC8sc4/0.jpg",
+                              image: "images/vid4.jpg",
                               url: "https://youtu.be/bwP2qIC8sc4")
                         ],
                       ),

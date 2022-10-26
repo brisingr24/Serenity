@@ -100,11 +100,11 @@ class _AboutUsState extends State<AboutUs> {
               width: size.width,
               height: size.height / 4,
               child: Image.asset(
-                "images/env1.png",
+                "images/A22_header.png",
                 fit: BoxFit.contain,
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 10),
             Row(children: [
               SizedBox(width: 20),
               Row(

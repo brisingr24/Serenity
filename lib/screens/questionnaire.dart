@@ -10,12 +10,11 @@ class Question extends StatefulWidget {
 }
 
 class _QuestionState extends State<Question> {
-
   bool a = false;
   bool b = false;
   bool c = false;
   bool d = false;
-  String chk="";
+  String chk = "";
   final q1 = TextEditingController();
   String q1a = "";
   @override
@@ -41,21 +40,25 @@ class _QuestionState extends State<Question> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        SizedBox(height: 40,),
+                        SizedBox(
+                          height: 40,
+                        ),
                         Align(
                           alignment: Alignment.centerLeft,
                           child: const Text(
-                            'Multiple Select Option',
+                            'What out of this affect your mental health?',
                             style: TextStyle(
                               fontSize: 20,
                               color: Colors.black,
                             ),
                           ),
                         ),
-                        SizedBox(height: 40,),
+                        SizedBox(
+                          height: 40,
+                        ),
                         CheckboxListTile(
-                          title:  const Text(
-                            'Question 1',
+                          title: const Text(
+                            'Personal Relationships',
                             style: TextStyle(
                               fontSize: 20,
                               color: Colors.black,
@@ -69,8 +72,8 @@ class _QuestionState extends State<Question> {
                           },
                         ),
                         CheckboxListTile(
-                          title:  const Text(
-                            'Question 2',
+                          title: const Text(
+                            'Academics',
                             style: TextStyle(
                               fontSize: 20,
                               color: Colors.black,
@@ -84,8 +87,8 @@ class _QuestionState extends State<Question> {
                           },
                         ),
                         CheckboxListTile(
-                          title:  const Text(
-                            'Question 3',
+                          title: const Text(
+                            'Workplace relationships',
                             style: TextStyle(
                               fontSize: 20,
                               color: Colors.black,
@@ -99,8 +102,8 @@ class _QuestionState extends State<Question> {
                           },
                         ),
                         CheckboxListTile(
-                          title:  const Text(
-                            'Question 4',
+                          title: const Text(
+                            'Access to public ',
                             style: TextStyle(
                               fontSize: 20,
                               color: Colors.black,
@@ -168,18 +171,22 @@ class _QuestionState extends State<Question> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        SizedBox(height: 40,),
+                        SizedBox(
+                          height: 40,
+                        ),
                         Align(
                           alignment: Alignment.centerLeft,
                           child: const Text(
-                            'Single Choice Option',
+                            'What is your gender?',
                             style: TextStyle(
                               fontSize: 20,
                               color: Colors.black,
                             ),
                           ),
                         ),
-                        SizedBox(height: 40,),
+                        SizedBox(
+                          height: 40,
+                        ),
                         RadioListTile(
                             title: Text("Male"),
                             value: "male",
@@ -262,18 +269,22 @@ class _QuestionState extends State<Question> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        SizedBox(height: 40,),
+                        SizedBox(
+                          height: 40,
+                        ),
                         Align(
                           alignment: Alignment.centerLeft,
                           child: const Text(
-                            'Input Based Questions',
+                            'What is the percentage (%) of your disability',
                             style: TextStyle(
                               fontSize: 20,
                               color: Colors.black,
                             ),
                           ),
                         ),
-                        SizedBox(height: 40,),
+                        SizedBox(
+                          height: 100,
+                        ),
                         TextFormField(
                           controller: q1,
                           decoration: InputDecoration(

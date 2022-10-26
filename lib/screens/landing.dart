@@ -1,4 +1,4 @@
- // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, deprecated_member_use
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, deprecated_member_use
 
 import 'package:envision/models/sharedPrefModel.dart';
 import 'package:flutter/cupertino.dart';
@@ -22,7 +22,7 @@ class LandingPage extends StatelessWidget {
           'Mindfulness',
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
-        centerTitle:  true,
+        centerTitle: true,
       ),
       body: Container(
         //padding: const EdgeInsets.only(bottom: 80),
@@ -91,7 +91,7 @@ class LandingPage extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
                       child: ReadMoreText(
-                        'It runs 11,000 trains every day on tracks that spread over 60,000 km in length. It employs close to 1.54 million people, making it the seventh-largest employer in the world, according to Forbes.',
+                        'Mental ‘Health’, as the phrase suggests, isn’t just the state of well-being but also the monitoring of the way you experience emotional and behavioural highs and lows, the soundness of your judgments and the amount of stress that your mind undergoes',
                         style: TextStyle(
                             color: Colors.black45,
                             wordSpacing: 0.25,
@@ -125,7 +125,6 @@ class LandingPage extends StatelessWidget {
                                     curve: Curves.easeInOut);
                               },
                               child: Align(
-                                
                                 child: Text(
                                   "Next",
                                   style: TextStyle(
@@ -214,7 +213,7 @@ class LandingPage extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
                       child: ReadMoreText(
-                        'It runs 11,000 trains every day on tracks that spread over 60,000 km in length. It employs close to 1.54 million people, making it the seventh-largest employer in the world, according to Forbes.',
+                        'Serenity can assist you to manage your Mental Health at your fingertips. The user-friendly app allows you to record, observe and jot down your emotions besides helping you connect in your Serene Friend Circle within the app itself',
                         style: TextStyle(
                             color: Colors.black45,
                             wordSpacing: 0.25,
@@ -284,8 +283,8 @@ class LandingPage extends StatelessWidget {
                       width: 340.0,
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage('images/aaruush.png'),
-                          fit: BoxFit.fill,
+                          image: AssetImage('images/Aaruush Logo.png'),
+                          fit: BoxFit.contain,
                         ),
                         shape: BoxShape.rectangle,
                       ),
@@ -304,7 +303,7 @@ class LandingPage extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
                       child: ReadMoreText(
-                        'It runs 11,000 trains every day on tracks that spread over 60,000 km in length. It employs close to 1.54 million people, making it the seventh-largest employer in the world, according to Forbes.',
+                        'The word Aaruush means ‘First rays of the Sun’ is a National-level Techno-Management fest aspires to bring some Sunshine to the darkest and the deepest scopes where technology can lead to innovations. Operated by numerous dedicated students, this fest leaves no arena of tech unvisited',
                         style: TextStyle(
                             color: Colors.black45,
                             wordSpacing: 0.25,

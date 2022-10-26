@@ -185,13 +185,13 @@ class _HomeState extends State<Explore> {
                                   "https://open.spotify.com/playlist/0ffnLxCftwLzmXDO7DJEXc?si=BpKndlCtSnWcZ__V_GiSKw&utm_source=whats"),
                           music_container(
                               url:
-                                  "https://stackoverflow.com/questions/43583411/how-to-create-a-hyperlink-in-flutter-widget"),
+                                  "https://open.spotify.com/playlist/7msgpEqduZvJT2lqUMlM1J?si=htEEpel0SPWQER8hu3Bn4A&utm_source=whatsapp"),
                           music_container(
                               url:
-                                  "https://api.flutter.dev/flutter/widgets/ListView-class.html"),
+                                  "https://open.spotify.com/playlist/37i9dQZF1DXaq9P62qly90?si=fbd58d3915cd44a1"),
                           music_container(
                               url:
-                                  "https://stackoverflow.com/questions/43149055/how-do-i-open-a-web-browser-url-from-my-flutter-code"),
+                                  "https://open.spotify.com/playlist/0RofBVXfw4D6GMPTsYMK82?si=75c68e021ecf4538"),
                         ],
                       ),
                     ),

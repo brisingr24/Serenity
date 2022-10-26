@@ -1,10 +1,11 @@
 // ignore_for_file: prefer_const_constructors
+import 'package:envision/sevices/auth.dart';
 import 'package:envision/widgets/postDisplay.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
+
 import '../../models/userModel.dart';
-import 'package:envision/sevices/auth.dart';
 import '../../sevices/user.dart';
 import '../postadd.dart';
 import '../signup.dart';

@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 import 'package:envision/screens/bookings/appointment.dart';
+import 'package:envision/screens/bookings/myBookings.dart';
 import 'package:envision/screens/editprofile.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -194,7 +196,7 @@ class _ProfileState extends State<Profile> {
                     Align(
                         alignment: Alignment.centerLeft,
                         child: Text(
-                          "My Appointments",
+                          "My Bookings",
                           style: TextStyle(fontSize: 20),
                         )),
                     SizedBox(
@@ -224,28 +226,32 @@ class _ProfileState extends State<Profile> {
                                 }
                                 if (snapshot.hasData) {
                                   var data2 = snapshot.data;
-                                  return Container(
-                                      color: Colors.black,
-                                      height: 120,
-                                      width: 300,
-                                      child: ListView.builder(
-                                          scrollDirection: Axis.horizontal,
-                                          itemCount: 2,
-                                          shrinkWrap: true,
-                                          itemBuilder: (context, index) {
-                                            return Padding(
-                                              padding: const EdgeInsets.all(8.0),
-                                              child: Container(
-                                                color: Colors.white,
-                                                height: 100,
-                                                width: 150,
-                                                child: Center(child: Text(data2.toString()),),
-                                              ),
-                                            );
-                                          }));
+                                  return Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        border: Border.all(color: Colors.black),
+                                        borderRadius: BorderRadius.circular(10.0),
+                                      ),
+                                      height: 100,
+                                      width: 250,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text("Name: "+data2!["name"].toString(),style: TextStyle(fontSize: 16),),
+                                            Text("Profession: "+data2["job"].toString(),style: TextStyle(fontSize: 16),),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  );
                                 }
                                 return Text(
-                                  "There's No Notes",
+                                  "There's No Bookings yet!",
                                   style: TextStyle(fontSize: 15, color: Colors.black54),
                                 );
                               },
@@ -255,6 +261,7 @@ class _ProfileState extends State<Profile> {
                                 child: Text("Book Your First Appointment!"));
                           }
                         }),
+                    SizedBox(height: 20,),
                     ElevatedButton(
                         onPressed: () {
                           Navigator.push(
@@ -307,6 +314,30 @@ class _ProfileState extends State<Profile> {
                     SizedBox(
                       height: 30,
                     ),
+                    // ElevatedButton(
+                    //     onPressed: () {
+                    //       Navigator.push(
+                    //           context,
+                    //           MaterialPageRoute(
+                    //               builder: (context) => MyBookings(uid: widget.uid)));
+                    //     },
+                    //     child: const Text(
+                    //       "My Bookings",
+                    //       style: TextStyle(
+                    //         color: Colors.white,
+                    //         fontSize: 16,
+                    //       ),
+                    //     ),
+                    //     style: ButtonStyle(
+                    //         elevation: MaterialStateProperty.all(6.0),
+                    //         backgroundColor:
+                    //         MaterialStateProperty.all(Color(0xFFFF9494)),
+                    //         fixedSize: MaterialStateProperty.all<Size>(
+                    //             const Size(500, 20)),
+                    //         shape: MaterialStateProperty.all<
+                    //             RoundedRectangleBorder>(RoundedRectangleBorder(
+                    //           borderRadius: BorderRadius.circular(10.0),
+                    //         )))),
                     ElevatedButton(
                         onPressed: () {
                           Navigator.push(

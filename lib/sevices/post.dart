@@ -34,15 +34,15 @@ class PostService {
         .map((snapshot) => snapshot.exists);
   }
 
-  Future<int> getCountLike(PostModel post) async{
-    int count = 0;
-    await FirebaseFirestore.instance
-        .collection("posts")
-        .doc(post.id)
-        .collection("likes")
-        .get().then((value) => value.docs.forEach((element) {count++;}));
-    return count;
-  }
+  // Future<int> getCountLike(PostModel post) async{
+  //   int count = 0;
+  //   await FirebaseFirestore.instance
+  //       .collection("posts")
+  //       .doc(post.id)
+  //       .collection("likes")
+  //       .get().then((value) => value.docs.forEach((element) {count++;}));
+  //   return count;
+  // }
 
   Stream<List<PostModel>> getPostByUser(uid) {
     return FirebaseFirestore.instance

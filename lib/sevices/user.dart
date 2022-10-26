@@ -21,7 +21,7 @@ class UserService{
       gender: snapshot.data()['gender'],
       phone: snapshot.data()['phone'],
       docID: snapshot.data()['docID'],
-      booked: snapshot.data()['booked']
+      booked: snapshot.data()['booked'],
     ) :UserModel(name:"User");
   }
 

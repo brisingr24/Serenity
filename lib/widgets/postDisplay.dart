@@ -19,7 +19,7 @@ class _PostDisplayState extends State<PostDisplay> {
   late final Stream<List<PostModel>> postModelStream;
   final PostService _postService = PostService();
   late final Stream<UserModel?> userModelStream;
-  int ct=0;
+  int ct = 0;
 
   @override
   void initState() {
@@ -58,8 +58,7 @@ class _PostDisplayState extends State<PostDisplay> {
                       final post = posts[index];
 
                       return StreamBuilder<bool>(
-                          stream:
-                              _postService.getCurrentUserLike(post),
+                          stream: _postService.getCurrentUserLike(post),
                           builder: (context, snapshotLike) {
                             if (!snapshotLike.hasData) {
                               return Center(
@@ -127,9 +126,8 @@ class _PostDisplayState extends State<PostDisplay> {
                                     Row(
                                       children: [
                                         IconButton(
-                                          onPressed: () async{
-                                            _postService.likePost(
-                                                post,
+                                          onPressed: () async {
+                                            _postService.likePost(post,
                                                 snapshotLike.data ?? false);
                                             // ct = await PostService().getCountLike(post);
                                             // print("Counts : " + ct.toString());

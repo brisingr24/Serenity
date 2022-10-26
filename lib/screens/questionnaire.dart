@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class Question extends StatefulWidget {
   const Question({Key? key}) : super(key: key);
@@ -112,6 +113,37 @@ class _QuestionState extends State<Question> {
                             });
                           },
                         ),
+                        SizedBox(height: 40,),
+                        ElevatedButton(
+                            onPressed: () async => {
+                            Fluttertoast.showToast(
+                            msg: "SAVED",
+                            toastLength: Toast.LENGTH_LONG,
+                            gravity: ToastGravity.BOTTOM,
+                            timeInSecForIosWeb: 1,
+                            backgroundColor: Colors.green,
+                            textColor: Colors.white,
+                            fontSize: 16.0
+                            )
+                        },
+                            child: const Text(
+                              "SUBMIT",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
+                              ),
+                            ),
+                            style: ButtonStyle(
+                                elevation: MaterialStateProperty.all(6.0),
+                                backgroundColor:
+                                MaterialStateProperty.all(Colors.blue.shade50),
+                                fixedSize: MaterialStateProperty.all<Size>(
+                                    const Size(150, 20)),
+                                shape:
+                                MaterialStateProperty.all<RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(18.0),
+                                    )))),
                       ],
                     ),
                   ),
@@ -175,6 +207,37 @@ class _QuestionState extends State<Question> {
                                 chk = value.toString();
                               });
                             }),
+                        SizedBox(height: 40,),
+                        ElevatedButton(
+                            onPressed: () async => {
+                              Fluttertoast.showToast(
+                                  msg: "SAVED",
+                                  toastLength: Toast.LENGTH_SHORT,
+                                  gravity: ToastGravity.BOTTOM,
+                                  timeInSecForIosWeb: 1,
+                                  backgroundColor: Colors.green,
+                                  textColor: Colors.white,
+                                  fontSize: 16.0
+                              )
+                            },
+                            child: const Text(
+                              "SUBMIT",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
+                              ),
+                            ),
+                            style: ButtonStyle(
+                                elevation: MaterialStateProperty.all(6.0),
+                                backgroundColor:
+                                MaterialStateProperty.all(Colors.blue.shade50),
+                                fixedSize: MaterialStateProperty.all<Size>(
+                                    const Size(150, 20)),
+                                shape:
+                                MaterialStateProperty.all<RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(18.0),
+                                    )))),
                       ],
                     ),
                   ),
@@ -223,6 +286,37 @@ class _QuestionState extends State<Question> {
                           }),
                           keyboardType: TextInputType.multiline,
                         ),
+                        SizedBox(height: 40,),
+                        ElevatedButton(
+                            onPressed: () async => {
+                              Fluttertoast.showToast(
+                                  msg: "SAVED",
+                                  toastLength: Toast.LENGTH_SHORT,
+                                  gravity: ToastGravity.BOTTOM,
+                                  timeInSecForIosWeb: 1,
+                                  backgroundColor: Colors.green,
+                                  textColor: Colors.white,
+                                  fontSize: 16.0
+                              )
+                            },
+                            child: const Text(
+                              "SUBMIT",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
+                              ),
+                            ),
+                            style: ButtonStyle(
+                                elevation: MaterialStateProperty.all(6.0),
+                                backgroundColor:
+                                MaterialStateProperty.all(Colors.blue.shade50),
+                                fixedSize: MaterialStateProperty.all<Size>(
+                                    const Size(150, 20)),
+                                shape:
+                                MaterialStateProperty.all<RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(18.0),
+                                    )))),
                       ],
                     ),
                   ),

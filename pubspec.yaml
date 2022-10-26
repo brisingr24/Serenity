@@ -55,11 +55,11 @@ dev_dependencies:
   provider: ^6.0.3
   readmore: ^2.2.0
   animated_bottom_navigation_bar: ^1.1.0
-  circular_menu: ^2.0.1
   firebase_storage: ^10.3.7
   image_picker: ^0.8.5+3
   shared_preferences: ^2.0.15
   url_launcher: ^6.1.6
+  fluttertoast: ^8.1.1
 
 
   # The "flutter_lints" package below contains a set of recommended lints to

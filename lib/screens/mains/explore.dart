@@ -1,13 +1,14 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
-import 'dart:developer';
-
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:envision/sevices/auth.dart';
-import 'package:envision/widgets/catergory_item.dart';
+import 'package:envision/widgets/music.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+import '../../models/userModel.dart';
+import '../../sevices/user.dart';
+import '../signup.dart';
 
 class Explore extends StatefulWidget {
   final String uid;
@@ -53,6 +54,8 @@ class _HomeState extends State<Explore> {
               ),
               onPressed: () async {
                 _auth.signOut();
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (context) => SignUp()));
               })
         ],
       ),
@@ -62,87 +65,107 @@ class _HomeState extends State<Explore> {
         color: Color(0xFFFFF5E4),
         child: Column(
           children: [
-            Container(
-              padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
-              child: Row(
-                children: [
-                  CircleAvatar(
-                    radius: 20,
-                    child: Image.asset("images/profile_placeholder.jpg"),
-                    backgroundColor: Colors.blue,
-                    //backgroundImage: NetworkImage(),
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'USER',
-                        style: TextStyle(fontSize: 20),
-                      ),
-                      Text(
-                        'My Safe Place',
-                        style: TextStyle(fontSize: 14),
-                      ),
-                    ],
-                  ),
-                  Spacer(),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: ElevatedButton(
-                        onPressed: _callNumber,
-                        child: const Text(
-                          "Panic",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 15,
+            StreamBuilder<UserModel?>(
+              stream: UserService().getUserInfo(widget.uid),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  if (snapshot.data != null) {
+                    UserModel user = snapshot.data!;
+                    return Row(
+                      children: [
+                        user.profileImgURL == null
+                            ? CircleAvatar(
+                                child: Image.asset(
+                                  "images/userdef.png",
+                                  height: 50,
+                                  width: 50,
+                                ),
+                                backgroundColor: Colors.white,
+                              )
+                            : CircleAvatar(
+                                radius: 30,
+                                backgroundImage: NetworkImage(
+                                  user.profileImgURL ?? ' ',
+                                ),
+                              ),
+                        Padding(
+                          padding: const EdgeInsets.all(6.0),
+                          child: Text(
+                            '${user.name}',
+                            style: TextStyle(fontSize: 20),
                           ),
                         ),
-                        style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.all(Colors.black),
-                            fixedSize: MaterialStateProperty.all<Size>(
-                                const Size(90, 40)),
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(18.0),
-                            )))),
-                  ),
-                ],
-              ),
+                        Spacer(),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: ElevatedButton(
+                              onPressed: _callNumber,
+                              child: const Text(
+                                "Panic",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                ),
+                              ),
+                              style: ButtonStyle(
+                                  elevation: MaterialStateProperty.all(6.0),
+                                  backgroundColor:
+                                      MaterialStateProperty.all(Colors.black),
+                                  fixedSize: MaterialStateProperty.all<Size>(
+                                      const Size(80, 16)),
+                                  shape: MaterialStateProperty.all<
+                                          RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(18.0),
+                                  )))),
+                        ),
+                      ],
+                    );
+                  }
+                }
+                return Center();
+              },
             ),
             Expanded(
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      padding: EdgeInsets.all(8),
-                      height: 80,
-                      child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: navItem.length,
-                          shrinkWrap: true,
-                          itemBuilder: (context, index) {
-                            return InkWell(
-                                onTap: (() {
-                                  log(navItem[index]);
-                                }),
-                                child: CategoryItem(item: navItem[index]));
-                          }),
+                    // Container(
+                    //   padding: EdgeInsets.all(8),
+                    //   height: 80,
+                    //   // child: ListView.builder(
+                    //   //     scrollDirection: Axis.horizontal,
+                    //   //     itemCount: navItem.length,
+                    //   //     shrinkWrap: true,
+                    //   //     itemBuilder: (context, index) {
+                    //   //       return InkWell(
+                    //   //           onTap: (() {
+                    //   //             log(navItem[index]);
+                    //   //           }),
+                    //   //           child: CategoryItem(item: navItem[index]));
+                    //   //     }),
+                    // ),
+                    SizedBox(
+                      height: 20,
                     ),
                     Text(
                       'Games',
                       style:
                           TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
+                    SizedBox(height: 8),
                     SizedBox(
-                      height: 150,
-                      child: ClipRRect(
-                          borderRadius: BorderRadius.circular(15),
-                          child: Image.asset("images/games.jpg")),
+                      height: 170,
+                      child: Center(
+                        child: ClipRRect(
+                            borderRadius: BorderRadius.circular(15),
+                            child: InkWell(
+                              child: Image.asset("images/altos.png"),
+                              onTap: () => launch(
+                                  "https://play.google.com/store/search?q=alto%27s+odyssey&c=apps"),
+                            )),
+                      ),
                     ),
                     SizedBox(
                       height: 16,
@@ -152,17 +175,24 @@ class _HomeState extends State<Explore> {
                       style:
                           TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
-                    CarouselSlider.builder(
-                      itemCount: 5,
-                      itemBuilder: (BuildContext context, int itemIndex,
-                              int pageViewIndex) =>
-                          Container(
-                              child:
-                                  Image.asset("images/musicPlaceholder.jpg")),
-                      options: CarouselOptions(
-                        height: 180,
-                        autoPlay: true,
-                        enableInfiniteScroll: false,
+                    SingleChildScrollView(
+                      padding: EdgeInsets.all(8.0),
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          music_container(
+                              url:
+                                  "https://open.spotify.com/playlist/0ffnLxCftwLzmXDO7DJEXc?si=BpKndlCtSnWcZ__V_GiSKw&utm_source=whats"),
+                          music_container(
+                              url:
+                                  "https://stackoverflow.com/questions/43583411/how-to-create-a-hyperlink-in-flutter-widget"),
+                          music_container(
+                              url:
+                                  "https://api.flutter.dev/flutter/widgets/ListView-class.html"),
+                          music_container(
+                              url:
+                                  "https://stackoverflow.com/questions/43149055/how-do-i-open-a-web-browser-url-from-my-flutter-code"),
+                        ],
                       ),
                     ),
                     SizedBox(
@@ -173,16 +203,33 @@ class _HomeState extends State<Explore> {
                       style:
                           TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
-                    CarouselSlider.builder(
-                      itemCount: 5,
-                      itemBuilder: (BuildContext context, int itemIndex,
-                              int pageViewIndex) =>
-                          Container(
-                              child: Image.asset("images/BoolPlaceHolder.jpg")),
-                      options: CarouselOptions(
-                        height: 200,
-                        autoPlay: true,
-                        enableInfiniteScroll: false,
+                    SingleChildScrollView(
+                      padding: EdgeInsets.all(6.0),
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          books_container(
+                              image: "images/book1.jpg",
+                              url: "https://amzn.eu/d/4KW8r0k"),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          books_container(
+                              image: "images/book2.jpg",
+                              url: "https://amzn.eu/d/4KW8r0k"),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          books_container(
+                              image: "images/book3.jpg",
+                              url: "https://amzn.eu/d/2BZbg2b"),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          books_container(
+                              image: "images/book4.jpg",
+                              url: "https://amzn.eu/d/2BZbg2b"),
+                        ],
                       ),
                     ),
                     SizedBox(
@@ -193,19 +240,27 @@ class _HomeState extends State<Explore> {
                       style:
                           TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
-                    CarouselSlider.builder(
-                      itemCount: 5,
-                      itemBuilder: (BuildContext context, int itemIndex,
-                              int pageViewIndex) =>
-                          Container(
-                              child:
-                                  Image.asset("images/musicPlaceholder.jpg")),
-                      options: CarouselOptions(
-                        height: 180,
-                        autoPlay: true,
-                        enableInfiniteScroll: false,
+                    SingleChildScrollView(
+                      padding: EdgeInsets.all(6.0),
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          more_container(
+                              image: "images/vid1.jpg",
+                              url: "https://youtu.be/PReWdfg2cM8"),
+                          more_container(
+                              image: "images/vid2.jpg",
+                              url:
+                                  "https://www.youtube.com/watch?v=wOGqlVqyvCM"),
+                          more_container(
+                              image: "images/vid3.jpg",
+                              url: "https://youtu.be/Bzh9HmjqwLg"),
+                          more_container(
+                              image: "images/vid4.jpg",
+                              url: "https://youtu.be/bwP2qIC8sc4")
+                        ],
                       ),
-                    ),
+                    )
                   ],
                 ),
               ),

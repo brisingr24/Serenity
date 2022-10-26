@@ -51,7 +51,7 @@ class _AboutUsState extends State<AboutUs> {
                   SizedBox(width: 10),
                   Container(
                     height: 1,
-                    width: size.width / 4.7,
+                    width: size.width / 5.1,
                     color: Colors.black,
                   )
                 ],
@@ -60,7 +60,7 @@ class _AboutUsState extends State<AboutUs> {
             Padding(
               padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
               child: Text(
-                'It runs 11,000 trains every day on tracks that spread over 60,000 km in length. It employs close to 1.54 million people, making it the seventh-largest employer in the world, according to Forbes.',
+                'SRM University is a place of unbridled happiness and wonderful learning. It proves that learning and growth are occurring all at once. SRM provides an excellent academic training blended with co-curricular activities. ',
                 style: TextStyle(
                     color: Colors.black,
                     wordSpacing: 0.45,
@@ -129,8 +129,7 @@ class _AboutUsState extends State<AboutUs> {
             Padding(
               padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
               child: Text(
-                'It runs 11,000 trains every day on tracks that spread over 60,000 km in length.'
-                'It employs close to 1.54 million people, making it the seventh-largest employer in the world, according to Forbes.',
+                'Aaruush is the student-run, official Annual Techno-Management Fest of SRM Institute of Science and Technology, Chennai. Aaruush comprises 14 domains and 14 committees, which provide a platform to showcase and innovate a multitude of ideas which range from Architecture to Medical Sciences. The cohesive structure which connects the Domains is the 14 committees of Aaruush alongside Team Envision and Team Outreach. Aaruush organizes several workshops, expos, conferences, luminary hours and non-profit initiatives to facilitate the general progress of human society with a footfall of 72,000+ and online following of 60,000+.',
                 textAlign: TextAlign.left,
                 style: TextStyle(
                     color: Colors.black,
@@ -198,8 +197,7 @@ class _AboutUsState extends State<AboutUs> {
             Padding(
               padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
               child: Text(
-                'It runs 11,000 trains every day on tracks that spread over 60,000 km in length.'
-                ' It employs close to 1.54 million people, making it the seventh-largest employer in the world, according to Forbes.',
+                'Team Envision is a Multidisciplinary technical team of Aaruush that aims to provide solutions to most campus and societal issues and problems',
                 textAlign: TextAlign.left,
                 style: TextStyle(
                     color: Colors.black,

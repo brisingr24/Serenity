@@ -5,14 +5,15 @@ import 'package:flutter/material.dart';
 
 import '../../widgets/ContactTile.dart';
 
-class GridList extends StatefulWidget {
-  GridList({Key? key, required this.uid}) : super(key: key);
+// ignore: must_be_immutable
+class Appointment extends StatefulWidget {
+  Appointment({Key? key, required this.uid}) : super(key: key);
   String uid;
   @override
-  State<GridList> createState() => _GridListState();
+  State<Appointment> createState() => _AppointmentState();
 }
 
-class _GridListState extends State<GridList> {
+class _AppointmentState extends State<Appointment> {
   Stream<List<Doctor>>? _listDoctor;
   List<Doctor> _doctorListFromSnapshot(
       QuerySnapshot<Map<String, dynamic>> snapshot) {
@@ -58,8 +59,9 @@ class _GridListState extends State<GridList> {
               StreamBuilder<List<Doctor>>(
                   stream: _listDoctor,
                   builder: (context, snapshot) {
-                    if (!snapshot.hasData)
+                    if (!snapshot.hasData) {
                       return Center(child: CircularProgressIndicator());
+                    }
                     var data = snapshot.data;
                     if (data == null) return Center(child: Text("No data"));
 

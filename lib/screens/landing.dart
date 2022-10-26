@@ -124,11 +124,14 @@ class LandingPage extends StatelessWidget {
                                     duration: Duration(milliseconds: 400),
                                     curve: Curves.easeInOut);
                               },
-                              child: Text(
-                                "Next",
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 16,
+                              child: Align(
+                                
+                                child: Text(
+                                  "Next",
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 16,
+                                  ),
                                 ),
                               ),
                               style: ButtonStyle(

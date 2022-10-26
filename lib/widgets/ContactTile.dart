@@ -1,6 +1,7 @@
 import 'package:envision/screens/bookings/bookingscreen.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class Contact extends StatefulWidget {
   Contact(
       {Key? key,
@@ -26,11 +27,11 @@ class _ContactState extends State<Contact> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 300,
+      height: 270,
       child: Align(
         alignment: Alignment.center,
         child: Container(
-          height: 300,
+          height: 400,
           width: 170,
           child: Padding(
             padding: EdgeInsets.all(10),

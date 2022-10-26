@@ -283,7 +283,7 @@ class LandingPage extends StatelessWidget {
                       width: 340.0,
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage('images/aauu.png'),
+                          image: AssetImage('images/Aaruush Logo.png'),
                           fit: BoxFit.contain,
                         ),
                         shape: BoxShape.rectangle,

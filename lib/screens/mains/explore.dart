@@ -39,8 +39,9 @@ class _HomeState extends State<Explore> {
         automaticallyImplyLeading: false,
         backgroundColor: Color(0xFFFFD1D1),
         title: Text(
-          "EXPLORE",
-          style: TextStyle(color: Colors.black),
+          "Explore",
+          style: TextStyle(
+              color: Colors.black, fontFamily: 'Pacifico', fontSize: 22),
         ),
         actions: <Widget>[
           TextButton.icon(

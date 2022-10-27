@@ -51,8 +51,12 @@ class _HomeState extends State<Home> {
         automaticallyImplyLeading: false,
         backgroundColor: Color(0xFFFFD1D1),
         title: Text(
-          "HOME",
-          style: TextStyle(color: Colors.black),
+          "Home",
+          style: TextStyle(
+              color: Colors.black,
+              fontFamily: 'Pacifico',
+              fontWeight: FontWeight.w100,
+              fontSize: 25),
         ),
         actions: <Widget>[
           TextButton.icon(

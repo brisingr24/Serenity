@@ -165,5 +165,11 @@ class _BookingScreenState extends State<BookingScreen> {
       "booked": true,
       "docID": widget.docID,
     });
+    await FirebaseFirestore.instance
+        .collection("users")
+        .doc(widget.uid)
+        .collection("bookedDocs")
+        .doc(widget.docID)
+        .set({});
   }
 }

@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:envision/models/userModel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class AuthService extends ChangeNotifier{
 
@@ -31,12 +33,29 @@ class AuthService extends ChangeNotifier{
         password: pass,
       ));
 
+      Fluttertoast.showToast(
+          msg: "Logged In Successfully!",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.green,
+          textColor: Colors.white,
+          fontSize: 16.0
+      );
+
       _userFromFirebaseUser(user.user);
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-        print('The password provided is too weak.');
-      } else if (e.code == 'email-already-in-use') {
-        print('The account already exists for that email.');
+      if (e.code == 'wrong-password') {
+        Fluttertoast.showToast(
+            msg: "Wrong Credentials",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.CENTER,
+            timeInSecForIosWeb: 1,
+            backgroundColor: Colors.red,
+            textColor: Colors.white,
+            fontSize: 16.0
+        );
+        print('The password provided is wrong.');
       }
     } catch (e) {
       print(e);
@@ -50,7 +69,15 @@ class AuthService extends ChangeNotifier{
         password: pass,
       ));
 
-      print("MY name is ${username} , ${email}");
+      Fluttertoast.showToast(
+          msg: "Signed In Successfully!",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.green,
+          textColor: Colors.white,
+          fontSize: 16.0
+      );
 
       await FirebaseFirestore.instance
           .collection('users')
@@ -59,6 +86,29 @@ class AuthService extends ChangeNotifier{
 
       _userFromFirebaseUser(user.user);
     } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        Fluttertoast.showToast(
+            msg: "Password too weak",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.CENTER,
+            timeInSecForIosWeb: 1,
+            backgroundColor: Colors.red,
+            textColor: Colors.white,
+            fontSize: 16.0
+        );
+        print('The password provided is too weak.');
+      } else if (e.code == 'email-already-in-use') {
+        Fluttertoast.showToast(
+            msg: "Email Already Signed Up!",
+            toastLength: Toast.LENGTH_LONG,
+            gravity: ToastGravity.CENTER,
+            timeInSecForIosWeb: 1,
+            backgroundColor: Colors.red,
+            textColor: Colors.white,
+            fontSize: 16.0
+        );
+        print('The account already exists for that email.');
+      }
       print(e);
     } catch (e) {
       print(e);

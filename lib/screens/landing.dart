@@ -19,7 +19,7 @@ class LandingPage extends StatelessWidget {
         automaticallyImplyLeading: false,
         backgroundColor: Color(0xFFFFD1D1),
         title: Text(
-          'Mindfulness',
+          'Serenity',
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
@@ -33,36 +33,35 @@ class LandingPage extends StatelessWidget {
               color: Color(0xFFFFF5E4),
               child: Column(children: [
                 Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Container(
-                          padding: EdgeInsets.fromLTRB(0, 15, 20, 0),
-                          child: ElevatedButton(
-                              onPressed: () {
-                                controller.jumpToPage(2);
-                              },
-                              child: Text(
-                                "Skip",
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 16,
-                                ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: ElevatedButton(
+                            onPressed: () {
+                              controller.jumpToPage(2);
+                            },
+                            child: Text(
+                              "Skip",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
                               ),
-                              style: ButtonStyle(
-                                  elevation: MaterialStateProperty.all(6.0),
-                                  backgroundColor: MaterialStateProperty.all(
-                                      Color(0xFFFF9494)),
-                                  fixedSize: MaterialStateProperty.all<Size>(
-                                      const Size(150, 20)),
-                                  shape: MaterialStateProperty.all<
-                                          RoundedRectangleBorder>(
-                                      RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(18.0),
-                                  )))),
-                        ),
-                      ],
+                            ),
+                            style: ButtonStyle(
+                                elevation: MaterialStateProperty.all(6.0),
+                                backgroundColor: MaterialStateProperty.all(
+                                    Color(0xFFFF9494)),
+                                fixedSize: MaterialStateProperty.all<Size>(
+                                    const Size(150, 20)),
+                                shape: MaterialStateProperty.all<
+                                        RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(18.0),
+                                )))),
+                      ),
                     ),
                     SizedBox(height: 35),
                     Container(
@@ -109,43 +108,37 @@ class LandingPage extends StatelessWidget {
                         )),
                       ),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          width: 15,
-                          height: 30,
-                        ),
-                        Container(
-                          padding: EdgeInsets.fromLTRB(0, 20, 20, 0),
-                          child: ElevatedButton(
-                              onPressed: () {
-                                controller.nextPage(
-                                    duration: Duration(milliseconds: 400),
-                                    curve: Curves.easeInOut);
-                              },
-                              child: Align(
-                                child: Text(
-                                  "Next",
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 16,
-                                  ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.bottomRight,
+                        child: ElevatedButton(
+                            onPressed: () {
+                              controller.nextPage(
+                                  duration: Duration(milliseconds: 400),
+                                  curve: Curves.easeInOut);
+                            },
+                            child: Align(
+                              child: Text(
+                                "Next",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 16,
                                 ),
                               ),
-                              style: ButtonStyle(
-                                  elevation: MaterialStateProperty.all(6.0),
-                                  backgroundColor: MaterialStateProperty.all(
-                                      Color(0xFFFF9494)),
-                                  fixedSize: MaterialStateProperty.all<Size>(
-                                      const Size(150, 20)),
-                                  shape: MaterialStateProperty.all<
-                                          RoundedRectangleBorder>(
-                                      RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(18.0),
-                                  )))),
-                        ),
-                      ],
+                            ),
+                            style: ButtonStyle(
+                                elevation: MaterialStateProperty.all(6.0),
+                                backgroundColor: MaterialStateProperty.all(
+                                    Color(0xFFFF9494)),
+                                fixedSize: MaterialStateProperty.all<Size>(
+                                    const Size(150, 20)),
+                                shape: MaterialStateProperty.all<
+                                        RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(18.0),
+                                )))),
+                      ),
                     ),
                   ],
                 )
@@ -156,35 +149,33 @@ class LandingPage extends StatelessWidget {
               child: Column(children: [
                 Column(
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Container(
-                          padding: EdgeInsets.fromLTRB(0, 15, 20, 0),
-                          child: ElevatedButton(
-                              onPressed: () {
-                                controller.jumpToPage(2);
-                              },
-                              child: Text(
-                                "Skip",
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 16,
-                                ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: ElevatedButton(
+                            onPressed: () {
+                              controller.jumpToPage(2);
+                            },
+                            child: Text(
+                              "Skip",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
                               ),
-                              style: ButtonStyle(
-                                  elevation: MaterialStateProperty.all(6.0),
-                                  backgroundColor: MaterialStateProperty.all(
-                                      Color(0xFFFF9494)),
-                                  fixedSize: MaterialStateProperty.all<Size>(
-                                      const Size(150, 20)),
-                                  shape: MaterialStateProperty.all<
-                                          RoundedRectangleBorder>(
-                                      RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(18.0),
-                                  )))),
-                        ),
-                      ],
+                            ),
+                            style: ButtonStyle(
+                                elevation: MaterialStateProperty.all(6.0),
+                                backgroundColor: MaterialStateProperty.all(
+                                    Color(0xFFFF9494)),
+                                fixedSize: MaterialStateProperty.all<Size>(
+                                    const Size(150, 20)),
+                                shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(18.0),
+                                    )))),
+                      ),
                     ),
                     SizedBox(height: 15),
                     Container(
@@ -231,21 +222,17 @@ class LandingPage extends StatelessWidget {
                         )),
                       ),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          width: 15,
-                          height: 30,
-                        ),
-                        Container(
-                          padding: EdgeInsets.fromLTRB(0, 20, 20, 0),
-                          child: ElevatedButton(
-                              onPressed: () {
-                                controller.nextPage(
-                                    duration: Duration(milliseconds: 400),
-                                    curve: Curves.easeInOut);
-                              },
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Align(
+                        alignment: Alignment.bottomRight,
+                        child: ElevatedButton(
+                            onPressed: () {
+                              controller.nextPage(
+                                  duration: Duration(milliseconds: 400),
+                                  curve: Curves.easeInOut);
+                            },
+                            child: Align(
                               child: Text(
                                 "Next",
                                 style: TextStyle(
@@ -253,19 +240,19 @@ class LandingPage extends StatelessWidget {
                                   fontSize: 16,
                                 ),
                               ),
-                              style: ButtonStyle(
-                                  elevation: MaterialStateProperty.all(6.0),
-                                  backgroundColor: MaterialStateProperty.all(
-                                      Color(0xFFFF9494)),
-                                  fixedSize: MaterialStateProperty.all<Size>(
-                                      const Size(150, 20)),
-                                  shape: MaterialStateProperty.all<
-                                          RoundedRectangleBorder>(
-                                      RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(18.0),
-                                  )))),
-                        ),
-                      ],
+                            ),
+                            style: ButtonStyle(
+                                elevation: MaterialStateProperty.all(6.0),
+                                backgroundColor: MaterialStateProperty.all(
+                                    Color(0xFFFF9494)),
+                                fixedSize: MaterialStateProperty.all<Size>(
+                                    const Size(150, 20)),
+                                shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(18.0),
+                                    )))),
+                      ),
                     ),
                   ],
                 )

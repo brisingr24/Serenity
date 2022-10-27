@@ -1,16 +1,13 @@
 // ignore_for_file: prefer_const_constructors
-import 'dart:developer';
-
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
-import 'package:envision/screens/chatbot.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:kommunicate_flutter/kommunicate_flutter.dart';
-
 import '../screens/mains/explore.dart';
 import '../screens/mains/forum.dart';
 import '../screens/mains/home.dart';
 import '../screens/mains/profile.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class PageHost extends StatefulWidget {
   @override
@@ -65,6 +62,15 @@ class _PageHostState extends State<PageHost> {
         backgroundColor: Color(0xFFFFD1D1),
         onPressed: () async {
           try {
+            Fluttertoast.showToast(
+                msg: "Opening ChatBot,Please Wait",
+                toastLength: Toast.LENGTH_LONG,
+                gravity: ToastGravity.CENTER,
+                timeInSecForIosWeb: 2,
+                backgroundColor: Colors.green,
+                textColor: Colors.white,
+                fontSize: 16.0
+            );
             dynamic conversationObject = {
               'appId': '245bd44f458f1551edc13318cb616e21c'
             };

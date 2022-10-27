@@ -33,6 +33,7 @@ class _PostDisplayState extends State<PostDisplay> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return StreamBuilder<List<PostModel>>(
       stream: postModelStream,
       builder: (context, snapshot) {
@@ -43,7 +44,7 @@ class _PostDisplayState extends State<PostDisplay> {
             return Column(
               children: [
                 SizedBox(
-                  height: 400,
+                  height: 340,
                   child: ListView.separated(
                     physics: AlwaysScrollableScrollPhysics(),
                     separatorBuilder: (context, index) {

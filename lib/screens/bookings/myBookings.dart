@@ -43,7 +43,7 @@ class _MyBookingsState extends State<MyBookings> {
                           .collection("users")
                           .doc(widget.uid)
                           .collection("bookedDocs")
-                          .doc(data.docID)
+                          .doc()
                           .snapshots(),
                       builder: (context,snapshot) {
                         if (snapshot.connectionState == ConnectionState.waiting) {
@@ -51,6 +51,7 @@ class _MyBookingsState extends State<MyBookings> {
                         }
                         if (snapshot.hasData) {
                           var data2 = snapshot.data;
+                          print(data2?.reference.id);
                           return Container(
                               color: Colors.black,
                               height: 120,
@@ -58,6 +59,7 @@ class _MyBookingsState extends State<MyBookings> {
                               child: ListView.builder(
                                   scrollDirection: Axis.vertical,
                                   itemCount: 2,
+
                                   shrinkWrap: true,
                                   itemBuilder: (context, index) {
                                     return Padding(

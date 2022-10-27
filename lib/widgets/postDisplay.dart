@@ -44,7 +44,7 @@ class _PostDisplayState extends State<PostDisplay> {
             return Column(
               children: [
                 SizedBox(
-                  height: size.height/2.5,
+                  height: size.height / 2.9,
                   child: ListView.separated(
                     physics: AlwaysScrollableScrollPhysics(),
                     separatorBuilder: (context, index) {

@@ -33,8 +33,9 @@ class _ForumState extends State<Forum> {
         automaticallyImplyLeading: false,
         backgroundColor: Color(0xFFFFD1D1),
         title: Text(
-          "FORUM",
-          style: TextStyle(color: Colors.black),
+          "Forum",
+          style: TextStyle(
+              color: Colors.black, fontFamily: 'Pacifico', fontSize: 25),
         ),
         actions: <Widget>[
           TextButton.icon(

@@ -27,6 +27,7 @@ class _ForumState extends State<Forum> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Color(0xFFFFF5E4),
       appBar: AppBar(

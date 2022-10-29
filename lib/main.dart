@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
       value: AuthService().user,
       initialData: UserModel(),
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: Splash(),
         routes: {
           '/pagehost': (context) => PageHost(),

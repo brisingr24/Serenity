@@ -34,137 +34,138 @@ class _PostDisplayState extends State<PostDisplay> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return StreamBuilder<List<PostModel>>(
-      stream: postModelStream,
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          print(snapshot.data);
-          if (snapshot.data!.isNotEmpty) {
-            List<PostModel> posts = snapshot.data!;
-            return Column(
-              children: [
-                SizedBox(
-                  height: size.height/2.5,
-                  child: ListView.separated(
-                    physics: AlwaysScrollableScrollPhysics(),
-                    separatorBuilder: (context, index) {
-                      return Divider(
-                        height: 25,
-                      );
-                    },
-                    scrollDirection: Axis.vertical,
-                    shrinkWrap: true,
-                    itemCount: posts.length,
-                    itemBuilder: (context, index) {
-                      final post = posts[index];
-
-                      return StreamBuilder<bool>(
-                          stream: _postService.getCurrentUserLike(post),
-                          builder: (context, snapshotLike) {
-                            if (!snapshotLike.hasData) {
-                              return Center(
-                                child: CircularProgressIndicator(),
-                              );
-                            }
-                            return Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(20.0),
-                                  border: Border.all(color: Colors.black)),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    StreamBuilder<UserModel?>(
-                                      stream: UserService()
-                                          .getUserInfo(post.creator),
-                                      builder: (context, snapshot) {
-                                        if (snapshot.hasData) {
-                                          print(snapshot.data);
-                                          if (snapshot.data != null) {
-                                            UserModel user = snapshot.data!;
-                                            return Row(
-                                              children: [
-                                                user.profileImgURL == null
-                                                    ? CircleAvatar(
-                                                        child: Image.asset(
-                                                          "images/userdef.png",
-                                                          height: 50,
-                                                          width: 50,
+    return Scaffold(
+      backgroundColor: Colors.green,
+      body: StreamBuilder<List<PostModel>>(
+        stream: postModelStream,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            print(snapshot.data);
+            if (snapshot.data!.isNotEmpty) {
+              List<PostModel> posts = snapshot.data!;
+              return Column(
+                children: [
+                  SizedBox(
+                    height: size.height/2.5,
+                    child: ListView.separated(
+                      separatorBuilder: (context, index) {
+                        return Divider(
+                          height: 25,
+                        );
+                      },
+                      scrollDirection: Axis.vertical,
+                      shrinkWrap: true,
+                      itemCount: posts.length,
+                      itemBuilder: (context, index) {
+                        final post = posts[index];
+                        return StreamBuilder<bool>(
+                            stream: _postService.getCurrentUserLike(post),
+                            builder: (context, snapshotLike) {
+                              if (!snapshotLike.hasData) {
+                                return Center(
+                                  child: CircularProgressIndicator(),
+                                );
+                              }
+                              return Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(20.0),
+                                    border: Border.all(color: Colors.black)),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      StreamBuilder<UserModel?>(
+                                        stream: UserService()
+                                            .getUserInfo(post.creator),
+                                        builder: (context, snapshot) {
+                                          if (snapshot.hasData) {
+                                            print(snapshot.data);
+                                            if (snapshot.data != null) {
+                                              UserModel user = snapshot.data!;
+                                              return Row(
+                                                children: [
+                                                  user.profileImgURL == null
+                                                      ? CircleAvatar(
+                                                          child: Image.asset(
+                                                            "images/userdef.png",
+                                                            height: 50,
+                                                            width: 50,
+                                                          ),
+                                                          backgroundColor:
+                                                              Colors.white,
+                                                        )
+                                                      : CircleAvatar(
+                                                          radius: 25,
+                                                          backgroundImage:
+                                                              NetworkImage(
+                                                            user.profileImgURL ??
+                                                                ' ',
+                                                          ),
                                                         ),
-                                                        backgroundColor:
-                                                            Colors.white,
-                                                      )
-                                                    : CircleAvatar(
-                                                        radius: 25,
-                                                        backgroundImage:
-                                                            NetworkImage(
-                                                          user.profileImgURL ??
-                                                              ' ',
-                                                        ),
-                                                      ),
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(8.0),
-                                                  child: Text(
-                                                    '${user.name}',
-                                                    style:
-                                                        TextStyle(fontSize: 18),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(8.0),
+                                                    child: Text(
+                                                      '${user.name}',
+                                                      style:
+                                                          TextStyle(fontSize: 18),
+                                                    ),
                                                   ),
-                                                ),
-                                              ],
-                                            );
+                                                ],
+                                              );
+                                            }
                                           }
-                                        }
-                                        return Center();
-                                      },
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(10.0),
-                                      child: Text(post.text),
-                                    ),
-                                    Row(
-                                      children: [
-                                        IconButton(
-                                          onPressed: () async {
-                                            _postService.likePost(post,
-                                                snapshotLike.data ?? false);
-                                            // ct = await PostService().getCountLike(post);
-                                            // print("Counts : " + ct.toString());
-                                          },
-                                          icon: snapshotLike.data == false
-                                              ? Icon(
-                                                  Icons.favorite_border,
-                                                  color: Colors.red,
-                                                  size: 30,
-                                                )
-                                              : Icon(
-                                                  Icons.favorite,
-                                                  color: Colors.red,
-                                                  size: 30,
-                                                ),
-                                        ),
-                                        //Text("${ct}"),
-                                        Spacer(),
-                                        Text(
-                                            "${DateFormat('yyyy-MM-dd – kk:mm').format(post.timestamp!.toDate())}"),
-                                      ],
-                                    ),
-                                  ],
+                                          return Center();
+                                        },
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(10.0),
+                                        child: Text(post.text),
+                                      ),
+                                      Row(
+                                        children: [
+                                          IconButton(
+                                            onPressed: () async {
+                                              _postService.likePost(post,
+                                                  snapshotLike.data ?? false);
+                                              // ct = await PostService().getCountLike(post);
+                                              // print("Counts : " + ct.toString());
+                                            },
+                                            icon: snapshotLike.data == false
+                                                ? Icon(
+                                                    Icons.favorite_border,
+                                                    color: Colors.red,
+                                                    size: 30,
+                                                  )
+                                                : Icon(
+                                                    Icons.favorite,
+                                                    color: Colors.red,
+                                                    size: 30,
+                                                  ),
+                                          ),
+                                          //Text("${ct}"),
+                                          Spacer(),
+                                          Text(
+                                              "${DateFormat('yyyy-MM-dd – kk:mm').format(post.timestamp!.toDate())}"),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            );
-                          });
-                    },
+                              );
+                            });
+                      },
+                    ),
                   ),
-                ),
-              ],
-            );
+                ],
+              );
+            }
           }
-        }
-        return loadingView();
-      },
+          return loadingView();
+        },
+      ),
     );
   }
 }

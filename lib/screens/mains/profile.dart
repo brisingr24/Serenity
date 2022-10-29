@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import '../../models/userModel.dart';
 import '../../sevices/user.dart';
 import '../aboutus.dart';
+import '../bookings/myBookings.dart';
 import '../myJournal/journal.dart';
 import '../questionnaire.dart';
 
@@ -332,30 +333,30 @@ class _ProfileState extends State<Profile> {
                     SizedBox(
                       height: 30,
                     ),
-                    ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => MyBookings(uid: widget.uid)));
-                        },
-                        child: const Text(
-                          "My Bookings",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                          ),
-                        ),
-                        style: ButtonStyle(
-                            elevation: MaterialStateProperty.all(6.0),
-                            backgroundColor:
-                            MaterialStateProperty.all(Color(0xFFFF9494)),
-                            fixedSize: MaterialStateProperty.all<Size>(
-                                const Size(500, 20)),
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-                            )))),
+                    // ElevatedButton(
+                    //     onPressed: () {
+                    //       Navigator.push(
+                    //           context,
+                    //           MaterialPageRoute(
+                    //               builder: (context) => MyBookings(uid: widget.uid)));
+                    //     },
+                    //     child: const Text(
+                    //       "My Bookings",
+                    //       style: TextStyle(
+                    //         color: Colors.white,
+                    //         fontSize: 16,
+                    //       ),
+                    //     ),
+                    //     style: ButtonStyle(
+                    //         elevation: MaterialStateProperty.all(6.0),
+                    //         backgroundColor:
+                    //         MaterialStateProperty.all(Color(0xFFFF9494)),
+                    //         fixedSize: MaterialStateProperty.all<Size>(
+                    //             const Size(500, 20)),
+                    //         shape: MaterialStateProperty.all<
+                    //             RoundedRectangleBorder>(RoundedRectangleBorder(
+                    //           borderRadius: BorderRadius.circular(10.0),
+                    //         )))),
                     ElevatedButton(
                         onPressed: () {
                           Navigator.push(

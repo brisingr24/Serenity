@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import '../../models/userModel.dart';
 import '../../sevices/user.dart';
 import '../aboutus.dart';
-import '../bookings/myBookings.dart';
 import '../myJournal/journal.dart';
 import '../questionnaire.dart';
 

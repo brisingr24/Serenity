@@ -5,7 +5,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 import '../../models/userModel.dart';
 import '../../sevices/user.dart';
 import '../signup.dart';
@@ -19,13 +18,7 @@ class Explore extends StatefulWidget {
 }
 
 class _HomeState extends State<Explore> {
-  List<String> navItem = [
-    'Self Care',
-    'My Journal ',
-    'My Therapist',
-    'My Books',
-    'My Music'
-  ];
+
   _callNumber() async {
     const number = '+919136711710'; //set the number here
     bool? res = await FlutterPhoneDirectCaller.callNumber(number);
@@ -93,7 +86,10 @@ class _HomeState extends State<Explore> {
                           padding: const EdgeInsets.all(6.0),
                           child: Text(
                             '${user.name}',
-                            style: TextStyle(fontSize: 20),
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 25,
+                                fontWeight: FontWeight.w400),
                           ),
                         ),
                         Spacer(),
@@ -132,21 +128,6 @@ class _HomeState extends State<Explore> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Container(
-                    //   padding: EdgeInsets.all(8),
-                    //   height: 80,
-                    //   // child: ListView.builder(
-                    //   //     scrollDirection: Axis.horizontal,
-                    //   //     itemCount: navItem.length,
-                    //   //     shrinkWrap: true,
-                    //   //     itemBuilder: (context, index) {
-                    //   //       return InkWell(
-                    //   //           onTap: (() {
-                    //   //             log(navItem[index]);
-                    //   //           }),
-                    //   //           child: CategoryItem(item: navItem[index]));
-                    //   //     }),
-                    // ),
                     SizedBox(
                       height: 20,
                     ),

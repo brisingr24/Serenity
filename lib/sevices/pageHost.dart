@@ -81,10 +81,10 @@ class _PageHostState extends State<PageHost> {
             print("Conversation builder error occurred : " + e.toString());
           }
         },
-        child: Icon(
-          Icons.chat,
-          color: Colors.black,
-          size: 30,
+        child: CircleAvatar(
+          backgroundColor: Colors.white,
+          radius: 28,
+          child: Image.asset("images/chatbot.png"),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

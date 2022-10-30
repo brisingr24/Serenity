@@ -130,7 +130,7 @@ class _QuestionState extends State<Question> {
                             )
                         },
                             child: const Text(
-                              "SUBMIT",
+                              "NEXT",
                               style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 16,
@@ -228,7 +228,7 @@ class _QuestionState extends State<Question> {
                               )
                             },
                             child: const Text(
-                              "SUBMIT",
+                              "NEXT",
                               style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 16,

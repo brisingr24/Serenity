@@ -22,7 +22,6 @@ class _SplashState extends State<Splash> {
   _jumpHome() async {
     SharedPref sharedPref = SharedPref();
     final bool? firstLogin = await sharedPref.getFirstLogin();
-    print("HELLOOO" + firstLogin.toString());
     await Future.delayed(const Duration(seconds: 3), () {});
     if (firstLogin == false) {
       Navigator.pushReplacement(

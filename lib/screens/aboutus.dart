@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:readmore/readmore.dart';
+
 
 class AboutUs extends StatefulWidget {
   @override
@@ -59,40 +60,28 @@ class _AboutUsState extends State<AboutUs> {
             ]),
             Padding(
               padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
-              child: Text(
+              child: ReadMoreText(
                 'SRM University is a place of unbridled happiness and wonderful learning. It proves that learning and growth are occurring all at once. SRM provides an excellent academic training blended with co-curricular activities. ',
                 style: TextStyle(
-                    color: Colors.black,
-                    wordSpacing: 0.45,
-                    fontSize: 17,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'raleway'),
+                    color: Colors.black45,
+                    wordSpacing: 0.25,
+                    fontSize: 18),
+                trimLines: 2,
+                textAlign: TextAlign.left,
+                trimMode: TrimMode.Line,
+                trimCollapsedText: '...Show More',
+                trimExpandedText: 'Show Less',
+                moreStyle: (TextStyle(
+                  color: Colors.blue,
+                )),
+                lessStyle: (TextStyle(
+                  color: Colors.blue,
+                )),
               ),
             ),
             SizedBox(
               height: 15,
             ),
-            Row(
-              children: [
-                SizedBox(
-                  width: 20,
-                ),
-                ElevatedButton(
-                  child: Text(
-                    "Read More",
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
-                  onPressed: null,
-                  style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all<Color>(Color(0xFFFF9494)),
-                  ),
-                ),
-              ],
-            ),
-            //about envision
             SizedBox(
               height: 0,
             ),
@@ -128,38 +117,27 @@ class _AboutUsState extends State<AboutUs> {
             ]),
             Padding(
               padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
-              child: Text(
+              child: ReadMoreText(
                 'Aaruush is the student-run, official Annual Techno-Management Fest of SRM Institute of Science and Technology, Chennai. Aaruush comprises 14 domains and 14 committees, which provide a platform to showcase and innovate a multitude of ideas which range from Architecture to Medical Sciences. The cohesive structure which connects the Domains is the 14 committees of Aaruush alongside Team Envision and Team Outreach. Aaruush organizes several workshops, expos, conferences, luminary hours and non-profit initiatives to facilitate the general progress of human society with a footfall of 72,000+ and online following of 60,000+.',
-                textAlign: TextAlign.left,
                 style: TextStyle(
-                    color: Colors.black,
-                    wordSpacing: 0.45,
-                    fontSize: 17,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'raleway'),
+                    color: Colors.black45,
+                    wordSpacing: 0.25,
+                    fontSize: 18),
+                trimLines: 2,
+                textAlign: TextAlign.left,
+                trimMode: TrimMode.Line,
+                trimCollapsedText: '...Show More',
+                trimExpandedText: 'Show Less',
+                moreStyle: (TextStyle(
+                  color: Colors.blue,
+                )),
+                lessStyle: (TextStyle(
+                  color: Colors.blue,
+                )),
               ),
             ),
             SizedBox(
               height: 15,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                SizedBox(
-                  width: 20,
-                ),
-                ElevatedButton(
-                  child: Text(
-                    "Read More",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  onPressed: null,
-                  style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(
-                    Color(0xFFFF9494),
-                  )),
-                ),
-              ],
             ),
             SizedBox(
               height: 20,
@@ -196,47 +174,41 @@ class _AboutUsState extends State<AboutUs> {
             ]),
             Padding(
               padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
-              child: Text(
-                'Team Envision is a Multidisciplinary technical team of Aaruush that aims to provide solutions to most campus and societal issues and problems',
-                textAlign: TextAlign.left,
+              child: ReadMoreText(
+                "Team Envision, the multidisciplinary technical team of Aaruush, was formed with the goal of finding solutions to the majority of societal and campus-related problems. It is a consortium of AI-ML, Cyber Security, Blockchain, Editorial, Game Developers, Web Developers, App Developers and Designers who work closely to ideate, fabricate and develop products that tackle the above-mentioned problems. Team Envision promotes learning and growth through effective solutions.",
                 style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    wordSpacing: 0.45,
-                    fontSize: 17,
-                    fontFamily: 'raleway'),
+                    color: Colors.black45,
+                    wordSpacing: 0.25,
+                    fontSize: 18),
+                trimLines: 2,
+                textAlign: TextAlign.left,
+                trimMode: TrimMode.Line,
+                trimCollapsedText: '...Show More',
+                trimExpandedText: 'Show Less',
+                moreStyle: (TextStyle(
+                  color: Colors.blue,
+                )),
+                lessStyle: (TextStyle(
+                  color: Colors.blue,
+                )),
               ),
             ),
             SizedBox(
               height: 15,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                SizedBox(
-                  width: 20,
-                ),
-                ElevatedButton(
-                  child: Text(
-                    "Read More",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  onPressed: null,
-                  style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all<Color>(Color(0xFFFF9494))),
-                ),
-              ],
-            ),
             SizedBox(
               height: 30,
             ),
             Image.asset("images/env2.png"),
-            Text(
-              "Made with love by Team Envision ❤",
-              style: TextStyle(fontSize: 14, fontFamily: 'silkscreen'),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                "Made with love by Team Envision ❤",
+                style: TextStyle(fontSize: 18, fontFamily: 'silkscreen'),
+              ),
             ),
             SizedBox(
+
               height: 30,
             ),
           ]),

@@ -89,7 +89,10 @@ class _ForumState extends State<Forum> {
                           padding: const EdgeInsets.all(6.0),
                           child: Text(
                             '${user.name}',
-                            style: TextStyle(fontSize: 20),
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 25,
+                                fontWeight: FontWeight.w400),
                           ),
                         ),
                         Spacer(),

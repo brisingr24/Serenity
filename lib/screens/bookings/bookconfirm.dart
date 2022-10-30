@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:envision/screens/mains/profile.dart';
+import 'package:envision/sevices/pageHost.dart';
 import 'package:flutter/material.dart';
 import '../../models/userModel.dart';
 import '../../sevices/user.dart';
@@ -49,7 +50,7 @@ class BookingConfirm extends StatelessWidget {
                                       if (snapshot.data != null) {
                                         UserModel user = snapshot.data!;
                                         return Text(
-                                          '${user.name}',
+                                          'Hey ${user.name}',
                                           style: TextStyle(fontSize: 20),
                                         );
                                       } else
@@ -89,58 +90,54 @@ class BookingConfirm extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Container(
-                      child: ElevatedButton(
-                        style: ButtonStyle(
-                          elevation: MaterialStateProperty.all(0),
-                          foregroundColor:
-                              MaterialStateProperty.all(Colors.black54),
-                          backgroundColor:
-                              MaterialStateProperty.all(Color(0xFFFF9494)),
-                          overlayColor:
-                              MaterialStateProperty.all(Colors.blueAccent),
-                          shape: MaterialStateProperty.all(
-                            RoundedRectangleBorder(
-                              side: BorderSide(
-                                color: Colors.pinkAccent,
-                              ),
-                              borderRadius: BorderRadius.circular(30.0),
+                    ElevatedButton(
+                      style: ButtonStyle(
+                        elevation: MaterialStateProperty.all(0),
+                        foregroundColor:
+                            MaterialStateProperty.all(Colors.black54),
+                        backgroundColor:
+                            MaterialStateProperty.all(Color(0xFFFF9494)),
+                        overlayColor:
+                            MaterialStateProperty.all(Colors.blueAccent),
+                        shape: MaterialStateProperty.all(
+                          RoundedRectangleBorder(
+                            side: BorderSide(
+                              color: Colors.pinkAccent,
                             ),
+                            borderRadius: BorderRadius.circular(30.0),
                           ),
                         ),
-                        child: Text("Home"),
-                        onPressed: () {
-                          Navigator.pushNamed(context, '/pagehost');
-                        },
                       ),
+                      child: Text("HOME"),
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/pagehost');
+                      },
                     ),
-                    Container(
-                      child: ElevatedButton(
-                        style: ButtonStyle(
-                          elevation: MaterialStateProperty.all(0),
-                          foregroundColor:
-                              MaterialStateProperty.all(Colors.black),
-                          backgroundColor:
-                              MaterialStateProperty.all(Color(0xFFFF9494)),
-                          overlayColor:
-                              MaterialStateProperty.all(Colors.blueAccent),
-                          shape: MaterialStateProperty.all(
-                            RoundedRectangleBorder(
-                              side: BorderSide(
-                                color: Colors.pinkAccent,
-                              ),
-                              borderRadius: BorderRadius.circular(30.0),
-                            ),
-                          ),
-                        ),
-                        child: Text("My Bookings"),
-                        onPressed: () {
-                          Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Profile(uid: uid)),
-                        );},
-                      ),
-                    )
+                    // ElevatedButton(
+                    //   style: ButtonStyle(
+                    //     elevation: MaterialStateProperty.all(0),
+                    //     foregroundColor:
+                    //         MaterialStateProperty.all(Colors.black),
+                    //     backgroundColor:
+                    //         MaterialStateProperty.all(Color(0xFFFF9494)),
+                    //     overlayColor:
+                    //         MaterialStateProperty.all(Colors.blueAccent),
+                    //     shape: MaterialStateProperty.all(
+                    //       RoundedRectangleBorder(
+                    //         side: BorderSide(
+                    //           color: Colors.pinkAccent,
+                    //         ),
+                    //         borderRadius: BorderRadius.circular(30.0),
+                    //       ),
+                    //     ),
+                    //   ),
+                    //   child: Text("My Bookings"),
+                    //   onPressed: () {
+                    //     Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(builder: (context) => PageHost()),
+                    //   );},
+                    // )
                   ],
                 ),
               ],

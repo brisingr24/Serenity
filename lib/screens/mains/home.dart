@@ -3,16 +3,19 @@
 import 'dart:developer';
 
 import 'package:envision/models/quoteModel.dart';
+import 'package:envision/screens/mains/explore.dart';
+import 'package:envision/screens/mains/profile.dart';
+import 'package:envision/screens/myJournal/journal.dart';
 import 'package:envision/screens/signup.dart';
 import 'package:envision/sevices/auth.dart';
 import 'package:envision/sevices/qoutesApi.dart';
 import 'package:envision/widgets/catergory_item.dart';
 import 'package:envision/widgets/mooditem.dart';
 import 'package:envision/widgets/moodquote.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
-
+import 'package:url_launcher/url_launcher.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import '../../models/userModel.dart';
 import '../../sevices/user.dart';
 
@@ -22,6 +25,7 @@ class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
+
 
 class _HomeState extends State<Home> {
   String quoteImage = "images/thought_placeholder.png";
@@ -33,9 +37,19 @@ class _HomeState extends State<Home> {
     'Self Care',
     'My Journal ',
     'My Therapist',
-    'My Books',
     'My Music'
   ];
+
+  List<Widget> _build() {
+    return [
+      Home(uid: FirebaseAuth.instance.currentUser!.uid),
+      Journal(widget.uid),
+      Profile(uid: FirebaseAuth.instance.currentUser!.uid),
+      Explore(uid: FirebaseAuth.instance.currentUser!.uid),
+    ];
+  }
+
+
 
   _callNumber() async {
     const number = '+919136711710'; //set the number here
@@ -108,7 +122,10 @@ class _HomeState extends State<Home> {
                             padding: const EdgeInsets.all(6.0),
                             child: Text(
                               '${user.name}',
-                              style: TextStyle(fontSize: 20),
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.w400),
                             ),
                           ),
                           Spacer(),
@@ -162,7 +179,7 @@ class _HomeState extends State<Home> {
                     itemBuilder: (context, index) {
                       return InkWell(
                           onTap: (() {
-                            log(navItem[index]);
+                            _build();
                           }),
                           child: CategoryItem(item: navItem[index]));
                     }),
@@ -333,7 +350,7 @@ class _HomeState extends State<Home> {
                         iconSize: 30,
                       )
                     ]),
-              )
+              ),
             ],
           ),
         ),

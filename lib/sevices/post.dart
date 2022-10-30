@@ -47,6 +47,7 @@ class PostService {
   Stream<List<PostModel>> getPostByUser(uid) {
     return FirebaseFirestore.instance
         .collection('posts')
+        .orderBy("timestamp",descending: true)
         .snapshots()
         .map(_postListFromSnapshot);
   }

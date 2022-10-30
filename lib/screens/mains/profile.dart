@@ -37,7 +37,7 @@ class _ProfileState extends State<Profile> {
                 style: TextStyle(
                     color: Colors.black,
                     fontSize: 32,
-                    fontWeight: FontWeight.w100),
+                    fontWeight: FontWeight.w300),
               ),
               SizedBox(height: 20),
               Stack(children: [
@@ -288,7 +288,7 @@ class _ProfileState extends State<Profile> {
                                   builder: (context) =>
                                       Appointment(uid: widget.uid)));
                         },
-                        child: Text("BOOK"),
+                        child: Text("BOOK Therapists"),
                         style: ButtonStyle(
                             elevation: MaterialStateProperty.all(6.0),
                             backgroundColor: MaterialStateProperty.all<Color>(
@@ -306,29 +306,47 @@ class _ProfileState extends State<Profile> {
                       height: 30,
                     ),
                     Container(
-                      height: 50,
-                      width: 330,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        border: Border.all(color: Colors.black),
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      child: Center(
-                        child: GestureDetector(
-                          child: Text(
-                            "Whats on your mind today?",
-                            style: TextStyle(fontSize: 16),
-                          ),
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Journal(widget.uid)),
-                            );
-                          },
+                        height: 50,
+                        width: 330,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border.all(color: Colors.black),
+                          borderRadius: BorderRadius.circular(20.0),
                         ),
-                      ),
-                    ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Whats on your mind today?",
+                              style: TextStyle(fontSize: 16),
+                            ),
+                            SizedBox(width: 40,),
+                            Container(
+                              height: 30,
+                              width: 30,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                border: Border.all(color: Colors.black),
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            Journal(widget.uid)),
+                                  );
+                                },
+                                child: Icon(
+                                  Icons.arrow_forward_ios,
+                                  size: 27,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                          ],
+                        )),
                     SizedBox(
                       height: 30,
                     ),

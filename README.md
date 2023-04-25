@@ -1,3 +1,3 @@
 # SERENITY
 
-Mental Health Application
+Mental Health Application made for Aaruush

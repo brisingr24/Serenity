@@ -28,6 +28,7 @@ class Home extends StatefulWidget {
 
 
 class _HomeState extends State<Home> {
+
   String quoteImage = "images/thought_placeholder.png";
   String? _category;
   QuotesApi quotesApi = QuotesApi();
@@ -40,19 +41,20 @@ class _HomeState extends State<Home> {
     'My Music'
   ];
 
-  List<Widget> _build() {
-    return [
-      Home(uid: FirebaseAuth.instance.currentUser!.uid),
-      Journal(widget.uid),
-      Profile(uid: FirebaseAuth.instance.currentUser!.uid),
-      Explore(uid: FirebaseAuth.instance.currentUser!.uid),
-    ];
-  }
+
+  // List<Widget> _build(int index) {
+  //   return [
+  //     Home(uid: FirebaseAuth.instance.currentUser!.uid),
+  //     Journal(widget.uid),
+  //     Profile(uid: FirebaseAuth.instance.currentUser!.uid),
+  //     Explore(uid: FirebaseAuth.instance.currentUser!.uid),
+  //   ];
+  // }
 
 
 
   _callNumber() async {
-    const number = '+919136711710'; //set the number here
+    const number = '+91913671171'; //set the number here
     bool? res = await FlutterPhoneDirectCaller.callNumber(number);
   }
 
@@ -79,7 +81,7 @@ class _HomeState extends State<Home> {
                 style: TextStyle(color: Colors.black),
               ),
               icon: Icon(
-                Icons.person,
+                Icons.logout,
                 color: Colors.black,
               ),
               onPressed: () async {
@@ -179,7 +181,7 @@ class _HomeState extends State<Home> {
                     itemBuilder: (context, index) {
                       return InkWell(
                           onTap: (() {
-                            _build();
+                            print(navItem);
                           }),
                           child: CategoryItem(item: navItem[index]));
                     }),

@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:developer';
-
 import 'package:envision/models/quoteModel.dart';
 import 'package:http/http.dart' as http;
 

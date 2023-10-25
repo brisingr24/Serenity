@@ -20,7 +20,7 @@ class Explore extends StatefulWidget {
 class _HomeState extends State<Explore> {
 
   _callNumber() async {
-    const number = '+919136711710'; //set the number here
+    const number = '+91913671171'; //set the number here
     bool? res = await FlutterPhoneDirectCaller.callNumber(number);
   }
 

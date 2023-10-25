@@ -21,7 +21,7 @@ class _ForumState extends State<Forum> {
   final AuthService _auth = AuthService();
 
   _callNumber() async {
-    const number = '+919136711710'; //set the number here
+    const number = '+91913671171'; //set the number here
     bool? res = await FlutterPhoneDirectCaller.callNumber(number);
   }
 

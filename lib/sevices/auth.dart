@@ -25,7 +25,7 @@ class AuthService extends ChangeNotifier{
     return auth.authStateChanges().map(_userFromFirebaseUser);
   }
 
-
+  //LOG IN WITH EMAIL AND PASSWORD
   Future signIn(email, pass) async {
     try {
       var user = (await auth.signInWithEmailAndPassword(
@@ -62,6 +62,7 @@ class AuthService extends ChangeNotifier{
     }
   }
 
+  //SIGN UP WITH EMAIL AND PASSWORD
   Future signUp(email, pass) async {
     try {
       UserCredential user = (await auth.createUserWithEmailAndPassword(

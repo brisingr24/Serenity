@@ -1,5 +1,4 @@
 import 'package:envision/screens/splash.dart';
-import 'package:envision/screens/verifyscreen.dart';
 import 'package:envision/sevices/auth.dart';
 import 'package:envision/sevices/pageHost.dart';
 import 'package:firebase_core/firebase_core.dart';
